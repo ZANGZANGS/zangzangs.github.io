@@ -4,7 +4,7 @@ zangzangs:
   url_full: https://zangzangs.github.io/
   url: zangzangs.github.io/
   bio: The professional BackEnd Developer
-  picture: assets/images/ghost.png
+  picture: /assets/images/ghost.png
   facebook: 
   twitter: 
   cover: False
