@@ -2,15 +2,15 @@
 markdown: kramdown
 highlighter: rouge
 paginate: 100 # it will paginate after this number
-language: 'en-uk'
+language: 'UTF-8'
 words_per_minute: 200
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: https://zangzangs.github.io/
+baseurl: /
 
 # Website info
 title: 장장스 블로그
-description: 일단 적고 보자
+description: BackEnd Developer
 cover: assets/images/blog-cover.jpg
 logo: assets/images/blog-icon.png
 logo_dark: assets/images/favicon.png
