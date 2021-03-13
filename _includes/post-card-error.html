@@ -6,7 +6,7 @@
     {% if count <= 3 %}
         <article class="post-card {{ page.class }}{% unless post.thumbnail %} no-image{% endunless %}">
             {% if post.thumbnail %}
-                <a class="post-card-image-link" href="{{ site.baseurl }}{{ post.url | remove_first: '/' }}">
+                <a class="post-card-image-link" href="{{ site.url }}/{{ post.url | remove_first: '/' }}">
                     <div class="post-card-image" style="background-image: url({{ site.baseurl }}{{ post.thumbnail }})"></div>
                 </a>
             {% endif %}
