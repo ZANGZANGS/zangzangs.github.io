@@ -1,3 +1,16 @@
+---
+layout: post
+current: post
+cover: 'assets/images/waves.jpg'
+navigation: True
+title: 제목을 입력합니다
+date: 2021-03-12 10:18:00
+tags: fiction
+class: post-template
+subclass: 'post'
+author: zzs
+---
+
 # DBCP(Database Connection Pool)
 
 데이터베이스 애플리케이션을 효율적으로 연결하는 커넥션 풀 라이브러리는 웹 애플리케이션에서는 필수 요소입니다. 웹 애플리케이션 서버로 상용 제품을 사용한다면 보통 제조사에서 제공하는 커넥션 풀 구현체를 사용합니다. 그 외에 오픈소스 라이브러리로 Apache의 Commons DBCP와 Tomcat-JDBC, BoneCP, HikariCP 등이 있습니다.

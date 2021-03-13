@@ -1,3 +1,16 @@
+---
+layout: post
+current: post
+cover: 'assets/images/waves.jpg'
+navigation: True
+title: 제목을 입력합니다
+date: 2021-03-12 10:18:00
+tags: fiction
+class: post-template
+subclass: 'post'
+author: zzs
+---
+
 # JNDI(Java Naming and Directory Interface)
 
 
@@ -19,6 +32,10 @@
 '>>' 해당 내용 이해 안됨.. https://eongeuni.tistory.com/43
 
 보안상의 이점이 있다. JNDI를 사용하게 되면 DB Connection 정보를 일반 개발자에게 노출되지 않는다.
+
+
+
+https://zunoxi.github.io/infra/2020/06/20/infra-db-jdbc/
 
 
 
