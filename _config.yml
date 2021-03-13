@@ -6,7 +6,7 @@ language: 'UTF-8'
 words_per_minute: 200
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /https://zangzangs.github.io/
+baseurl: https://zangzangs.github.io/
 # baseurl: 
 
 # Website info
