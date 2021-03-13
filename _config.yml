@@ -70,9 +70,9 @@ lsi: False
 username: 
 repo: 
 branch: master
-relative_source: ../jasper2/
-destination: ../jasper2-pages/
-production_url:  https://zangzangs.github.io
+relative_source: ../https://zangzangs.github.io/
+destination: ../https://zangzangs.github.io/
+production_url:   https://zangzangs.github.io
 source_url:  https://github.com/ZANGZANGS
 
 exclude:
