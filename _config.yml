@@ -27,7 +27,7 @@ facebook:  # replace by your username
 
 # Disqus
 disqus: False
-disqus_shortname: jekyller # replace with your disqus username
+disqus_shortname:  # replace with your disqus username
 
 # Google Analytics
 google_analytics:  # replace with your GA tracking identifier
