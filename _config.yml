@@ -6,7 +6,8 @@ language: 'UTF-8'
 words_per_minute: 200
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /
+baseurl: /https://zangzangs.github.io/
+# baseurl: 
 
 # Website info
 title: 장장스 블로그
@@ -70,10 +71,10 @@ lsi: False
 username: 
 repo: 
 branch: master
-relative_source: ../https://zangzangs.github.io/
-destination: ../https://zangzangs.github.io/
-production_url:   https://zangzangs.github.io/
-source_url:  https://github.com/ZANGZANGS/zangzangs.github.io/
+relative_source: ../relative_source/
+destination: ../https://destination/
+production_url:   https://production_url/
+source_url:  https://source_url/
 
 exclude:
   - assets/css
