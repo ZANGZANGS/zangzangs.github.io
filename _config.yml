@@ -6,8 +6,7 @@ language: 'UTF-8'
 words_per_minute: 200
 
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-uri: /realuri
-baseurl: baseuri
+baseurl: /
 # baseurl: 
 
 # Website info
