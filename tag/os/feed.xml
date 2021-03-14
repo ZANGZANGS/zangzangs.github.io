@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/os/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2021-03-14T15:41:05+09:00</updated>
+  <id>http://localhost:4000/tag/os/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">장장스 블로그 | </title>
+  
+
+  
+    <subtitle>Backend Developer</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">[OS] 운영체제 개요</title>
+      <link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94" rel="alternate" type="text/html" title="[OS] 운영체제 개요" />
+      <published>2021-03-13T10:00:00+09:00</published>
+      <updated>2021-03-13T10:00:00+09:00</updated>
+      <id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%20%EA%B0%9C%EC%9A%94</id>
+      <content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94">&lt;h1 id=&quot;운영체제-개요&quot;&gt;운영체제 개요&lt;/h1&gt;
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;운영체제의-정의&quot;&gt;운영체제의 정의&lt;/h3&gt;
+&lt;p&gt;하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&quot;./../../_images/operating_system/운영체제의%20위상.png&quot; width=&quot;70%&quot; height=&quot;70%&quot; /&gt;
+&lt;/center&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;운영체제의-기능&quot;&gt;운영체제의 기능&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;자원을 효율적으로 관리한다.
+    &lt;ul&gt;
+      &lt;li&gt;효율성: 효율적이나 일부가 지나치게 희생되지 않도록&lt;/li&gt;
+      &lt;li&gt;형평성: 프로그램들 간의 자원을 형평성 있게 분배&lt;/li&gt;
+      &lt;li&gt;보안 및 보호&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;사용자 및 운영체제 자신의 보호한다.&lt;/li&gt;
+  &lt;li&gt;프로세스, 파일, 메시지 등을 관리한다.&lt;/li&gt;
+  &lt;li&gt;컴퓨터 시스템을 편리하게 사용할 수 있는 환경을 제공한다.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;운영체제의-분류&quot;&gt;운영체제의 분류&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;동시 작업 가능 여부
+    &lt;ul&gt;
+      &lt;li&gt;단일작업(single tasking)&lt;/li&gt;
+      &lt;li&gt;다중작업(multi tasking)&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;사용자 수
+    &lt;ul&gt;
+      &lt;li&gt;단일 사용자&lt;/li&gt;
+      &lt;li&gt;다중 사용자&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;처리방식
+    &lt;ul&gt;
+      &lt;li&gt;일괄처리 방식(batch processing)&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;시분할 방식(time sharing system)&lt;/strong&gt;&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;&lt;/li&gt;
+      &lt;li&gt;실시간(real time)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;운영-체제의-자원-관리-기능&quot;&gt;운영 체제의 자원 관리 기능&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;CPU 스케쥴링(CPU scheduling)&lt;/strong&gt;
+CPU를 가장 효율적으로 사용하면서도, 특정 프로세스가 불이익을 당하지 않도록 하는 것
+    &lt;ul&gt;
+      &lt;li&gt;선입선출
+CPU를 사용하기 위해 도착한 프로세스들 중 먼저 온 것을 먼저 처리해주는 방식&lt;/li&gt;
+      &lt;li&gt;라운드 로빈(Round Robin)&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;
+CPU를 한 번 할당받아 사용할 수 있는 시간을 일정하게 고정된 시간으로 제한한다.&lt;/li&gt;
+      &lt;li&gt;우선순위
+대기 중인 프로세스들에 우선순위를 부여하고 우선순위가 높은 프로세스에 CPU를 먼저 할당한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;메모리 관리&lt;/strong&gt;
+물리적 메모리를 관리하는 방식
+    &lt;ul&gt;
+      &lt;li&gt;고정분할 방식(fixed partition)
+        &lt;ul&gt;
+          &lt;li&gt;물리적 메모리를 일정 개수로 분할 하여 사용하는 방식을 말한다.&lt;/li&gt;
+          &lt;li&gt;단점으로 분할 개수만큼만 프로그램을 사용할 수 있으며, 분할된 메모리보다 큰 프로그램은 적재가 불가능하다.&lt;/li&gt;
+          &lt;li&gt;분할된 메모리보다 적은 메모리를 사용하는 프로그램이 적재가 되면 남는 메모리영역이 발생하는데 이를 &lt;span style=&quot;color:blue&quot;&gt;내부조각(internal fragment)&lt;/span&gt; 이라고 한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;가변분할 방식(variable partition)
+        &lt;ul&gt;
+          &lt;li&gt;프로그램 크기에 맞게 메모리를 분할해서 사용하는 방식을 말한다.&lt;/li&gt;
+          &lt;li&gt;메모리가 일정부분 20이 남았다고 했을 때, 40의 메모리를 가진 프로그램을 적재할 수 없어 남는 메모리 영역이 발생한다. 이를 &lt;span style=&quot;color:blue&quot;&gt;외부조각(external fragment)&lt;/span&gt;이라고 한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;가상메모리(virtual memory)&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;
+        &lt;ul&gt;
+          &lt;li&gt;물리적 메모리보다 더 큰 프로그램이 실행되는 것을 지원한다.&lt;/li&gt;
+          &lt;li&gt;현재 사용되고 있는 부분만 메모리에 올리고, 나머지는 하드디스크와 같은 보조기억장치에 저장해두었다가 필요할 때 적재하는 방식을 취한다. 이떄 사용되는 보조기억장치의 영역을 &lt;span style=&quot;color:blue&quot;&gt;스왑 영역(swap area)&lt;/span&gt;이라고 부른다.&lt;/li&gt;
+          &lt;li&gt;가상메모리 주소 공간은 페이지(page)라는 동일한 크기의 작은 단위로 나뉘어 물리적 메모리와 스왑 영역에 일부분씩 저장된다. 이렇게 동일한 단위로 메모리를 나누는 기업을 &lt;span style=&quot;color:blue&quot;&gt;페이징(paging) 기법&lt;/span&gt;이라고 한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;주변장치 및 입출력 관리&lt;/strong&gt;
+    &lt;ul&gt;
+      &lt;li&gt;인터럽트
+        &lt;ul&gt;
+          &lt;li&gt;주변장치들이 CPU의 서비스가 필요한 경우 보내는 신호&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;컨트롤러
+        &lt;ul&gt;
+          &lt;li&gt;주변장치들이 메인 CPU에 인터럽트를 발생시켜 보고하는 역할&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;메모리에 존재하는 OS의 최소한의&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;
+&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>zangzangs</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="os" />
+      
+
+      
+        <summary type="html">운영체제 개요</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<feed xmlns="http://www.w3.org/2005/Atom" >
+  <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
+  <link href="http://localhost:4000/tag/database/feed.xml" rel="self" type="application/atom+xml" />
+  <link href="http://localhost:4000/" rel="alternate" type="text/html" />
+  <updated>2021-03-14T15:41:05+09:00</updated>
+  <id>http://localhost:4000/tag/database/feed.xml</id>
+
+  
+  
+  
+
+  
+    <title type="html">장장스 블로그 | </title>
+  
+
+  
+    <subtitle>Backend Developer</subtitle>
+  
+
+  
+
+  
+    
+      
+    
+  
+
+  
+  
+
+  
+    <entry>
+      <title type="html">[DB] DBCP와 JNDI의 차이점</title>
+      <link href="http://localhost:4000/dbcp-vs-jndi" rel="alternate" type="text/html" title="[DB] DBCP와 JNDI의 차이점" />
+      <published>2021-03-12T19:18:00+09:00</published>
+      <updated>2021-03-12T19:18:00+09:00</updated>
+      <id>http://localhost:4000/dbcp-vs-jndi</id>
+      <content type="html" xml:base="http://localhost:4000/dbcp-vs-jndi">&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;asd&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>zangzangs</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="database" />
+      
+
+      
+        <summary type="html">public void asd;</summary>
+      
+
+      
+      
+    </entry>
+  
+</feed>
