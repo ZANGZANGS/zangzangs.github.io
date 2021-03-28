@@ -8,17 +8,51 @@
     
       
       <item>
-        <title>[OS] 운영체제 개요</title>
+        <title>(3) 프로그램의 구조와 실행</title>
         
-          <description>&lt;h1 id=&quot;운영체제-개요&quot;&gt;운영체제 개요&lt;/h1&gt;
-&lt;hr /&gt;
+          <description>&lt;h2 id=&quot;프로그램의-실행&quot;&gt;프로그램의 실행&lt;/h2&gt;
 
 </description>
         
-        <pubDate>Sat, 13 Mar 2021 10:00:00 +0900</pubDate>
+        <pubDate>Sun, 28 Mar 2021 19:18:00 +0900</pubDate>
         <link>
-        http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94</link>
-        <guid isPermaLink="true">http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94</guid>
+        http://localhost:4000/(3)-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EC%9D%98-%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%8B%A4%ED%96%89</link>
+        <guid isPermaLink="true">http://localhost:4000/(3)-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%A8%EC%9D%98-%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%8B%A4%ED%96%89</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>(2) 컴퓨터 시스템의 동작 원리</title>
+        
+          <description>&lt;h2 id=&quot;컴퓨터-시스템-구조&quot;&gt;컴퓨터 시스템 구조&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;center&gt;
+&lt;img src=&quot;../..\assets\images\operating_system\chap03_computer_system_structure.png&quot; style=&quot;zoom:60%&quot; /&gt;
+
+&lt;/center&gt;
+</description>
+        
+        <pubDate>Sun, 21 Mar 2021 19:18:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/(2)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC</link>
+        <guid isPermaLink="true">http://localhost:4000/(2)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC</guid>
+      </item>
+      
+    
+      
+      <item>
+        <title>(1) 운영체제 개요</title>
+        
+          <description>&lt;h2 id=&quot;운영체제의-정의&quot;&gt;운영체제의 정의&lt;/h2&gt;
+&lt;p&gt;하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 13 Mar 2021 19:18:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/(1)-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94</link>
+        <guid isPermaLink="true">http://localhost:4000/(1)-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94</guid>
       </item>
       
     
