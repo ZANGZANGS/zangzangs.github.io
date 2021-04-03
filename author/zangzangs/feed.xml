@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/author/zangzangs/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-03-28T22:13:49+09:00</updated>
+  <updated>2021-04-03T23:04:47+09:00</updated>
   <id>http://localhost:4000/author/zangzangs/feed.xml</id>
 
   
@@ -30,6 +30,401 @@
   
   
 
+  
+    <entry>
+      <title type="html">(4) 프로세스 관리</title>
+      <link href="http://localhost:4000/(4)-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B4%80%EB%A6%AC" rel="alternate" type="text/html" title="(4) 프로세스 관리" />
+      <published>2021-04-02T19:18:00+09:00</published>
+      <updated>2021-04-02T19:18:00+09:00</updated>
+      <id>http://localhost:4000/(4)%20%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4%20%EA%B4%80%EB%A6%AC</id>
+      <content type="html" xml:base="http://localhost:4000/(4)-%ED%94%84%EB%A1%9C%EC%84%B8%EC%8A%A4-%EA%B4%80%EB%A6%AC">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;프로세스의 개념&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Process is a Program in execution
+    &lt;ul&gt;
+      &lt;li&gt;실행중인 프로그램을 프로세스라 한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;프로세스의 문맥(context)
+    &lt;ul&gt;
+      &lt;li&gt;CPU 수행 상태를 나타내는 하드웨어 문맥
+        &lt;ul&gt;
+          &lt;li&gt;Program Counter&lt;/li&gt;
+          &lt;li&gt;각종 register&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;프로세스의 주소 공간
+        &lt;ul&gt;
+          &lt;li&gt;code, data, stack&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;프로세스 관련 커널 자료 구조
+        &lt;ul&gt;
+          &lt;li&gt;PCB (Process Control Block)&lt;/li&gt;
+          &lt;li&gt;Kernel stack&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;프로세스의-상태&quot;&gt;프로세스의 상태&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Running
+    &lt;ul&gt;
+      &lt;li&gt;CPU를 잡고 instruction을 수행중인 상태&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Ready
+    &lt;ul&gt;
+      &lt;li&gt;CPU를 기다리는 상태(메모리 등 다른 조건을 모두 만족하고)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Blocked(wait, sleep)
+    &lt;ul&gt;
+      &lt;li&gt;I/O 등의 event를 (스스로) 기다리는 상태&lt;/li&gt;
+      &lt;li&gt;ex) 디스크에서 file을 읽어와야 하는 경우&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;​	Suspended (stoped)
+    &lt;ul&gt;
+      &lt;li&gt;외부적인 이유로 프로세스의 수행이 정지된 상태&lt;/li&gt;
+      &lt;li&gt;프로세스는 통째로 디스크에 swap out 된다&lt;/li&gt;
+      &lt;li&gt;ex) 사용자 프로그램을 일시 정지시킨 경우 (break key) 시스템이 여러 이유로 프로세스를 잠시 중단시킴(메모리에 너무 많은 프로세스가 올라와 있을 때)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Blocked: 자신이 요청한 event가 만족되면 Ready&lt;/li&gt;
+    &lt;li&gt;Suspended: 외부에서 resume해 주어야 Active&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&amp;lt;br&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;프로세스의-상태도&quot;&gt;프로세스의 상태도&lt;/h2&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;process-control-block-pcb&quot;&gt;Process Control Block (PCB)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;PCB
+    &lt;ul&gt;
+      &lt;li&gt;운영체제가 각 프로세스를 관리하기 위해 프로세스당 유지하는 정보&lt;/li&gt;
+      &lt;li&gt;다음의 구성요소를 가진다 (구조체로 유지)
+        &lt;ol&gt;
+          &lt;li&gt;OS 관리상 사용하는 정보
+            &lt;ul&gt;
+              &lt;li&gt;Process state, Process ID&lt;/li&gt;
+              &lt;li&gt;scheduling information, priority&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;CPU 수행 관련 하드웨어 값
+            &lt;ul&gt;
+              &lt;li&gt;Program counter, registers&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;메모리 관련
+            &lt;ul&gt;
+              &lt;li&gt;code, data, stack 의 위치정보&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+          &lt;li&gt;파일 관련
+            &lt;ul&gt;
+              &lt;li&gt;Open file descriptors..&lt;/li&gt;
+            &lt;/ul&gt;
+          &lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;문맥-교환-context-switch&quot;&gt;문맥 교환 (Context Switch)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CPU를 한 프로세스에서 다른 프로세스로 넘겨주는 과정&lt;/li&gt;
+  &lt;li&gt;CPU가 다른 프로세스에게 넘어갈 때 운영체제는 다음을 수행
+    &lt;ul&gt;
+      &lt;li&gt;CPU를 내어주는 프로세스의 상태를 그 프로세스의 PCB에 저장&lt;/li&gt;
+      &lt;li&gt;CPU를 새롭게 얻는 프로세스의 상태를 PCB에서 읽어옴&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;문맥교환이 아닌 것과 혼동하지 말자. 문맥교환은 프로세스A에서 프로세스B로 넘어가는것,&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;System call이나 interrupt 발생시 반드시 context switch가 일어나는 것은 아님&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(1)  문맥교환 X&lt;/p&gt;
+
+&lt;p&gt;사용자 프로세스 A -&amp;gt; interrupt or system call -&amp;gt; 커널모드) -&amp;gt; &lt;strong&gt;문맥교환 없이 user 모드 복귀&lt;/strong&gt; -&amp;gt; 사용자 프로세스 A&lt;/p&gt;
+
+&lt;p&gt;(2) 문맥교환 O&lt;/p&gt;
+
+&lt;p&gt;사용자 프로세스 A -&amp;gt; interrupt or I/O 요청 system call  -&amp;gt; 커널모드(ISR or system call) -&amp;gt; &lt;strong&gt;문맥교환 발생&lt;/strong&gt; -&amp;gt; 사용자 프로세스 B&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;(1)의 경우에도 CPU 수행 정보 등 context의 일부를 PCB에 save해야 하지만 문맥교환을 하는 (2)의 경우 그 부담이 훨씬 크다. (eg. cache memory flush)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;프로세스를-스케줄링하기-위한-큐&quot;&gt;프로세스를 스케줄링하기 위한 큐&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Job queue
+    &lt;ul&gt;
+      &lt;li&gt;현재 시스템 내에 있는 모든 프로세스의 집합&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Ready queue
+    &lt;ul&gt;
+      &lt;li&gt;현재 메모리 내에 있으면서 CPU를 잡아서 실행되기를 기다리는 프로세스의 집합&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Device queues
+    &lt;ul&gt;
+      &lt;li&gt;I/O device의 처리를 기다리는 프로세스의 집합&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;프로세스들은 각 큐들을 오가며 수행된다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;스케줄러-scheduler&quot;&gt;스케줄러 (Scheduler)&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Long-term scheduler(장기 스케줄러 or job scheduler)
+    &lt;ul&gt;
+      &lt;li&gt;시작 프로세스 중 어떤 것들을 ready queue로 보낼지 결정&lt;/li&gt;
+      &lt;li&gt;프로세스에 memory(및 각종 자원)을 주는 문제&lt;/li&gt;
+      &lt;li&gt;degree of Multiprogramming을 제어&lt;/li&gt;
+      &lt;li&gt;time sharing system에는 보통 장기 스케줄러가 없음(무조건 ready)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;프로세스 상태도에서 admitted 해주는게 장기스케줄러의 역할&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Short-term scheduler(단기 스케줄러 or CPU scheduler)
+    &lt;ul&gt;
+      &lt;li&gt;어떤 프로세스를 다음번에 running 시킬지 결정&lt;/li&gt;
+      &lt;li&gt;프로세스에 CPU를 주는 문제&lt;/li&gt;
+      &lt;li&gt;충분히 빨라야 함 (millisecond 단위)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Medium-Term Scheduler(중기 스케줄러 or Swapper)
+    &lt;ul&gt;
+      &lt;li&gt;여유 공간 마련을 위해 프로세스를 통째로 메모리에서 디스크로 쫒아냄&lt;/li&gt;
+      &lt;li&gt;프로세스에게서 memory를 뺏는 문제&lt;/li&gt;
+      &lt;li&gt;degree of Multiprogramming을 제어&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;thread&quot;&gt;Thread&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;“A &lt;span style=&quot;color:red&quot;&gt;thread&lt;/span&gt; (or &lt;span style=&quot;color:red&quot;&gt;lightweight process&lt;/span&gt;) is a basic unit of CPU utilization”&lt;/li&gt;
+  &lt;li&gt;Thread의 구성
+    &lt;ul&gt;
+      &lt;li&gt;program counter&lt;/li&gt;
+      &lt;li&gt;register set&lt;/li&gt;
+      &lt;li&gt;stack space&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Thread가 동료 Thread와 공유하는 부분(=task)
+    &lt;ul&gt;
+      &lt;li&gt;code section&lt;/li&gt;
+      &lt;li&gt;data section&lt;/li&gt;
+      &lt;li&gt;OS resources&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;전통적인 개념의 heavyweight process는 하나의 thread를 가지고 있는 task로 볼 수 있다&lt;/li&gt;
+  &lt;li&gt;다중 스레드로 구성된 테스크 구조에서는 하나의 서버 스레드가 blocked (waiting) 상태인 동안에도 동일한 태스크 내의 다른 스레드가 실행(running)되어 빠른 처리를 할 수 있다.&lt;/li&gt;
+  &lt;li&gt;동일한 일을 수행하는 다중 스레드가 협력하여 높은 처리율(throughput)과 성능 향상을 얻을 수 있다&lt;/li&gt;
+  &lt;li&gt;스레드를 사용하면 병렬성을 높일 수 있다&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;benefits-of-threads&quot;&gt;Benefits of Threads&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Responsiveness
+    &lt;ul&gt;
+      &lt;li&gt;동시 처리로 빠른 응답성을 제공한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Resource Sharing
+    &lt;ul&gt;
+      &lt;li&gt;프로세스의 리소스인 code, data를 n개의 쓰레드가 공유할 수 있다.(stack 제외)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Economy
+    &lt;ul&gt;
+      &lt;li&gt;creating &amp;amp; CPU switching thread (rather than a process)&lt;/li&gt;
+      &lt;li&gt;Solaris의 경우 위 두 가지 overhead가 각각 30배, 5배&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Utilization of MP Architectures
+    &lt;ul&gt;
+      &lt;li&gt;멀티 프로세서 아키텍처의 사용에서 각각의 쓰레드를 다른 프로세서에서 병렬로 실행한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;implementation-of-threads&quot;&gt;Implementation of Threads&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Kernel Threads&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Some are supported by kernel&lt;/p&gt;
+
+      &lt;p&gt;운영체제 커널이 지원하는 Threads&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;Windows&lt;/li&gt;
+      &lt;li&gt;Solaris&lt;/li&gt;
+      &lt;li&gt;Digital UNIX, Mach&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;User Threads&lt;/p&gt;
+
+    &lt;blockquote&gt;
+      &lt;p&gt;Others are Supported by library&lt;/p&gt;
+
+      &lt;p&gt;사용자가 에서 Threads를 관리&lt;/p&gt;
+    &lt;/blockquote&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;POSIX Pthreads&lt;/li&gt;
+      &lt;li&gt;Mach C-threads&lt;/li&gt;
+      &lt;li&gt;Solaris threds&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Some are real-time threads&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;프로세스-생성&quot;&gt;프로세스 생성&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;부모 프로세스(parent process)가 자식 프로세스(children process) 생성&lt;/li&gt;
+  &lt;li&gt;프로세스의 트리(계층 구조) 형성&lt;/li&gt;
+  &lt;li&gt;프로세스는 자원을 필요로함
+    &lt;ul&gt;
+      &lt;li&gt;운영체제로부터 받는다&lt;/li&gt;
+      &lt;li&gt;부모와 공유한다&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;자원의 공유
+    &lt;ul&gt;
+      &lt;li&gt;부모와 자식이 모든 자원을 공유하는 모델&lt;/li&gt;
+      &lt;li&gt;일부를 공유하는 모델&lt;/li&gt;
+      &lt;li&gt;전혀 공유하지 않는 모델&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;수행 (Execution)
+    &lt;ul&gt;
+      &lt;li&gt;부모와 자식은 공존하며 수행되는 모델&lt;/li&gt;
+      &lt;li&gt;자식이 종료(terminate)될 때까지 부모가 기다리는(wait) 모델&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;주소 공간 (Address space)
+    &lt;ul&gt;
+      &lt;li&gt;자식은 부모의 공간을 복사함 (binary and OS data)&lt;/li&gt;
+      &lt;li&gt;자식은 부모의 공간을 복사함 (binary and OS data)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;유닉스의 예
+    &lt;ul&gt;
+      &lt;li&gt;&lt;span style=&quot;color:red&quot;&gt;fork()&lt;/span&gt; 시스템 콜이 새로운 프로세스를 생성
+        &lt;ul&gt;
+          &lt;li&gt;부모를 그대로 복사 (OS data except PID + binary)&lt;/li&gt;
+          &lt;li&gt;주소 공간 할당&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;fork 다음에 이어지는 &lt;span style=&quot;color:red&quot;&gt;exec()&lt;/span&gt; 시스템 콜을 통해 새로운 프로그램을 메모리에 올림&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;프로세스가 마지막 명령을 수행한 후 운영체제에게 이를 알려줌(&lt;span style=&quot;color:red&quot;&gt;exit&lt;/span&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;자식이 부모에게 output data를 보냄 (via &lt;span style=&quot;color:red&quot;&gt;wait&lt;/span&gt;)&lt;/li&gt;
+      &lt;li&gt;프로세스의 각종 자원들이 운영체제에게 반납됨&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;부모 프로세스가 자식의 수행을 종료시킴 (&lt;span style=&quot;color:red&quot;&gt;abort&lt;/span&gt;)
+    &lt;ul&gt;
+      &lt;li&gt;자식이 할당 자원의 한계치를 넘어섬&lt;/li&gt;
+      &lt;li&gt;자식에게 할당된 태스크가 더 이상 필요하지 않음&lt;/li&gt;
+      &lt;li&gt;부모가 종료(exit)하는 경우
+        &lt;ul&gt;
+          &lt;li&gt;운영체제는 부모 프로세스가 종료하는 경우 자식 프로세스가 더 이상 수행되도록 두지 않는다(종료해버림)&lt;/li&gt;
+          &lt;li&gt;프로세스의 계층 구조(트리)에 따라 단계적인 종료가 됨&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;fork-시스템-콜&quot;&gt;Fork() 시스템 콜&lt;/h2&gt;
+
+&lt;h2 id=&quot;exec-시스템-콜&quot;&gt;exec() 시스템 콜&lt;/h2&gt;
+
+&lt;p&gt;하나의 프로세스를 완전히 새로운 프로세스로 덮어쓰는 명령&lt;/p&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>zangzangs</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="os" />
+      
+
+      
+        <summary type="html">프로세스의 개념</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">(3) 프로그램의 구조와 실행</title>
@@ -658,43 +1053,28 @@ Connection Pool을 사용하면 Connection을 생성하고 닫는 시간이 소�
     </entry>
   
     <entry>
-      <title type="html">[Interview] CS</title>
-      <link href="http://localhost:4000/interview-cs" rel="alternate" type="text/html" title="[Interview] CS" />
+      <title type="html">[Interview] JAVA</title>
+      <link href="http://localhost:4000/interview-java" rel="alternate" type="text/html" title="[Interview] JAVA" />
       <published>2021-03-12T19:18:00+09:00</published>
       <updated>2021-03-12T19:18:00+09:00</updated>
-      <id>http://localhost:4000/interview-cs</id>
-      <content type="html" xml:base="http://localhost:4000/interview-cs">&lt;p&gt;#CS 기본 지식 관련
-___&lt;/p&gt;
-
+      <id>http://localhost:4000/interview-java</id>
+      <content type="html" xml:base="http://localhost:4000/interview-java">&lt;h1 id=&quot;java-interview&quot;&gt;Java Interview&lt;/h1&gt;
+&lt;hr /&gt;
 &lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;프로세스와 스레드 차이&lt;/strong&gt;&lt;/p&gt;
+  &lt;p&gt;java의 장단점&lt;/p&gt;
   &lt;ul&gt;
-    &lt;li&gt;프로세스는 운영체제로부터 자원을 할당받아 실행하고, 스레드는 프로세스로부터 자원을 할당받아 실행&lt;/li&gt;
-    &lt;li&gt;하나의 프로세스 안에서 여러 스레드가 생성 가능&lt;/li&gt;
-    &lt;li&gt;각 스레드는 개별 스택을 가지고, 프로세스의 전역 메모리 공간을 고유하며 프로그램을 실행
+    &lt;li&gt;장점
       &lt;ul&gt;
-        &lt;li&gt;보통 프로세스는 코드/데이터/스택/힙 메모리 영역을 기반으로 실행한다&lt;/li&gt;
-        &lt;li&gt;스레드는 프로세스 안에서, 개별적인 스택을 가지고, 코드/데이터/힙 영역을 공유하며 실행&lt;/li&gt;
+        &lt;li&gt;운영체제에 독립적이다.
+          &lt;ul&gt;
+            &lt;li&gt;JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다.&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;객체지향 언어이다.&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;스크립트 언어와 컴파일 언어를 나열하고 차이점을 설명하세요&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;컴파일 언어:C, C++, java 등&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;컴파일언어는 컴파일러를 통해 사전에 컴파일되어 기계어 상태로 실행되므로 실행이 빠름.&lt;/li&gt;
-  &lt;li&gt;또한 컴파일 단계에서 전체 코드를 기계어로 변환할 때, 최적화작업을 진행하여 실행 시간을 보다 빠르게 할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;스트립트 언어:: python, javascript, ruby 등&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;스트립트 언어는 컴파일 단계 없이 실행 단계에서 한 줄씩 기계어로 번역 후 실행되므로 통상 컴파일 언어보다 실행이 느리다.&lt;/li&gt;
-  &lt;li&gt;전체 코드에 대한 실행 코드 최적화가 어려움&lt;/li&gt;
-&lt;/ul&gt;</content>
+&lt;/blockquote&gt;</content>
 
       
       
@@ -715,7 +1095,7 @@ ___&lt;/p&gt;
       
 
       
-        <summary type="html">#CS 기본 지식 관련 ___</summary>
+        <summary type="html">Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다.</summary>
       
 
       
@@ -915,28 +1295,43 @@ ___&lt;/p&gt;
     </entry>
   
     <entry>
-      <title type="html">[Interview] JAVA</title>
-      <link href="http://localhost:4000/interview-java" rel="alternate" type="text/html" title="[Interview] JAVA" />
+      <title type="html">[Interview] CS</title>
+      <link href="http://localhost:4000/interview-cs" rel="alternate" type="text/html" title="[Interview] CS" />
       <published>2021-03-12T19:18:00+09:00</published>
       <updated>2021-03-12T19:18:00+09:00</updated>
-      <id>http://localhost:4000/interview-java</id>
-      <content type="html" xml:base="http://localhost:4000/interview-java">&lt;h1 id=&quot;java-interview&quot;&gt;Java Interview&lt;/h1&gt;
-&lt;hr /&gt;
+      <id>http://localhost:4000/interview-cs</id>
+      <content type="html" xml:base="http://localhost:4000/interview-cs">&lt;p&gt;#CS 기본 지식 관련
+___&lt;/p&gt;
+
 &lt;blockquote&gt;
-  &lt;p&gt;java의 장단점&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;프로세스와 스레드 차이&lt;/strong&gt;&lt;/p&gt;
   &lt;ul&gt;
-    &lt;li&gt;장점
+    &lt;li&gt;프로세스는 운영체제로부터 자원을 할당받아 실행하고, 스레드는 프로세스로부터 자원을 할당받아 실행&lt;/li&gt;
+    &lt;li&gt;하나의 프로세스 안에서 여러 스레드가 생성 가능&lt;/li&gt;
+    &lt;li&gt;각 스레드는 개별 스택을 가지고, 프로세스의 전역 메모리 공간을 고유하며 프로그램을 실행
       &lt;ul&gt;
-        &lt;li&gt;운영체제에 독립적이다.
-          &lt;ul&gt;
-            &lt;li&gt;JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다.&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/li&gt;
-        &lt;li&gt;객체지향 언어이다.&lt;/li&gt;
+        &lt;li&gt;보통 프로세스는 코드/데이터/스택/힙 메모리 영역을 기반으로 실행한다&lt;/li&gt;
+        &lt;li&gt;스레드는 프로세스 안에서, 개별적인 스택을 가지고, 코드/데이터/힙 영역을 공유하며 실행&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
   &lt;/ul&gt;
-&lt;/blockquote&gt;</content>
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;스크립트 언어와 컴파일 언어를 나열하고 차이점을 설명하세요&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;strong&gt;컴파일 언어:C, C++, java 등&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;컴파일언어는 컴파일러를 통해 사전에 컴파일되어 기계어 상태로 실행되므로 실행이 빠름.&lt;/li&gt;
+  &lt;li&gt;또한 컴파일 단계에서 전체 코드를 기계어로 변환할 때, 최적화작업을 진행하여 실행 시간을 보다 빠르게 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;스트립트 언어:: python, javascript, ruby 등&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;스트립트 언어는 컴파일 단계 없이 실행 단계에서 한 줄씩 기계어로 번역 후 실행되므로 통상 컴파일 언어보다 실행이 느리다.&lt;/li&gt;
+  &lt;li&gt;전체 코드에 대한 실행 코드 최적화가 어려움&lt;/li&gt;
+&lt;/ul&gt;</content>
 
       
       
@@ -957,7 +1352,7 @@ ___&lt;/p&gt;
       
 
       
-        <summary type="html">Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다.</summary>
+        <summary type="html">#CS 기본 지식 관련 ___</summary>
       
 
       
