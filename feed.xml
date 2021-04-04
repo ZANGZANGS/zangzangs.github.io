@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-04T20:23:19+09:00</updated><id>http://localhost:4000/</id><title type="html">장장스 블로그</title><subtitle>Backend Developer</subtitle><entry><title type="html">(4) 프로세스 관리</title><link href="http://localhost:4000/os04" rel="alternate" type="text/html" title="(4) 프로세스 관리" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/os04</id><content type="html" xml:base="http://localhost:4000/os04">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-04T20:26:39+09:00</updated><id>http://localhost:4000/</id><title type="html">장장스 블로그</title><subtitle>Backend Developer</subtitle><entry><title type="html">(4) 프로세스 관리</title><link href="http://localhost:4000/os04" rel="alternate" type="text/html" title="(4) 프로세스 관리" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/os04</id><content type="html" xml:base="http://localhost:4000/os04">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Process is &lt;strong&gt;&lt;span style=&quot;color:red;&quot;&gt;a Programin execution &lt;/span&gt;&lt;/strong&gt;
@@ -88,7 +88,7 @@
 &lt;/blockquote&gt;
 
 &lt;div style=&quot;text-align:center;&quot;&gt;
-  &lt;img src=&quot;/assets/images/operating_system/chap05_프로세스의 상태 변화도.png&quot; style=&quot;zoom:70%&quot; /&gt;
+  &lt;img src=&quot;/assets/images/operating_system/chap05_프로세스의_상태_변화도.png&quot; style=&quot;zoom:70%&quot; /&gt;
   프로세스의 상태 변화도
 &lt;/div&gt;
 
@@ -229,7 +229,7 @@
 &lt;/ul&gt;
 
 &lt;div style=&quot;text-align:center;&quot;&gt;
-  &lt;img src=&quot;/assets/images/operating_system/chap05_프로세스 상태 변화도(중지 상태 포함).png&quot; style=&quot;zoom:90%&quot; /&gt;
+  &lt;img src=&quot;/assets/images/operating_system/chap05_프로세스_상태_변화도_중지_상태_포함.png&quot; style=&quot;zoom:90%&quot; /&gt;
   중지 상태를 포함한 프로세스의 상태 변화도
 &lt;/div&gt;
 
