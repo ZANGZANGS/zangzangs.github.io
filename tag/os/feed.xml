@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/os/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-04-04T19:38:35+09:00</updated>
+  <updated>2021-04-04T19:45:07+09:00</updated>
   <id>http://localhost:4000/tag/os/feed.xml</id>
 
   
@@ -726,8 +726,8 @@
     </entry>
   
     <entry>
-      <title type="html">(2)컴퓨터 시스템의 동작 원리</title>
-      <link href="http://localhost:4000/(2)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC" rel="alternate" type="text/html" title="(2)컴퓨터 시스템의 동작 원리" />
+      <title type="html">(2) 컴퓨터 시스템의 동작 원리</title>
+      <link href="http://localhost:4000/(2)-%EC%BB%B4%ED%93%A8%ED%84%B0-%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98-%EB%8F%99%EC%9E%91-%EC%9B%90%EB%A6%AC" rel="alternate" type="text/html" title="(2) 컴퓨터 시스템의 동작 원리" />
       <published>2021-03-21T19:18:00+09:00</published>
       <updated>2021-03-21T19:18:00+09:00</updated>
       <id>http://localhost:4000/(2)%20%EC%BB%B4%ED%93%A8%ED%84%B0%20%EC%8B%9C%EC%8A%A4%ED%85%9C%EC%9D%98%20%EB%8F%99%EC%9E%91%20%EC%9B%90%EB%A6%AC</id>
@@ -912,8 +912,8 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
     </entry>
   
     <entry>
-      <title type="html">(1)운영체제 개요</title>
-      <link href="http://localhost:4000/(1)-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94" rel="alternate" type="text/html" title="(1)운영체제 개요" />
+      <title type="html">(1) 운영체제 개요</title>
+      <link href="http://localhost:4000/(1)-%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C-%EA%B0%9C%EC%9A%94" rel="alternate" type="text/html" title="(1) 운영체제 개요" />
       <published>2021-03-13T19:18:00+09:00</published>
       <updated>2021-03-13T19:18:00+09:00</updated>
       <id>http://localhost:4000/(1)%20%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C%20%EA%B0%9C%EC%9A%94</id>
