@@ -175,9 +175,7 @@ into the {body} of the default.hbs template -->
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <hr />
-
-<h2 id="프로세스의-개념"><strong>프로세스의 개념</strong></h2>
+                    <h2 id="프로세스의-개념"><strong>프로세스의 개념</strong></h2>
 
 <ul>
   <li>Process is <strong><span style="color:red;">a Programin execution </span></strong>
@@ -213,8 +211,7 @@ into the {body} of the default.hbs template -->
   </li>
 </ul>
 
-<p><br /></p>
-<hr />
+<h2><br /></h2>
 
 <h2 id="프로세스의-상태"><strong>프로세스의 상태</strong></h2>
 
@@ -267,21 +264,20 @@ into the {body} of the default.hbs template -->
   </ul>
 </blockquote>
 
-<center>
+<div style="text-align:center;">
   <img src="/assets/images/operating_system/chap05_프로세스의 상태 변화도.png" style="zoom:70%" />
   프로세스의 상태 변화도
-</center>
+</div>
 
-<p><br /></p>
-<hr />
+<h2 id="-1"><br /></h2>
 
 <h2 id="process-control-block-pcb">Process Control Block (PCB)</h2>
 <p>프로세스 제어블록이란 운영체제가 시스템 내의 프로세스들을 관리하기 위해 프로세스마다 유지하는 정보들을 담는 커널 내의 자료구조를 말한다.</p>
 
-<center>
+<div style="text-align:center;">
   <img src="/assets/images/operating_system/ch05_PCB구성.png" style="zoom:50%" />
   프로세스 제어블록(PCB)의 구성
-</center>
+</div>
 
 <!-- 
 - 다음의 구성요소를 가진다 (구조체로 유지)
@@ -297,8 +293,7 @@ into the {body} of the default.hbs template -->
      - Open file descriptors
 -->
 
-<p><br /></p>
-<hr />
+<h2 id="-2"><br /></h2>
 
 <h2 id="문맥-교환-context-switch"><strong>문맥 교환 (Context Switch)</strong></h2>
 
@@ -334,8 +329,7 @@ into the {body} of the default.hbs template -->
   <p>(1)의 경우에도 CPU 수행 정보 등 context의 일부를 PCB에 save해야 하지만 문맥교환을 하는 (2)의 경우 그 부담이 훨씬 크다. (eg. cache memory flush)</p>
 </blockquote>
 
-<p><br /></p>
-<hr />
+<h2 id="-3"><br /></h2>
 
 <h2 id="프로세스를-스케줄링하기-위한-큐"><strong>프로세스를 스케줄링하기 위한 큐</strong></h2>
 
@@ -359,8 +353,7 @@ into the {body} of the default.hbs template -->
   </li>
 </ul>
 
-<p><br /></p>
-<hr />
+<h2 id="-4"><br /></h2>
 
 <h2 id="스케줄러-scheduler"><strong>스케줄러 (Scheduler)</strong></h2>
 <p>스케줄러란 어떤 프로세스에게 자원을 할당할지를 결정하는 운영체제 커널의 코드를 지칭한다.</p>
@@ -412,13 +405,12 @@ into the {body} of the default.hbs template -->
   </li>
 </ul>
 
-<center>
+<div style="text-align:center;">
   <img src="/assets/images/operating_system/chap05_프로세스 상태 변화도(중지 상태 포함).png" style="zoom:90%" />
   중지 상태를 포함한 프로세스의 상태 변화도
-</center>
+</div>
 
-<p><br /></p>
-<hr />
+<h2 id="-5"><br /></h2>
 
 <!-- ## Thread (쓰레드)
 
@@ -477,7 +469,9 @@ into the {body} of the default.hbs template -->
 
 - Some are real-time threads 
 
-<br><hr>-->
+<br>
+--- ,,
+-->
 
 <h2 id="프로세스-생성"><strong>프로세스 생성</strong></h2>
 <p>시스템이 부팅된 후 최초의 프로세스는 운영체제가 직접 생성하지만 그다음부터는 이미 존재하는 프로세스가 다른 프로세스를 복제 생성하게 된다. 이때 프로세스를 생성한 프로세스를  <strong><span style="color:blue">부모 프로세스(parent process)</span></strong> 라고 하고 새롭게 생성된 프로세스를  <strong><span style="color:blue"> 자식 프로세스(children process)</span></strong> 라고 한다</p>
@@ -585,23 +579,21 @@ into the {body} of the default.hbs template -->
   </li>
 </ul>
 
-<p><br /></p>
-<hr />
+<h2 id="-6"><br /></h2>
 
 <h2 id="프로세스-간-협력"><strong>프로세스 간 협력</strong></h2>
 <p>원칙적으로 프로세스는 각자 자신만의 독립적인 주소 공간을 가지기 때문에 <em>다른 프로세스의 주소 공간을 참조하는 것은 허용되지 않는다.</em> 그러나 경우에 따라서 <em>프로세스들 간의 협력이 효율을 증가시키는 점에서 더 생산적일 수 있다.</em> 따라서 <strong>운영체제는 프로세스들간의 협력을 위한 매커니즘을 제공</strong>한다.</p>
 
 <ul>
-  <li>
-    <p><strong>독립적 프로세스(Independent process)</strong>
-프로세스는 각자의 주소 공간을 가지고 수행되므로 원칙적으로 하나의 프로세스는 다른 프로세스의 수행에 영향을 미치지 못함</p>
+  <li><strong>독립적 프로세스(Independent process)</strong>
+프로세스는 각자의 주소 공간을 가지고 수행되므로 원칙적으로 하나의 프로세스는 다른 프로세스의 수행에 영향을 미치지 못함</li>
+</ul>
 
-    <p><br /></p>
-  </li>
-  <li>
-    <p><strong>협력 프로세스(Cooperating process)</strong>
-프로세스 협력 메커니즘을 통해 하나의 프로세스가 다른 프로세스의 수행에 영향을 미칠 수 있음</p>
-  </li>
+<p><br /></p>
+
+<ul>
+  <li><strong>협력 프로세스(Cooperating process)</strong>
+프로세스 협력 메커니즘을 통해 하나의 프로세스가 다른 프로세스의 수행에 영향을 미칠 수 있음</li>
 </ul>
 
 <p><br /></p>
@@ -649,16 +641,12 @@ into the {body} of the default.hbs template -->
   <p>Thread는 사실상 하나의 프로세스이므로 프로세스 간 협력으로 보기는 어렵지만 동일한 프로세스를 구성하는 Threads들 간에는 주소 공간을 공유하므로 협력이 가능</p>
 </blockquote>
 
-<center>
-  <img src="/assets/images/operating_system/chap05_ipc.png" style="zoom:90%" />
-
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/chap05_ipc.png" style="zoom:60%" />
   hared memory VS Message passing
+<div>
 
-</center>
-
-<p><br />
-<br />
-<br /></p>
+</div></div>
 
                 </div>
             </section>

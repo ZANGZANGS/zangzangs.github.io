@@ -10,7 +10,7 @@
       <item>
         <title>(4) 프로세스 관리</title>
         
-          <description>&lt;hr /&gt;
+          <description>&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
 
 </description>
         
@@ -41,11 +41,7 @@
         <title>(2) 컴퓨터 시스템의 동작 원리</title>
         
           <description>&lt;h2 id=&quot;컴퓨터-시스템-구조&quot;&gt;컴퓨터 시스템 구조&lt;/h2&gt;
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-&lt;center&gt;
-&lt;img src=&quot;../..\assets\images\operating_system\chap03_computer_system_structure.png&quot; style=&quot;zoom:60%&quot; /&gt;
 
-&lt;/center&gt;
 </description>
         
         <pubDate>Sun, 21 Mar 2021 19:18:00 +0900</pubDate>

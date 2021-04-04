@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/tag/java/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-04-04T19:45:07+09:00</updated>
+  <updated>2021-04-04T20:09:17+09:00</updated>
   <id>http://localhost:4000/tag/java/feed.xml</id>
 
   
@@ -58,9 +58,9 @@ Connection Pool을 사용하면 Connection을 생성하고 닫는 시간이 소�
 
 &lt;p&gt;Connection Pool에서 생성된 Connection의 개수는 한정적입니다. 동시 접속자가 많아 남아 있는 Connection이 없으면 해당 클라이언트는 대기 상태로 전환이 되고, Connection이 반환되면 대기하고 있는 순서대로 Connection이 제공됩니다.
 &lt;br /&gt;&lt;/p&gt;
-&lt;center&gt;
-&lt;img src=&quot;/assets/images/java/connection-pool.png&quot; alt=&quot;커넥션 풀&quot; style=&quot;zoom:50%;&quot; /&gt;
-&lt;/center&gt;
+&lt;div style=&quot;text-align:center;&quot;&gt;
+    &lt;img src=&quot;/assets/images/java/connection-pool.png&quot; alt=&quot;커넥션 풀&quot; style=&quot;zoom:50%;&quot; /&gt;
+&lt;/div&gt;
 
 &lt;hr /&gt;
 
