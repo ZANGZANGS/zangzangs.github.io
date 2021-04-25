@@ -4,7 +4,7 @@
   <generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator>
   <link href="http://localhost:4000/author/zangzangs/feed.xml" rel="self" type="application/atom+xml" />
   <link href="http://localhost:4000/" rel="alternate" type="text/html" />
-  <updated>2021-04-04T20:26:39+09:00</updated>
+  <updated>2021-04-25T17:47:24+09:00</updated>
   <id>http://localhost:4000/author/zangzangs/feed.xml</id>
 
   
@@ -30,6 +30,276 @@
   
   
 
+  
+    <entry>
+      <title type="html">(4) CPU 스케줄링</title>
+      <link href="http://localhost:4000/os05" rel="alternate" type="text/html" title="(4) CPU 스케줄링" />
+      <published>2021-04-10T19:18:00+09:00</published>
+      <updated>2021-04-10T19:18:00+09:00</updated>
+      <id>http://localhost:4000/os05</id>
+      <content type="html" xml:base="http://localhost:4000/os05">&lt;p&gt;사용자 프로그램이 수행되는 과정은 &lt;strong&gt;CPU 작업과 I/O 작업의 반복&lt;/strong&gt;으로 수행된다.&lt;/p&gt;
+
+&lt;p&gt;사용자 프로그램이 CPU를 직접 가지고 빠른 명령을 수행하는 일련의 단계를 &lt;strong&gt;CPU 버스트&lt;/strong&gt;라고 하고,
+사용자 프로그램에 I/O 요청이 발생해 커널에 의해 입출력 작업을 진행하는 비교적 느린 &lt;strong&gt;I/O 버스트&lt;/strong&gt;라 한다.
+사용자 프로그램은 사이클처럼 CPU 버스트와 I/O 버스트 작업이 번갈아 수행된다.&lt;/p&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+  &lt;img src=&quot;/assets/images/operating_system/chap06_burst.png&quot; style=&quot;zoom:110%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;p&gt;모든 작업이 동일하다면 순서대로 처리하면 되겠지만, 실제 프로세스는 매우 다양한 작업이 섞여있다.
+그렇다면 어떤 작업에 어떤 응답을 주어야 가장 효율이 높게 사용할 수 있을까?란 의문이 든다. 그래서 CPU 스케줄링이 필요하다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CPU 스케줄링의 필요성
+    &lt;ul&gt;
+      &lt;li&gt;여러 종류의 job(=process)이 섞여 있기 때문에 스케줄링이 필요하다&lt;/li&gt;
+      &lt;li&gt;interactive job에게 적절한 response 제공 요망&lt;/li&gt;
+      &lt;li&gt;CPU와 I/O 장치 등 시스템 자원을 골고루 효율적으로 사용&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;cpu-scheduler--dispatcher&quot;&gt;CPU Scheduler &amp;amp; Dispatcher&lt;/h2&gt;
+
+&lt;h3 id=&quot;cpu-scheduler&quot;&gt;CPU Scheduler&lt;/h3&gt;
+&lt;p&gt;준비 상태의 프로세스 중에서 이번에 CPU를 할당할 프로세스를 선택하는 코드&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CPU 스케줄링이 필요한 상태 변화가 있는 경우 4가지
+    &lt;ol&gt;
+      &lt;li&gt;Running -&amp;gt; Blocked (ex: I/O 요청하는 시스템 콜 )&lt;/li&gt;
+      &lt;li&gt;Running -&amp;gt; Ready (ex: 할당시간만료로 timer interrupt )&lt;/li&gt;
+      &lt;li&gt;Blocked -&amp;gt; Ready (ex: I/O 완료후 인터럽트 )&lt;/li&gt;
+      &lt;li&gt;Terminate&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;1,4  nonpreemptive (= 강제로 빼앗지 않고 자진 반납)
+  이 외에는 preemptive(= 강제로 빼앗음)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;dispatcher&quot;&gt;Dispatcher&lt;/h3&gt;
+&lt;p&gt;스케줄러에 의해 선택된 프로세스에게 CPU를 넘겨주고 작업을 수행할 수 있도록 하는 코드&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;PCB에 현재 프로세스의 상태를 저장한다.&lt;/li&gt;
+  &lt;li&gt;새로 선택된 프로세스의 context의 PCB로부터 복원하고 CPU를 넘긴다&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;이처럼 디스패처가 하나의 프로세스를 정지 시키고 다른 프로세스에게 CPU를 전달하기 까지 걸리는 시간을 &lt;strong&gt;dispatch latency&lt;/strong&gt; 라 한다.&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;스케줄링의-성능-평가scheduling-criteria&quot;&gt;스케줄링의 성능 평가(Scheduling Criteria)&lt;/h2&gt;
+&lt;p&gt;Performance Index (= Performance Measure, 성능 척도)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;CPU utilization(이용률)
+    &lt;ul&gt;
+      &lt;li&gt;keep the CPU as busy as possible&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Throughput(처리량)
+    &lt;ul&gt;
+      &lt;li&gt;
+        &lt;h1 id=&quot;of-processes-that-complete-their-execution-per-time-unit&quot;&gt;of processes that complete their execution per time unit&lt;/h1&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Turnaround time (소요시간, 반환시간)
+    &lt;ul&gt;
+      &lt;li&gt;amount of time to execute a particular process&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Waiting time (대기 시간)
+    &lt;ul&gt;
+      &lt;li&gt;amount of time a process has been waiting in the ready queue&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Response tiem (응답 시간)
+    &lt;ul&gt;
+      &lt;li&gt;amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;cpu-스케줄링-알고리즘&quot;&gt;CPU 스케줄링 알고리즘&lt;/h2&gt;
+
+&lt;h3 id=&quot;fcfs-first-come-first-served&quot;&gt;FCFS (First-Come First-Served)&lt;/h3&gt;
+
+&lt;p&gt;먼저 도착한 프로세스 순서대로 처리&lt;/p&gt;
+
+&lt;p&gt;콘보이 이펙트&lt;/p&gt;
+&lt;h3 id=&quot;sjfshortest-job_first&quot;&gt;SJF(Shortest-Job_First)&lt;/h3&gt;
+&lt;p&gt;가장 짧은 시간의 job을 먼저 처리&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;nonpreemptive
+    &lt;ul&gt;
+      &lt;li&gt;일단 CPU를 선점하면 종료까지 사용한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;preemptive
+    &lt;ul&gt;
+      &lt;li&gt;프로세스의 남은 사용 시간을 기준으로 처리한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;srtfshortest-remaining-time-first&quot;&gt;SRTF(Shortest-Remaining-Time-First)&lt;/h3&gt;
+
+&lt;h3 id=&quot;priority-scheduling&quot;&gt;Priority Scheduling&lt;/h3&gt;
+
+&lt;h3 id=&quot;round-robin라운드-로빈&quot;&gt;Round Robin(라운드 로빈)&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;각 프로세스는 동일한 크기의 할당 시간을 가진다. (1~100ms)&lt;/li&gt;
+  &lt;li&gt;할당 시간이 지나면 프로세스는 선점(preempted)당하고 ready queue의 제일 뒤에 가서 다시 줄을 선다&lt;/li&gt;
+  &lt;li&gt;n 개의 프로세스가 ready queue에 있고 할당 시간이 q  time unit인 경우 각 프로세스는 최대 q time unit 단위로 CPU 시간의 1/n을 얻는다.
+=&amp;gt; 어떤 프로세스도 (n-1)q time unit 이상 기다리지 않는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;multilevel-queue&quot;&gt;Multilevel Queue&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Ready queue 를 여러 개로 분할
+    &lt;ul&gt;
+      &lt;li&gt;foreground(interactive)&lt;/li&gt;
+      &lt;li&gt;background(batch - no human interactive)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;multilevel-feedback-queue&quot;&gt;Multilevel Feedback Queue&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;프로세스가 다른 큐로 이동 가능&lt;/li&gt;
+  &lt;li&gt;에이징을 이와 같은 방식으로 구현할 수 있다.&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;multiple-processor-scheduling&quot;&gt;Multiple-Processor Scheduling&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;CPU가 여러 개인 경우 스케줄링은 더욱 복잡해짐&lt;/li&gt;
+  &lt;li&gt;Homogeneous processor인 경우
+    &lt;ul&gt;
+      &lt;li&gt;Queue에 한줄로 세워서 각 프로세서가 알아서 꺼내가게 할 수 있다.&lt;/li&gt;
+      &lt;li&gt;반드시 틍정 프로세서에서 수행되어야 하는 프로세스가 있는 경우에는 문제가 더 복잡해짐&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Load sharing
+    &lt;ul&gt;
+      &lt;li&gt;일부 프로세서에 job이 몰리지 않도록 부하를 적절히 공유하는 메커니즘 필요&lt;/li&gt;
+      &lt;li&gt;별개의 큐를 두는 방법 vs 공동 큐를 사용하는 방법&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Symmetric Multiprocessing(SMP)
+    &lt;ul&gt;
+      &lt;li&gt;각 프로세서가 각자 알아서 스케줄링 결정&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Asymmetric multiprocessing
+    &lt;ul&gt;
+      &lt;li&gt;하나의 프로세서가 시스템 데이터의 접근과 공유를 책임지고 나머지 프로세서는 거기에 따름
+        &lt;blockquote&gt;
+          &lt;blockquote&gt;
+            &lt;p&gt;대장 CPU가 스케줄링함&lt;/p&gt;
+          &lt;/blockquote&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;real-time-scheduling&quot;&gt;Real-TIme Scheduling&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Hard real-time systems
+    &lt;ul&gt;
+      &lt;li&gt;정해진 시간 안에 반드시 끝내도록 스케줄링해야 함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Soft real-time computing
+    &lt;ul&gt;
+      &lt;li&gt;일반 프로세스에 비해 높은 우선순위를 갖도록 해야함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;thread-scheduling&quot;&gt;Thread Scheduling&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Local Scheduling
+    &lt;ul&gt;
+      &lt;li&gt;사용자 수준의 Thread 라이브러리에 의해 어떤 Thread를 스케줄할지 결정&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Global Scheduling
+    &lt;ul&gt;
+      &lt;li&gt;일반 프로세스와 마찬가지로 커널의 단기 스케줄러가 어떤 thread를 스케줄할지 결정&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;알고리즘-평가방법&quot;&gt;알고리즘 평가방법&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Queueing models
+    &lt;ul&gt;
+      &lt;li&gt;확률 분포로 주어지는 arrival rate와 sevice rate 등을 통해 각종 performance index 값을 계산&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Implementation(구현) &amp;amp; Measurement (성능 측정)
+    &lt;ul&gt;
+      &lt;li&gt;실제 시스템에 알고리즘을 구현하여 실제 작업에 대해서 성능을 측정 비교&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Simulation(모의 실현)
+    &lt;ul&gt;
+      &lt;li&gt;알고리즘을 모의 프로그램으로 작성후 trace를 입력으로 하여 결과 비교&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</content>
+
+      
+      
+      
+      
+      
+
+      <author>
+          <name>zangzangs</name>
+        
+        
+      </author>
+
+      
+
+      
+        <category term="os" />
+      
+
+      
+        <summary type="html">사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다.</summary>
+      
+
+      
+      
+    </entry>
   
     <entry>
       <title type="html">(4) 프로세스 관리</title>

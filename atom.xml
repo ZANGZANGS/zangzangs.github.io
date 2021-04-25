@@ -8,6 +8,21 @@
     
       
       <item>
+        <title>(4) CPU 스케줄링</title>
+        
+          <description>&lt;p&gt;사용자 프로그램이 수행되는 과정은 &lt;strong&gt;CPU 작업과 I/O 작업의 반복&lt;/strong&gt;으로 수행된다.&lt;/p&gt;
+
+</description>
+        
+        <pubDate>Sat, 10 Apr 2021 19:18:00 +0900</pubDate>
+        <link>
+        http://localhost:4000/os05</link>
+        <guid isPermaLink="true">http://localhost:4000/os05</guid>
+      </item>
+      
+    
+      
+      <item>
         <title>(4) 프로세스 관리</title>
         
           <description>&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;

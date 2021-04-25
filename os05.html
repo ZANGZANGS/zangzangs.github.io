@@ -11,7 +11,7 @@
 
 
 
-    <title>[Interview] CS</title>
+    <title>(4) CPU 스케줄링</title>
     <meta name="HandheldFriendly" content="True" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Styles'n'Scripts -->
@@ -36,30 +36,30 @@
     <!-- This tag outputs SEO meta+structured data and other important settings -->
     <meta name="description" content="Backend Developer" />
     <link rel="shortcut icon" href="http://localhost:4000/assets/images/favicon.png" type="image/png" />
-    <link rel="canonical" href="http://localhost:4000/interview-cs" />
+    <link rel="canonical" href="http://localhost:4000/os05" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
 
      <!--title below is coming from _includes/dynamic_title-->
     <meta property="og:site_name" content="장장스 블로그" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="[Interview] CS" />
-    <meta property="og:description" content="#CS 기본 지식 관련 ___ 프로세스와 스레드 차이 프로세스는 운영체제로부터 자원을 할당받아 실행하고, 스레드는 프로세스로부터 자원을 할당받아 실행 하나의 프로세스 안에서 여러 스레드가 생성 가능 각 스레드는 개별 스택을 가지고, 프로세스의 전역 메모리 공간을 고유하며 프로그램을 실행 보통 프로세스는 코드/데이터/스택/힙 메모리 영역을 기반으로 실행한다 스레드는 프로세스 안에서, 개별적인 스택을 가지고," />
-    <meta property="og:url" content="http://localhost:4000/interview-cs" />
+    <meta property="og:title" content="(4) CPU 스케줄링" />
+    <meta property="og:description" content="사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다. 사용자 프로그램이 CPU를 직접 가지고 빠른 명령을 수행하는 일련의 단계를 CPU 버스트라고 하고, 사용자 프로그램에 I/O 요청이 발생해 커널에 의해 입출력 작업을 진행하는 비교적 느린 I/O 버스트라 한다. 사용자 프로그램은 사이클처럼 CPU 버스트와 I/O 버스트 작업이 번갈아 수행된다. 모든 작업이" />
+    <meta property="og:url" content="http://localhost:4000/os05" />
     <meta property="og:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta property="article:publisher" content="https://www.facebook.com/" />
     <meta property="article:author" content="https://www.facebook.com/" />
-    <meta property="article:published_time" content="2021-03-12T19:18:00+09:00" />
-    <meta property="article:modified_time" content="2021-03-12T19:18:00+09:00" />
-    <meta property="article:tag" content="Interview" />
+    <meta property="article:published_time" content="2021-04-10T19:18:00+09:00" />
+    <meta property="article:modified_time" content="2021-04-10T19:18:00+09:00" />
+    <meta property="article:tag" content="Os" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="[Interview] CS" />
-    <meta name="twitter:description" content="#CS 기본 지식 관련 ___ 프로세스와 스레드 차이 프로세스는 운영체제로부터 자원을 할당받아 실행하고, 스레드는 프로세스로부터 자원을 할당받아 실행 하나의 프로세스 안에서 여러 스레드가 생성 가능 각 스레드는 개별 스택을 가지고, 프로세스의 전역 메모리 공간을 고유하며 프로그램을 실행 보통 프로세스는 코드/데이터/스택/힙 메모리 영역을 기반으로 실행한다 스레드는 프로세스 안에서, 개별적인 스택을 가지고," />
+    <meta name="twitter:title" content="(4) CPU 스케줄링" />
+    <meta name="twitter:description" content="사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다. 사용자 프로그램이 CPU를 직접 가지고 빠른 명령을 수행하는 일련의 단계를 CPU 버스트라고 하고, 사용자 프로그램에 I/O 요청이 발생해 커널에 의해 입출력 작업을 진행하는 비교적 느린 I/O 버스트라 한다. 사용자 프로그램은 사이클처럼 CPU 버스트와 I/O 버스트 작업이 번갈아 수행된다. 모든 작업이" />
     <meta name="twitter:url" content="http://localhost:4000/" />
     <meta name="twitter:image" content="http://localhost:4000/assets/images/blog-cover.jpg" />
     <meta name="twitter:label1" content="Written by" />
     <meta name="twitter:data1" content="장장스 블로그" />
     <meta name="twitter:label2" content="Filed under" />
-    <meta name="twitter:data2" content="Interview" />
+    <meta name="twitter:data2" content="Os" />
     <meta name="twitter:site" content="@" />
     <meta name="twitter:creator" content="@" />
     <meta property="og:image:width" content="1400" />
@@ -74,7 +74,7 @@
         "name": "장장스 블로그",
         "logo": "http://localhost:4000/assets/images/blog-icon.png"
     },
-    "url": "http://localhost:4000/interview-cs",
+    "url": "http://localhost:4000/os05",
     "image": {
         "@type": "ImageObject",
         "url": "http://localhost:4000/assets/images/blog-cover.jpg",
@@ -83,9 +83,9 @@
     },
     "mainEntityOfPage": {
         "@type": "WebPage",
-        "@id": "http://localhost:4000/interview-cs"
+        "@id": "http://localhost:4000/os05"
     },
-    "description": "#CS 기본 지식 관련 ___ 프로세스와 스레드 차이 프로세스는 운영체제로부터 자원을 할당받아 실행하고, 스레드는 프로세스로부터 자원을 할당받아 실행 하나의 프로세스 안에서 여러 스레드가 생성 가능 각 스레드는 개별 스택을 가지고, 프로세스의 전역 메모리 공간을 고유하며 프로그램을 실행 보통 프로세스는 코드/데이터/스택/힙 메모리 영역을 기반으로 실행한다 스레드는 프로세스 안에서, 개별적인 스택을 가지고,"
+    "description": "사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다. 사용자 프로그램이 CPU를 직접 가지고 빠른 명령을 수행하는 일련의 단계를 CPU 버스트라고 하고, 사용자 프로그램에 I/O 요청이 발생해 커널에 의해 입출력 작업을 진행하는 비교적 느린 I/O 버스트라 한다. 사용자 프로그램은 사이클처럼 CPU 버스트와 I/O 버스트 작업이 번갈아 수행된다. 모든 작업이"
 }
     </script>
 
@@ -98,7 +98,7 @@
     </script> -->
 
     <meta name="generator" content="Jekyll 3.6.2" />
-    <link rel="alternate" type="application/rss+xml" title="[Interview] CS" href="/feed.xml" />
+    <link rel="alternate" type="application/rss+xml" title="(4) CPU 스케줄링" href="/feed.xml" />
 
 
     <!-- 폰트 -->
@@ -158,59 +158,265 @@ into the {body} of the default.hbs template -->
 <main id="site-main" class="site-main outer" role="main">
     <div class="inner">
 
-        <article class="post-full  tag-interview post no-image">
+        <article class="post-full  tag-os post no-image">
 
             <header class="post-full-header">
                 <section class="post-full-meta">
-                    <time class="post-full-meta-date" datetime="12 March 2021">12 March 2021</time>
+                    <time class="post-full-meta-date" datetime="10 April 2021">10 April 2021</time>
                     
                         <span class="date-divider">/</span>
                         
                             
-                               <a href='/tag/interview/'>INTERVIEW</a>
+                               <a href='/tag/os/'>OS</a>
                             
                         
                     
                 </section>
-                <h1 class="post-full-title">[Interview] CS</h1>
+                <h1 class="post-full-title">(4) CPU 스케줄링</h1>
             </header>
 
             
 
             <section class="post-full-content">
                 <div class="kg-card-markdown">
-                    <p>#CS 기본 지식 관련
-___</p>
+                    <p>사용자 프로그램이 수행되는 과정은 <strong>CPU 작업과 I/O 작업의 반복</strong>으로 수행된다.</p>
 
-<blockquote>
-  <p><strong>프로세스와 스레드 차이</strong></p>
-  <ul>
-    <li>프로세스는 운영체제로부터 자원을 할당받아 실행하고, 스레드는 프로세스로부터 자원을 할당받아 실행</li>
-    <li>하나의 프로세스 안에서 여러 스레드가 생성 가능</li>
-    <li>각 스레드는 개별 스택을 가지고, 프로세스의 전역 메모리 공간을 고유하며 프로그램을 실행
-      <ul>
-        <li>보통 프로세스는 코드/데이터/스택/힙 메모리 영역을 기반으로 실행한다</li>
-        <li>스레드는 프로세스 안에서, 개별적인 스택을 가지고, 코드/데이터/힙 영역을 공유하며 실행</li>
-      </ul>
-    </li>
-  </ul>
-</blockquote>
+<p>사용자 프로그램이 CPU를 직접 가지고 빠른 명령을 수행하는 일련의 단계를 <strong>CPU 버스트</strong>라고 하고,
+사용자 프로그램에 I/O 요청이 발생해 커널에 의해 입출력 작업을 진행하는 비교적 느린 <strong>I/O 버스트</strong>라 한다.
+사용자 프로그램은 사이클처럼 CPU 버스트와 I/O 버스트 작업이 번갈아 수행된다.</p>
 
-<blockquote>
-  <p><strong>스크립트 언어와 컴파일 언어를 나열하고 차이점을 설명하세요</strong></p>
-</blockquote>
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/chap06_burst.png" style="zoom:110%" />
+</div>
 
-<p><strong>컴파일 언어:C, C++, java 등</strong></p>
+<p>모든 작업이 동일하다면 순서대로 처리하면 되겠지만, 실제 프로세스는 매우 다양한 작업이 섞여있다.
+그렇다면 어떤 작업에 어떤 응답을 주어야 가장 효율이 높게 사용할 수 있을까?란 의문이 든다. 그래서 CPU 스케줄링이 필요하다.</p>
+
 <ul>
-  <li>컴파일언어는 컴파일러를 통해 사전에 컴파일되어 기계어 상태로 실행되므로 실행이 빠름.</li>
-  <li>또한 컴파일 단계에서 전체 코드를 기계어로 변환할 때, 최적화작업을 진행하여 실행 시간을 보다 빠르게 할 수 있다.</li>
+  <li>CPU 스케줄링의 필요성
+    <ul>
+      <li>여러 종류의 job(=process)이 섞여 있기 때문에 스케줄링이 필요하다</li>
+      <li>interactive job에게 적절한 response 제공 요망</li>
+      <li>CPU와 I/O 장치 등 시스템 자원을 골고루 효율적으로 사용</li>
+    </ul>
+  </li>
 </ul>
 
-<p><strong>스트립트 언어:: python, javascript, ruby 등</strong></p>
+<p><br /></p>
+
+<hr />
+
+<h2 id="cpu-scheduler--dispatcher">CPU Scheduler &amp; Dispatcher</h2>
+
+<h3 id="cpu-scheduler">CPU Scheduler</h3>
+<p>준비 상태의 프로세스 중에서 이번에 CPU를 할당할 프로세스를 선택하는 코드</p>
+
 <ul>
-  <li>스트립트 언어는 컴파일 단계 없이 실행 단계에서 한 줄씩 기계어로 번역 후 실행되므로 통상 컴파일 언어보다 실행이 느리다.</li>
-  <li>전체 코드에 대한 실행 코드 최적화가 어려움</li>
+  <li>CPU 스케줄링이 필요한 상태 변화가 있는 경우 4가지
+    <ol>
+      <li>Running -&gt; Blocked (ex: I/O 요청하는 시스템 콜 )</li>
+      <li>Running -&gt; Ready (ex: 할당시간만료로 timer interrupt )</li>
+      <li>Blocked -&gt; Ready (ex: I/O 완료후 인터럽트 )</li>
+      <li>Terminate</li>
+    </ol>
+  </li>
 </ul>
+
+<blockquote>
+  <p>1,4  nonpreemptive (= 강제로 빼앗지 않고 자진 반납)
+  이 외에는 preemptive(= 강제로 빼앗음)</p>
+</blockquote>
+
+<p><br /></p>
+
+<h3 id="dispatcher">Dispatcher</h3>
+<p>스케줄러에 의해 선택된 프로세스에게 CPU를 넘겨주고 작업을 수행할 수 있도록 하는 코드</p>
+
+<ol>
+  <li>PCB에 현재 프로세스의 상태를 저장한다.</li>
+  <li>새로 선택된 프로세스의 context의 PCB로부터 복원하고 CPU를 넘긴다</li>
+</ol>
+
+<p>이처럼 디스패처가 하나의 프로세스를 정지 시키고 다른 프로세스에게 CPU를 전달하기 까지 걸리는 시간을 <strong>dispatch latency</strong> 라 한다.</p>
+
+<p><br /></p>
+
+<hr />
+
+<h2 id="스케줄링의-성능-평가scheduling-criteria">스케줄링의 성능 평가(Scheduling Criteria)</h2>
+<p>Performance Index (= Performance Measure, 성능 척도)</p>
+
+<ul>
+  <li>CPU utilization(이용률)
+    <ul>
+      <li>keep the CPU as busy as possible</li>
+    </ul>
+  </li>
+  <li>Throughput(처리량)
+    <ul>
+      <li>
+        <h1 id="of-processes-that-complete-their-execution-per-time-unit">of processes that complete their execution per time unit</h1>
+      </li>
+    </ul>
+  </li>
+  <li>Turnaround time (소요시간, 반환시간)
+    <ul>
+      <li>amount of time to execute a particular process</li>
+    </ul>
+  </li>
+  <li>Waiting time (대기 시간)
+    <ul>
+      <li>amount of time a process has been waiting in the ready queue</li>
+    </ul>
+  </li>
+  <li>Response tiem (응답 시간)
+    <ul>
+      <li>amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment)</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<hr />
+
+<h2 id="cpu-스케줄링-알고리즘">CPU 스케줄링 알고리즘</h2>
+
+<h3 id="fcfs-first-come-first-served">FCFS (First-Come First-Served)</h3>
+
+<p>먼저 도착한 프로세스 순서대로 처리</p>
+
+<p>콘보이 이펙트</p>
+<h3 id="sjfshortest-job_first">SJF(Shortest-Job_First)</h3>
+<p>가장 짧은 시간의 job을 먼저 처리</p>
+
+<ul>
+  <li>nonpreemptive
+    <ul>
+      <li>일단 CPU를 선점하면 종료까지 사용한다.</li>
+    </ul>
+  </li>
+  <li>preemptive
+    <ul>
+      <li>프로세스의 남은 사용 시간을 기준으로 처리한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="srtfshortest-remaining-time-first">SRTF(Shortest-Remaining-Time-First)</h3>
+
+<h3 id="priority-scheduling">Priority Scheduling</h3>
+
+<h3 id="round-robin라운드-로빈">Round Robin(라운드 로빈)</h3>
+<ul>
+  <li>각 프로세스는 동일한 크기의 할당 시간을 가진다. (1~100ms)</li>
+  <li>할당 시간이 지나면 프로세스는 선점(preempted)당하고 ready queue의 제일 뒤에 가서 다시 줄을 선다</li>
+  <li>n 개의 프로세스가 ready queue에 있고 할당 시간이 q  time unit인 경우 각 프로세스는 최대 q time unit 단위로 CPU 시간의 1/n을 얻는다.
+=&gt; 어떤 프로세스도 (n-1)q time unit 이상 기다리지 않는다.</li>
+</ul>
+
+<h3 id="multilevel-queue">Multilevel Queue</h3>
+
+<ul>
+  <li>Ready queue 를 여러 개로 분할
+    <ul>
+      <li>foreground(interactive)</li>
+      <li>background(batch - no human interactive)</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="multilevel-feedback-queue">Multilevel Feedback Queue</h3>
+<ul>
+  <li>프로세스가 다른 큐로 이동 가능</li>
+  <li>에이징을 이와 같은 방식으로 구현할 수 있다.</li>
+  <li></li>
+</ul>
+
+<h3 id="multiple-processor-scheduling">Multiple-Processor Scheduling</h3>
+<ul>
+  <li>CPU가 여러 개인 경우 스케줄링은 더욱 복잡해짐</li>
+  <li>Homogeneous processor인 경우
+    <ul>
+      <li>Queue에 한줄로 세워서 각 프로세서가 알아서 꺼내가게 할 수 있다.</li>
+      <li>반드시 틍정 프로세서에서 수행되어야 하는 프로세스가 있는 경우에는 문제가 더 복잡해짐</li>
+    </ul>
+  </li>
+  <li>Load sharing
+    <ul>
+      <li>일부 프로세서에 job이 몰리지 않도록 부하를 적절히 공유하는 메커니즘 필요</li>
+      <li>별개의 큐를 두는 방법 vs 공동 큐를 사용하는 방법</li>
+    </ul>
+  </li>
+  <li>Symmetric Multiprocessing(SMP)
+    <ul>
+      <li>각 프로세서가 각자 알아서 스케줄링 결정</li>
+    </ul>
+  </li>
+  <li>Asymmetric multiprocessing
+    <ul>
+      <li>하나의 프로세서가 시스템 데이터의 접근과 공유를 책임지고 나머지 프로세서는 거기에 따름
+        <blockquote>
+          <blockquote>
+            <p>대장 CPU가 스케줄링함</p>
+          </blockquote>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="real-time-scheduling">Real-TIme Scheduling</h3>
+<ul>
+  <li>Hard real-time systems
+    <ul>
+      <li>정해진 시간 안에 반드시 끝내도록 스케줄링해야 함</li>
+    </ul>
+  </li>
+  <li>Soft real-time computing
+    <ul>
+      <li>일반 프로세스에 비해 높은 우선순위를 갖도록 해야함</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="thread-scheduling">Thread Scheduling</h3>
+<ul>
+  <li>Local Scheduling
+    <ul>
+      <li>사용자 수준의 Thread 라이브러리에 의해 어떤 Thread를 스케줄할지 결정</li>
+    </ul>
+  </li>
+  <li>Global Scheduling
+    <ul>
+      <li>일반 프로세스와 마찬가지로 커널의 단기 스케줄러가 어떤 thread를 스케줄할지 결정</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<hr />
+
+<h2 id="알고리즘-평가방법">알고리즘 평가방법</h2>
+<ul>
+  <li>Queueing models
+    <ul>
+      <li>확률 분포로 주어지는 arrival rate와 sevice rate 등을 통해 각종 performance index 값을 계산</li>
+    </ul>
+  </li>
+  <li>Implementation(구현) &amp; Measurement (성능 측정)
+    <ul>
+      <li>실제 시스템에 알고리즘을 구현하여 실제 작업에 대해서 성능을 측정 비교</li>
+    </ul>
+  </li>
+  <li>Simulation(모의 실현)
+    <ul>
+      <li>알고리즘을 모의 프로그램으로 작성후 trace를 입력으로 하여 결과 비교</li>
+    </ul>
+  </li>
+</ul>
+
 
                 </div>
             </section>
@@ -284,7 +490,7 @@ ___</p>
                         <header class="read-next-card-header">
                             <small class="read-next-card-header-sitetitle">&mdash; 장장스 블로그 &mdash;</small>
                             
-                                <h3 class="read-next-card-header-title"><a href="/tag/interview/">Interview</a></h3>
+                                <h3 class="read-next-card-header-title"><a href="/tag/os/">Os</a></h3>
                             
                         </header>
                         <div class="read-next-divider"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 14.5s2 3 5 3 5.5-2.463 5.5-5.5S21 6.5 18 6.5c-5 0-7 11-12 11C2.962 17.5.5 15.037.5 12S3 6.5 6 6.5s4.5 3.5 4.5 3.5"/></svg>
@@ -294,20 +500,14 @@ ___</p>
                                 
                                 
                                   
-                                
-                                  
-                                
-                                  
-                                
-                                  
-                                
+                                    
                                   
                                 
                                   
                                     
                                         
                                         
-                                            <li><a href="/interview-java">[Interview] JAVA</a></li>
+                                            <li><a href="/os04">(4) 프로세스 관리</a></li>
                                         
                                     
                                   
@@ -316,13 +516,31 @@ ___</p>
                                     
                                         
                                         
-                                            <li><a href="/interview-database">[Interview] 데이터베이스</a></li>
+                                            <li><a href="/os03">(3) 프로그램의 구조와 실행</a></li>
                                         
                                     
                                   
                                 
                                   
                                     
+                                        
+                                        
+                                            <li><a href="/os02">(2) 컴퓨터 시스템의 동작 원리</a></li>
+                                        
+                                    
+                                  
+                                
+                                  
+                                    
+                                        
+                                        
+                                    
+                                  
+                                
+                                  
+                                
+                                  
+                                
                                   
                                 
                                   
@@ -330,9 +548,9 @@ ___</p>
                             </ul>
                         </div>
                         <footer class="read-next-card-footer">
-                            <a href="/tag/interview/">
+                            <a href="/tag/os/">
                                 
-                                    See all 2 posts  →
+                                    See all 4 posts  →
                                 
                             </a>
                         </footer>
@@ -341,58 +559,6 @@ ___</p>
             
 
             <!-- If there's a next post, display it using the same markup included from - partials/post-card.hbs -->
-            
-                
-
-    <article class="post-card post-template">
-        
-            
-                <!--no thumbnail-->
-                <a class="post-card-image-link" href="/">
-                    <div class="post-card-image" style="background-image: url(/)"></div>
-                </a>
-            
-        
-        <div class="post-card-content">
-            <a class="post-card-content-link" href="/interview-database">
-                <header class="post-card-header">
-                    
-                        
-                            
-                                <span class="post-card-tags">Interview</span>
-                            
-                        
-                    
-
-                    <h2 class="post-card-title">[Interview] 데이터베이스</h2>
-                </header>
-                <section class="post-card-excerpt">
-                    
-                        <p></p>
-                    
-                </section>
-            </a>
-            <footer class="post-card-meta">
-                
-                    
-                        
-                        <img class="author-profile-image" src="/assets/images/ghost.png" alt="zangzangs" />
-                        
-                        <span class="post-card-author">
-                            <a href="/author/zangzangs/">zangzangs</a>
-                        </span>
-                    
-                
-                <span class="reading-time">
-                    
-                    
-                      1 min read
-                    
-                </span>
-            </footer>
-        </div>
-    </article>
-
             
 
             <!-- If there's a previous post, display it using the same markup included from - partials/post-card.hbs -->
@@ -409,21 +575,17 @@ ___</p>
             
         
         <div class="post-card-content">
-            <a class="post-card-content-link" href="/dbcp-vs-jndi">
+            <a class="post-card-content-link" href="/os04">
                 <header class="post-card-header">
                     
                         
                             
-                               <span class="post-card-tags">Java</span>
-                            
-                        
-                            
-                                <span class="post-card-tags">Spring</span>
+                                <span class="post-card-tags">Os</span>
                             
                         
                     
 
-                    <h2 class="post-card-title">커넥션 풀을 관리하는 방법, DBCP와 JNDI</h2>
+                    <h2 class="post-card-title">(4) 프로세스 관리</h2>
                 </header>
                 <section class="post-card-excerpt">
                     
@@ -469,18 +631,18 @@ ___</p>
         </a>
     </div>
     <span class="floating-header-divider">&mdash;</span>
-    <div class="floating-header-title">[Interview] CS</div>
+    <div class="floating-header-title">(4) CPU 스케줄링</div>
     <div class="floating-header-share">
         <div class="floating-header-share-label">Share this <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
     <path d="M7.5 15.5V4a1.5 1.5 0 1 1 3 0v4.5h2a1 1 0 0 1 1 1h2a1 1 0 0 1 1 1H18a1.5 1.5 0 0 1 1.5 1.5v3.099c0 .929-.13 1.854-.385 2.748L17.5 23.5h-9c-1.5-2-5.417-8.673-5.417-8.673a1.2 1.2 0 0 1 1.76-1.605L7.5 15.5zm6-6v2m-3-3.5v3.5m6-1v2"/>
 </svg>
 </div>
-        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%5BInterview%5D+CS&amp;url=https://zangzangs.github.io/interview-cs"
+        <a class="floating-header-share-tw" href="https://twitter.com/share?text=%284%29+CPU+%EC%8A%A4%EC%BC%80%EC%A4%84%EB%A7%81&amp;url=https://zangzangs.github.io/os05"
             onclick="window.open(this.href, 'share-twitter', 'width=550,height=235');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M30.063 7.313c-.813 1.125-1.75 2.125-2.875 2.938v.75c0 1.563-.188 3.125-.688 4.625a15.088 15.088 0 0 1-2.063 4.438c-.875 1.438-2 2.688-3.25 3.813a15.015 15.015 0 0 1-4.625 2.563c-1.813.688-3.75 1-5.75 1-3.25 0-6.188-.875-8.875-2.625.438.063.875.125 1.375.125 2.688 0 5.063-.875 7.188-2.5-1.25 0-2.375-.375-3.375-1.125s-1.688-1.688-2.063-2.875c.438.063.813.125 1.125.125.5 0 1-.063 1.5-.25-1.313-.25-2.438-.938-3.313-1.938a5.673 5.673 0 0 1-1.313-3.688v-.063c.813.438 1.688.688 2.625.688a5.228 5.228 0 0 1-1.875-2c-.5-.875-.688-1.813-.688-2.75 0-1.063.25-2.063.75-2.938 1.438 1.75 3.188 3.188 5.25 4.25s4.313 1.688 6.688 1.813a5.579 5.579 0 0 1 1.5-5.438c1.125-1.125 2.5-1.688 4.125-1.688s3.063.625 4.188 1.813a11.48 11.48 0 0 0 3.688-1.375c-.438 1.375-1.313 2.438-2.563 3.188 1.125-.125 2.188-.438 3.313-.875z"/></svg>
 
         </a>
-        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://zangzangs.github.io/interview-cs"
+        <a class="floating-header-share-fb" href="https://www.facebook.com/sharer/sharer.php?u=https://zangzangs.github.io/os05"
             onclick="window.open(this.href, 'share-facebook','width=580,height=296');return false;">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M19 6h5V0h-5c-3.86 0-7 3.14-7 7v3H8v6h4v16h6V16h5l1-6h-6V7c0-.542.458-1 1-1z"/></svg>
 
