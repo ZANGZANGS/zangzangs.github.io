@@ -53,7 +53,7 @@ pre table, pre pre { margin-bottom: 0; }
 pre table .gutter, pre table .code, pre pre .gutter, pre pre .code { padding: 6px; border: none; }
 
 /** Wrapper */
-.wrapper { max-width: 920px; margin: auto; padding-right: 30px; padding-left: 30px; }
+.wrapper { max-width: 1020px; margin: auto; padding-right: 30px; padding-left: 30px; }
 
 /** Clearfix */
 .wrapper:after { content: ""; display: table; clear: both; }
@@ -283,7 +283,7 @@ html[data-theme="dark"] .post-menu .post-menu-content ul a:hover { color: #fff !
   .theme-toggle .names { font-size: .85em; } }
 
 /* Post menu */
-.post-menu { padding-left: 20px; min-width: 200px; max-width: 300px; }
+.post-menu { padding-left: 20px; min-width: 250px; max-width: 300px; }
 .post-menu .post-menu-title { font-size: 21px; margin-bottom: 14px; font-weight: 600; color: #222; }
 .post-menu .post-menu-content ul { border-left: 1px solid #e9ecef; }
 .post-menu .post-menu-content ul .h-h2 { padding-inline-start: 3.0625px; font-size: 14.7px; line-height: 1.4; }
