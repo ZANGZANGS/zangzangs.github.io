@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c"></meta><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>[운영체제] (4) 프로세스 관리 | Your awesome title</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="[운영체제] (4) 프로세스 관리" />
+<meta name="author" content="zangzangs" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="프로세스의 개념" />
+<meta property="og:description" content="프로세스의 개념" />
+<link rel="canonical" href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" />
+<meta property="og:url" content="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" />
+<meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-04-02T19:18:00+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="[운영체제] (4) 프로세스 관리" />
+<script type="application/ld+json">
+{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html","headline":"[운영체제] (4) 프로세스 관리","dateModified":"2021-04-02T19:18:00+09:00","datePublished":"2021-04-02T19:18:00+09:00","description":"프로세스의 개념","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="shortcut icon" href="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-noto-sans@0.0.72/index.min.css">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script src="/assets/js/main.js"></script><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" /><link rel="stylesheet"
+      href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+<!-- and it's easy to individually load additional languages -->
+<script charset="UTF-8"
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/languages/go.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+// Init highlight js
+document.addEventListener('DOMContentLoaded', function(event) {
+  var els = document.querySelectorAll('pre code')
+
+  function addLangData(block) {
+    var outer = block.parentElement.parentElement.parentElement;
+    var lang = block.getAttribute('data-lang');
+    for (var i = 0; i < outer.classList.length; i++) {
+      var cls = outer.classList[i];
+      if (cls.startsWith('language-')) {
+        lang = cls;
+        break;
+      }
+    }
+    if (!lang) {
+      cls = block.getAttribute('class');
+      lang = cls ? cls.replace('hljs ', '') : '';
+    }
+    if (lang.startsWith('language-')) {
+      lang = lang.substr(9);
+    }
+    block.setAttribute('class', 'hljs ' + lang);
+    block.parentNode.setAttribute('data-lang', lang);
+  }
+
+  function addBadge(block) {
+    var enabled = ('true' || 'true').toLowerCase();
+    if (enabled == 'true') {
+      var pre = block.parentElement;
+      pre.classList.add('badge');
+    }
+  }
+
+  function handle(block) {
+    addLangData(block);
+    addBadge(block)
+    hljs.highlightBlock(block);
+  }
+
+  for (var i = 0; i < els.length; i++) {
+    var el = els[i];
+    handle(el);
+  }
+});
+</script>
+
+<style>
+  /* code language badge */
+  pre.badge::before {
+    content: attr(data-lang);
+    color: #fff;
+    background-color: #ff4e00;
+    padding: 0 .5em;
+    border-radius: 0 2px;
+    text-transform: uppercase;
+    text-align: center;
+    min-width: 32px;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+  }
+
+  /* fix wrong badge display for firefox browser */
+  code > table pre::before {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header class="site-header " role="banner">
+
+  <div class="wrapper">
+    <div class="site-header-inner"><span class="site-brand"><a class="site-brand-inner" rel="author" href="/">
+  <img class="site-favicon" title="Your awesome title" src="" onerror="this.style.display='none'">
+  Your awesome title
+</a>
+</span><nav class="site-nav">
+          <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+          <label for="nav-trigger">
+            <span class="menu-icon">
+              <svg viewBox="0 0 18 15" width="18px" height="15px">
+                <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+              </svg>
+            </span>
+          </label>
+
+          <div class="trigger"><a class="page-link" href="/about.html">ABOUT</a><a class="page-link" href="/archives.html">ARCHIVES</a><a class="page-link" href="/categories.html">CATEGORIES</a><a class="page-link" href="/">HOME</a><a class="page-link" href="/tags.html">TAGS</a>
+
+
+
+
+<span class="page-link">
+
+<div id="google_translate_element" style="display: none;">
+</div>
+
+<span class="ct-language">
+  <ul class="list-unstyled ct-language-dropdown">
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="en">
+          
+          <img src="https://cdn.countryflags.com/thumbs/united-states-of-america/flag-400.png" title="English">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="fr">
+          
+          <img src="https://cdn.countryflags.com/thumbs/france/flag-400.png" title="Franch">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="zh-CN">
+          
+          <img src="https://cdn.countryflags.com/thumbs/china/flag-400.png" title="Chinese(Simple)">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ja">
+          
+          <img src="https://cdn.countryflags.com/thumbs/japan/flag-400.png" title="Japanese">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ko">
+          
+          <img src="https://cdn.countryflags.com/thumbs/south-korea/flag-400.png" title="Korean">
+          
+        </a>
+      </li>
+    
+      <li>
+        <a href="#" class="lang-select" data-lang="ru">
+          
+          <img src="https://cdn.countryflags.com/thumbs/russia/flag-400.png" title="Russian">
+          
+        </a>
+      </li>
+    
+  </ul>
+</span>
+
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({
+    pageLanguage: '',
+    autoDisplay: false,
+    layout: google.translate.TranslateElement.InlineLayout.VERTICAL
+  }, 'google_translate_element');
+
+  function restoreLang() {
+    var iframe = document.getElementsByClassName('goog-te-banner-frame')[0];
+    if (!iframe) return;
+
+    var innerDoc = iframe.contentDocument || iframe.contentWindow.document;
+    var restore_el = innerDoc.getElementsByTagName("button");
+
+    for (var i = 0; i < restore_el.length; i++) {
+      if (restore_el[i].id.indexOf("restore") >= 0) {
+        restore_el[i].click();
+        var close_el = innerDoc.getElementsByClassName("goog-close-link");
+        close_el[0].click();
+        return;
+      }
+    }
+  }
+
+  function triggerHtmlEvent(element, eventName) {
+    var event;
+    if (document.createEvent) {
+      event = document.createEvent('HTMLEvents');
+      event.initEvent(eventName, true, true);
+      element.dispatchEvent(event);
+    } else {
+      event = document.createEventObject();
+      event.eventType = eventName;
+      element.fireEvent('on' + event.eventType, event);
+    }
+  }
+
+  var googleCombo = document.querySelector("select.goog-te-combo");
+  var langSelect = document.querySelector('.ct-language');
+  langSelect.addEventListener('click', function(event) {
+    if (!event.target) {
+      return;
+    }
+
+    var selected = document.querySelector('.ct-language .ct-language-selected');
+    if (selected) {
+      selected.classList.remove('ct-language-selected');
+    }
+
+    var target = event.target;
+    while (target && target !== langSelect ) {
+      if (target.matches('.lang-select')) {
+        break;
+      }
+      target = target.parentElement;
+    }
+
+    if (target && target.matches('.lang-select')) {
+      var lang = target.getAttribute('data-lang');
+      if (googleCombo.value == lang) {
+        restoreLang();
+      } else {
+        target.parentElement.classList.add('ct-language-selected');
+        googleCombo.value = lang;
+        triggerHtmlEvent(googleCombo, 'change');
+      }
+    }
+
+    event.preventDefault();
+  });
+}
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</span></div>
+        </nav></div>
+  </div>
+</header>
+
+<script>
+  (function() {
+    var lastScrollY = getScrollPos().y;
+    var documentElement = document.documentElement;
+
+    function storeScrollData() {
+      var y = getScrollPos().y;var scrollStatus = "";
+
+      if (y <= 0) {
+        scrollStatus = "top";
+      } else if ((window.innerHeight + y) >= document.body.offsetHeight) {
+        scrollStatus = "bottom";
+      } else {
+        var isScrollDown = (y - lastScrollY > 0) ? true : false;
+        scrollStatus = isScrollDown ? "down" : "up";
+      }
+
+      lastScrollY = y;
+      documentElement.setAttribute("data-scroll-status", scrollStatus);
+    }
+
+    window.addEventListener('scroll', function(e) {
+      storeScrollData();
+    });
+
+    storeScrollData();
+  })();
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+  function hashLocate(hashValue) {
+    hashValue = hashValue.replace(/^.*#h-/, '');
+    var element = document.getElementById(hashValue);
+
+    if (!element) {
+      return;
+    }
+
+    var header = document.querySelector('header.site-header');
+    var headerRect = header.getBoundingClientRect();
+    var headerTop = Math.floor(headerRect.top);
+    var headerHeight = Math.floor(headerRect.height);
+    var scrollPos = getScrollPos();
+    var offsetY = element.offsetTop - (headerTop + headerHeight + 20);
+
+    if (offsetY == scrollPos.y) {
+      return;
+    }
+
+    if (headerTop == 0  && offsetY > scrollPos.y) {
+      offsetY += headerHeight + 2;
+    } else if (headerTop < 0  && offsetY < scrollPos.y) {
+      offsetY -= headerHeight - 2;
+    }
+
+    smoothScrollTo(offsetY);
+  }
+
+  // The first event occurred
+  window.addEventListener('load', function(event) {
+    if (window.location.hash) {
+      hashLocate(window.location.hash);
+    }
+  });
+
+  // The first event occurred
+  window.addEventListener('click', function(event) {
+    if (event.target.tagName.toLowerCase() == 'a') {
+      hashLocate(event.target.getAttribute('href'));
+    }
+  });
+</script>
+<div class="theme-toggle">
+  <input type="checkbox" id="theme-switch">
+  <label for="theme-switch">
+    <div class="toggle"></div>
+    <div class="names">
+      <p class="light">Light</p>
+      <p class="dark">Dark</p>
+    </div>
+  </label>
+</div>
+
+
+
+
+<script>
+  (function() {
+    var sw = document.getElementById('theme-switch');
+    var html = document.getElementsByTagName('html')[0];
+    var nightModeOption = ('off' || 'auto').toLowerCase();
+    var storage = nightModeOption === 'manual'
+        ? localStorage
+        : sessionStorage;
+    var themeData = loadThemeData();
+
+    function saveThemeData(data) {
+      storage.setItem('theme', JSON.stringify(data));
+    }
+
+    function loadThemeData() {
+      var data = storage.getItem('theme');
+      try {
+        data = JSON.parse(data ? data : '');
+      } catch(e) {
+        data = { nightShift: undefined, autoToggleAt: 0 };
+        saveThemeData(data);
+      }
+      return data;
+    }
+
+    function handleThemeToggle(nightShift) {
+      themeData.nightShift = nightShift;
+      saveThemeData(themeData);
+      html.dataset.theme = nightShift ? 'dark' : 'light';
+      setTimeout(function() {
+        sw.checked = nightShift ? true : false;
+      }, 50);
+    }
+
+    function autoThemeToggle() {
+      // Next time point of theme toggle
+      var now = new Date();
+      var toggleAt = new Date();
+      var hours = now.getHours();
+      var nightShift = hours >= 19 || hours <=7;
+
+      if (nightShift) {
+        if (hours > 7) {
+          toggleAt.setDate(toggleAt.getDate() + 1);
+        }
+        toggleAt.setHours(7);
+      } else {
+        toggleAt.setHours(19);
+      }
+
+      toggleAt.setMinutes(0);
+      toggleAt.setSeconds(0);
+      toggleAt.setMilliseconds(0)
+
+      var delay = toggleAt.getTime() - now.getTime();
+
+      // auto toggle theme mode
+      setTimeout(function() {
+        handleThemeToggle(!nightShift);
+      }, delay);
+
+      return {
+        nightShift: nightShift,
+        toggleAt: toggleAt.getTime()
+      };
+    }
+
+    // Listen the theme toggle event
+    sw.addEventListener('change', function(event) {
+      handleThemeToggle(event.target.checked);
+    });
+
+    if (nightModeOption == 'auto') {
+      var data = autoThemeToggle();
+
+      // Toggle theme by local setting
+      if (data.toggleAt > themeData.autoToggleAt) {
+        themeData.autoToggleAt = data.toggleAt;
+        handleThemeToggle(data.nightShift);
+      } else {
+        handleThemeToggle(themeData.nightShift);
+      }
+    } else if (nightModeOption == 'manual') {
+      handleThemeToggle(themeData.nightShift);
+    } else {
+      var nightShift = themeData.nightShift;
+      if (nightShift === undefined) {
+        nightShift = nightModeOption === 'on';
+      }
+      handleThemeToggle(nightShift);
+    }
+  })();
+</script>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">[운영체제] (4) 프로세스 관리</h1>
+  <h3 class="post-subtitle"></h3>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2021-04-02T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-04-02
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 10 mins</span>
+  </p><div class="post-tags"><a class="post-tag" href="/tags.html#os">#os</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <h2 id="프로세스의-개념"><strong>프로세스의 개념</strong></h2>
+
+<ul>
+  <li>Process is <strong><span style="color:red;">a Programin execution </span></strong>
+    <ul>
+      <li><strong><span style="color:red">실행중인 프로그램</span></strong> 을 프로세스라 한다</li>
+    </ul>
+  </li>
+  <li>프로세스의 문맥(context)
+    <blockquote>
+      <p>프로세스가 현재 <strong>어떤 상태</strong>에서 수행되고 있는지 정확히 규명하기 위해 필요한 정보를 말한다.</p>
+    </blockquote>
+
+    <p>프로세스 문맥은 크게 3가지로 <strong>하드웨어 문맥</strong>, <strong>프로세스의 주소공간</strong>, <strong>커널상의 문맥</strong>으로 나누어 볼 수 있다.</p>
+    <ul>
+      <li>CPU 수행 상태를 나타내는 <strong>하드웨어 문맥</strong>
+        <ul>
+          <li>Program Counter</li>
+          <li>각종 register</li>
+        </ul>
+      </li>
+      <li><strong>프로세스의 주소 공간</strong>
+        <ul>
+          <li>code, data, stack</li>
+        </ul>
+      </li>
+      <li>프로세스 관련 <strong>커널</strong> 자료 구조
+        <ul>
+          <li>PCB (Process Control Block)</li>
+          <li>Kernel stack (커널내의 주소)</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2><br /></h2>
+
+<h2 id="프로세스의-상태"><strong>프로세스의 상태</strong></h2>
+
+<p>프로세스의 상태는 실행(running), 준비(ready), 봉쇄(blocked, wait, sleep)의 세 가지로 구분할 수 있다.</p>
+
+<ul>
+  <li><strong>실행(Running)</strong>
+    <ul>
+      <li>프로세스가 CPU를 잡고 기계어 instruction을 수행중인 상태를 말한다.</li>
+    </ul>
+  </li>
+  <li><strong>준비(Ready)</strong>
+    <ul>
+      <li>CPU만 보유하면 당장 명령을 수행 할 수 있도록 CPU를 기다리는 상태(메모리 등 다른 조건을 모두 만족)</li>
+    </ul>
+  </li>
+  <li><strong>봉쇄(blocked, wait, sleep)</strong>
+    <ul>
+      <li>CPU를 할당받더라도 당장 명령을 실행할 수 없는 상태를 말한다.
+        <ul>
+          <li>I/O 등의 event를 (스스로) 기다리는 상태</li>
+          <li>디스크에서 file을 읽어와야 하는 경우</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>시작 상태
+    <ul>
+      <li>프로세스가 시작되어 그 프로세스를 위한 각종 자료구조는 생성되었지만 아직 메모리 획득을 승인받지 못한 상태</li>
+    </ul>
+  </li>
+  <li>완료 상태
+    <ul>
+      <li>프로세스가 종료되었으나 운영체제가 그 프로세스와 관련된 자료구조를 완전히 정리하지 못한 상태</li>
+    </ul>
+  </li>
+  <li>​ <strong>Suspended (stoped)</strong>
+    <ul>
+      <li>외부적인 이유로 프로세스의 수행이 정지된 상태</li>
+      <li>프로세스는 통째로 디스크에 swap out 된다</li>
+      <li>ex) 사용자 프로그램을 일시 정지시킨 경우 (break key) 시스템이 여러 이유로 프로세스를 잠시 중단시킴(메모리에 너무 많은 프로세스가 올라와 있을 때)</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <ul>
+    <li>Blocked: 자신이 요청한 event가 만족되면 Ready</li>
+    <li>Suspended: 외부에서 resume해 주어야 Active</li>
+  </ul>
+</blockquote>
+
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/chap05_프로세스의_상태_변화도.png" style="zoom:70%" />
+  프로세스의 상태 변화도
+</div>
+
+<h2 id="-1"><br /></h2>
+
+<h2 id="process-control-block-pcb">Process Control Block (PCB)</h2>
+<p>프로세스 제어블록이란 운영체제가 시스템 내의 프로세스들을 관리하기 위해 프로세스마다 유지하는 정보들을 담는 커널 내의 자료구조를 말한다.</p>
+
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/ch05_PCB구성.png" style="zoom:50%" />
+  프로세스 제어블록(PCB)의 구성
+</div>
+
+<!-- 
+- 다음의 구성요소를 가진다 (구조체로 유지)
+  1. OS 관리상 사용하는 정보  
+     - 프로세스 상태(Process state), Process ID  
+     - 스케쥴링 정보(scheduling information), 우선순위(priority)  
+  2. CPU 수행 관련 하드웨어 값  
+     - Program counter  
+     - registers(현 시점에 레지스터에 어떤 값을 저장하고 있는지)  
+  3. 메모리 관련  
+     - code, data, stack 의 위치정보  
+  4. 파일 관련  
+     - Open file descriptors
+-->
+
+<h2 id="-2"><br /></h2>
+
+<h2 id="문맥-교환-context-switch"><strong>문맥 교환 (Context Switch)</strong></h2>
+
+<blockquote>
+  <p>한 프로세스에서 다른 프로세스로 CPU의 제어권을 넘겨주는 과정</p>
+</blockquote>
+
+<ul>
+  <li>CPU가 다른 프로세스에게 넘어갈 때 운영체제는 다음을 수행한다.
+    <ol>
+      <li>CPU를 내어주는 프로세스의 문맥(context)를 그 프로세스의 PCB에 저장</li>
+      <li>CPU를 새롭게 얻는 프로세스의 문맥(context)을 PCB로부터 읽어 실제 하드웨어로 복원</li>
+    </ol>
+  </li>
+</ul>
+
+<blockquote>
+  <p>문맥교환이 아닌 것과 혼동하지 말자. 문맥교환은 프로세스A에서 프로세스B로 넘어가는것</p>
+</blockquote>
+
+<ul>
+  <li>System call이나 interrupt 발생시 반드시 context switch가 일어나는 것은 아니다
+    <ol>
+      <li><strong>문맥교환 <span style="color:red">X</span></strong>
+ 사용자 프로세스 A -&gt; interrupt or system call -&gt; 커널모드) -&gt; <strong><span style="color:red">문맥 교환 없이 user 모드 복귀</span></strong> -&gt; 사용자 프로세스 A</li>
+      <li><strong>문맥교환 <span style="color:blue">O</span></strong>
+ 사용자 프로세스 A -&gt; interrupt or I/O 요청 system call  -&gt; 커널모드(ISR or system call) -&gt; <strong><span style="color:blue">문맥 교환 발생</span></strong> -&gt; 사용자 프로세스 B</li>
+    </ol>
+  </li>
+</ul>
+
+<blockquote>
+  <p>(1)의 경우에도 CPU 수행 정보 등 context의 일부를 PCB에 save해야 하지만 문맥교환을 하는 (2)의 경우 그 부담이 훨씬 크다. (eg. cache memory flush)</p>
+</blockquote>
+
+<h2 id="-3"><br /></h2>
+
+<h2 id="프로세스를-스케줄링하기-위한-큐"><strong>프로세스를 스케줄링하기 위한 큐</strong></h2>
+
+<p>운영체제는 하드웨어와 소프트웨어 자원을 줄세우기 위해 여러 Queue를 두어 사용한다. 프로세스들은 각 Queue들을 오가며 수행된다</p>
+
+<ul>
+  <li><strong>Job queue</strong>
+    <ul>
+      <li>현재 시스템 내에 있는 모든 프로세스의 집합</li>
+    </ul>
+  </li>
+  <li><strong>Ready queue</strong>
+    <ul>
+      <li>현재 메모리 내에 있으면서 CPU를 잡아서 실행되기를 기다리는 프로세스의 집합</li>
+    </ul>
+  </li>
+  <li><strong>Device queues</strong>
+    <ul>
+      <li>I/O device의 처리를 기다리는 프로세스의 집합</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-4"><br /></h2>
+
+<h2 id="스케줄러-scheduler"><strong>스케줄러 (Scheduler)</strong></h2>
+<p>스케줄러란 어떤 프로세스에게 자원을 할당할지를 결정하는 운영체제 커널의 코드를 지칭한다.</p>
+
+<ul>
+  <li>
+    <h4 id="long-term-scheduler장기-스케줄러-or-job-scheduler"><strong>Long-term scheduler(장기 스케줄러 or job scheduler)</strong></h4>
+    <ul>
+      <li>시작 프로세스 중 어떤 것들을 <strong>ready queue</strong>로 보낼지 결정</li>
+      <li>프로세스에 memory(및 각종 자원)을 주는 문제</li>
+      <li>degree of Multiprogramming을 제어</li>
+      <li>time sharing system에는 보통 장기 스케줄러가 없음(무조건 ready)</li>
+    </ul>
+
+    <blockquote>
+      <ul>
+        <li>프로세스 상태도에서 admitted 해주는게 장기스케줄러의 역할</li>
+        <li><em>현대의 운영체제(시분할 시스템)는 하드웨어의 발전으로 장기 스케줄러 사용하지 않음</em></li>
+      </ul>
+    </blockquote>
+  </li>
+  <li>
+    <h4 id="short-term-scheduler단기-스케줄러-or-cpu-scheduler"><strong>Short-term scheduler(단기 스케줄러 or CPU scheduler)</strong></h4>
+    <ul>
+      <li>ready queue에 있는 프로세스들 중 다음번에 running 시킬 프로세스를 결정</li>
+      <li>프로세스에 CPU를 할당하는 역할</li>
+      <li>매우 빈번하게 호출되므로 빨라야 한다 (millisecond 단위)</li>
+    </ul>
+  </li>
+  <li>
+    <h4 id="medium-term-scheduler중기-스케줄러-or-swapper"><strong>Medium-Term Scheduler(중기 스케줄러 or Swapper)</strong></h4>
+    <blockquote>
+      <p>현대의 운영체제(시분할 시스템)에서 장기 스케줄러 사용이 낮아지면서 중기 스케줄러를 사용</p>
+    </blockquote>
+    <ul>
+      <li>많은 프로세스에게 메모리를 할당해 시스템의 성능이 저하되는 일을 조절한다
+        <ul>
+          <li>프로세스에게서 메모리를 빼앗음</li>
+        </ul>
+      </li>
+      <li>여유 공간 마련을 위해 프로세스를 통째로 메모리에서 디스크의 swap 영역으로 저장함 <strong>(swap out)</strong>
+        <ul>
+          <li>봉쇄(block) 상태에 있는 프로세스가 0순위로 swap out</li>
+          <li>그래도 부족하면 타이머 인터럽트로 ready queue로 이동하는 프로세스를 추가적으로 swap out</li>
+        </ul>
+      </li>
+      <li>degree of Multiprogramming을 제어</li>
+    </ul>
+  </li>
+</ul>
+
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/chap05_프로세스_상태_변화도_중지_상태_포함.png" style="zoom:90%" />
+  중지 상태를 포함한 프로세스의 상태 변화도
+</div>
+
+<h2 id="-5"><br /></h2>
+
+<!-- ## Thread (쓰레드)
+
+> **A <span style="color:red">thread</span> (or <span style="color:red">lightweight process</span>) is a basic unit of CPU utilization**
+
+- Thread의 구성
+  - program counter
+  - register set
+  - stack space
+- Thread가 동료 Thread와 공유하는 부분(=task)
+  - code section
+  - data section
+  - OS resources
+- 전통적인 개념의 heavyweight process는 하나의 thread를 가지고 있는 task로 볼 수 있다
+- 다중 스레드로 구성된 테스크 구조에서는 하나의 서버 스레드가 blocked (waiting) 상태인 동안에도 동일한 태스크 내의 다른 스레드가 실행(running)되어 빠른 처리를 할 수 있다.
+- 동일한 일을 수행하는 다중 스레드가 협력하여 높은 처리율(throughput)과 성능 향상을 얻을 수 있다
+- 스레드를 사용하면 병렬성을 높일 수 있다
+
+
+
+### Benefits of Threads
+
+- Responsiveness
+  - 동시 처리로 빠른 응답성을 제공한다.
+- Resource Sharing
+  -  프로세스의 리소스인 code, data를 n개의 쓰레드가 공유할 수 있다.(stack 제외)
+- Economy
+  - creating & CPU switching thread (rather than a process)
+  - Solaris의 경우 위 두 가지 overhead가 각각 30배, 5배
+- Utilization of MP Architectures
+  - 멀티 프로세서 아키텍처의 사용에서 각각의 쓰레드를 다른 프로세서에서 병렬로 실행한다.
+
+<br>
+
+### Implementation of Threads
+
+- Kernel Threads 
+
+  > Some are supported by kernel  
+  >
+  > 운영체제 커널이 지원하는 Threads 
+
+  - Windows
+  - Solaris
+  - Digital UNIX, Mach
+
+- User Threads
+
+  > Others are Supported by library
+  >
+  > 사용자가 에서 Threads를 관리
+
+  - POSIX Pthreads
+  - Mach C-threads
+  - Solaris threds
+
+- Some are real-time threads 
+
+<br>
+--- ,,
+-->
+
+<h2 id="프로세스-생성"><strong>프로세스 생성</strong></h2>
+<p>시스템이 부팅된 후 최초의 프로세스는 운영체제가 직접 생성하지만 그다음부터는 이미 존재하는 프로세스가 다른 프로세스를 복제 생성하게 된다. 이때 프로세스를 생성한 프로세스를  <strong><span style="color:blue">부모 프로세스(parent process)</span></strong> 라고 하고 새롭게 생성된 프로세스를  <strong><span style="color:blue"> 자식 프로세스(children process)</span></strong> 라고 한다</p>
+
+<ul>
+  <li><strong>부모 프로세스(parent process)</strong> 가 <strong>자식 프로세스(children process)</strong> 생성</li>
+  <li>프로세스의 트리(계층 구조) 형성</li>
+  <li>프로세스는 자원을 필요로함
+    <ul>
+      <li>운영체제로부터 받는다</li>
+      <li>부모와 공유한다
+        <ul>
+          <li>자원의 공유
+            <ul>
+              <li>부모와 자식이 모든 자원을 공유하는 모델</li>
+              <li>일부를 공유하는 모델</li>
+              <li>전혀 공유하지 않는 모델</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>수행 (Execution)
+    <ul>
+      <li>부모와 자식은 공존하며 수행되는 모델</li>
+      <li>자식이 종료(terminate)될 때까지 부모가 기다리는(wait) 모델</li>
+    </ul>
+  </li>
+  <li>주소 공간 (Address space)
+    <ul>
+      <li>자식은 부모의 공간을 복사함 (binary and OS data)</li>
+      <li>자식은 부모의 공간을 복사함 (binary and OS data)</li>
+    </ul>
+  </li>
+  <li>유닉스의 예
+    <ul>
+      <li><span style="color:red">fork()</span> 시스템 콜이 새로운 프로세스를 생성
+        <ul>
+          <li>부모를 그대로 복사 (OS data except PID + binary)</li>
+          <li>주소 공간 할당</li>
+        </ul>
+      </li>
+      <li>fork 다음에 이어지는 <span style="color:red">exec()</span> 시스템 콜을 통해 새로운 프로그램을 메모리에 올림</li>
+    </ul>
+  </li>
+  <li>프로세스가 마지막 명령을 수행한 후 운영체제에게 이를 알려줌(<span style="color:red">exit</span>)
+    <ul>
+      <li>자식이 부모에게 output data를 보냄 (via <span style="color:red">wait</span>)</li>
+      <li>프로세스의 각종 자원들이 운영체제에게 반납됨</li>
+    </ul>
+  </li>
+  <li>부모 프로세스가 자식의 수행을 종료시킴 (<span style="color:red">abort</span>)
+    <ul>
+      <li>자식이 할당 자원의 한계치를 넘어섬</li>
+      <li>자식에게 할당된 태스크가 더 이상 필요하지 않음</li>
+      <li>부모가 종료(exit)하는 경우
+        <ul>
+          <li>운영체제는 부모 프로세스가 종료하는 경우 자식 프로세스가 더 이상 수행되도록 두지 않는다(종료해버림)</li>
+          <li>프로세스의 계층 구조(트리)에 따라 단계적인 종료가 됨</li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="프로세스-생성-절차">프로세스 생성 절차</h3>
+<ul>
+  <li><strong>Fork() 시스템 콜</strong>
+    <ul>
+      <li>프로세스 ID를 제외한 모든 내용을 그대로 복제 생성한다.</li>
+      <li>부모와 자식 프로세스는 서로 다른 주소공간을 갖는다.(주소공간 내용은 동일)</li>
+    </ul>
+  </li>
+  <li><strong>exec() 시스템 콜</strong>
+    <ul>
+      <li>하나의 프로세스를 완전히 새로운 프로세스로 덮어쓰는 명령</li>
+    </ul>
+  </li>
+  <li><strong>wait() 시스템 콜</strong>
+    <ul>
+      <li>자식 프로세스가 종료되기를 기다리며 부모 프로세스가 봉쇄 상태에 머무르도록 할 때 사용된다.</li>
+    </ul>
+  </li>
+  <li><strong>exit() 시스템 콜</strong>
+프로세스의 종료 종료하는 명령이다. 종료 명령은 자발적 종료와 비자발적 종료로 구분 된다.
+    <ul>
+      <li>자발적 종료
+        <ul>
+          <li>마지막 statement 수행 후 exit() 시스템 콜</li>
+          <li>프로그램에 명시적으로 적어주지 않아도 main함수가 리턴되는 위치에 컴파일러가 넣어줌</li>
+        </ul>
+      </li>
+      <li>비자발적 종료
+        <ol>
+          <li>자식 프로세스가 한계치를 넘어서는 자원 요청하는 경우</li>
+          <li>자식에게 할당된 작업이 더 이상 필요하지 않는 경우</li>
+          <li>부모 프로세스가 종료되는 경우</li>
+          <li>키보드로 kill, break 등을 친 경우</li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="-6"><br /></h2>
+
+<h2 id="프로세스-간-협력"><strong>프로세스 간 협력</strong></h2>
+<p>원칙적으로 프로세스는 각자 자신만의 독립적인 주소 공간을 가지기 때문에 <em>다른 프로세스의 주소 공간을 참조하는 것은 허용되지 않는다.</em> 그러나 경우에 따라서 <em>프로세스들 간의 협력이 효율을 증가시키는 점에서 더 생산적일 수 있다.</em> 따라서 <strong>운영체제는 프로세스들간의 협력을 위한 매커니즘을 제공</strong>한다.</p>
+
+<ul>
+  <li><strong>독립적 프로세스(Independent process)</strong>
+프로세스는 각자의 주소 공간을 가지고 수행되므로 원칙적으로 하나의 프로세스는 다른 프로세스의 수행에 영향을 미치지 못함</li>
+</ul>
+
+<p><br /></p>
+
+<ul>
+  <li><strong>협력 프로세스(Cooperating process)</strong>
+프로세스 협력 메커니즘을 통해 하나의 프로세스가 다른 프로세스의 수행에 영향을 미칠 수 있음</li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="프로세스-간-협력-메커니즘-ipc-interprocess-communication">프로세스 간 협력 메커니즘 (IPC: Interprocess Communication)</h3>
+
+<p>IPC란 하나의 컴퓨터 안에서 실행 중인 서로 다른 프로세스 간에 발생하는 통신과 동기화를 이루기 위한 매커니즘을 말한다.</p>
+
+<ol>
+  <li>
+    <p><strong>메시지를 전달하는 방법(Message passing)</strong></p>
+
+    <ul>
+      <li>프로세스 사이에 공유 변수(shared variable)를 일체 사용하지 않고 통신하는 시스템</li>
+      <li>커널을 통해 메시지를 주고 받음</li>
+      <li>커뮤니케이션 링크를 생성하고 send(), receive()</li>
+      <li>커뮤니케이션 링크 방법
+        <ol>
+          <li>Direct Communication
+            <ul>
+              <li>통신하려는 프로세스의 이름을 명시적으로 표시</li>
+            </ul>
+          </li>
+          <li>Indirect Communication
+            <ul>
+              <li>mailbox (또는 port)를 통해 메시지를 간접 전달
+<br /></li>
+            </ul>
+          </li>
+        </ol>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>주소 공간을 공유하는 방법(Shared memory)</strong></p>
+
+    <ul>
+      <li>서로 다른 프로세스 간에 일부 주소 공간을 공유하게 하는 공유 메모리 매커니즘</li>
+      <li>같은 메모리 공간 사용으로 일관성 문제가 유발될 수 있음</li>
+    </ul>
+  </li>
+</ol>
+
+<blockquote>
+  <p>Thread는 사실상 하나의 프로세스이므로 프로세스 간 협력으로 보기는 어렵지만 동일한 프로세스를 구성하는 Threads들 간에는 주소 공간을 공유하므로 협력이 가능</p>
+</blockquote>
+
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/chap05_ipc.png" style="zoom:60%" />
+  hared memory VS Message passing
+<div>
+
+</div></div>
+
+
+    </div>
+
+</article>
+<div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="[운영체제] (3) 프로그램의 구조와 실행">[운영체제] (3) 프로그램의 구조와 실행</a><a class="next" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (5) CPU 스케줄링</a></div><div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/2021/03/12/dbcp-vs-jndi.html" title="[운영체제] (5) CPU 스케줄링">커넥션 풀을 관리하는 방법, DBCP와 JNDI</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (2) 컴퓨터 시스템의 동작 원리</a></li><li><a class="post-link" href="/2021/03/12/interview-cs.html" title="[운영체제] (5) CPU 스케줄링">[Interview] CS</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (4) 프로세스 관리</a></li></ul>
+    </div><div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+</style>
+
+<div class="post-menu">
+  <div class="post-menu-title">개요</div>
+  <div class="post-menu-content"></div>
+</div>
+
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
+</div>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="site-footer-inner">
+      <div>Copyright © 1970-2010 @GitHub User</div>
+      <div>Powered by <a title="Jekyll is a simple, blog-aware, static site
+      generator." href="http://jekyllrb.com/">Jekyll</a> &amp; <a title="Yat, yet
+      another theme." href="https://github.com/jeffreytse/jekyll-theme-yat">Yat Theme</a>.</div>
+      <div class="footer-col rss-subscribe">Subscribe <a href="/feed.xml">via RSS</a></div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.7.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-25T17:47:24+09:00</updated><id>http://localhost:4000/</id><title type="html">장장스 블로그</title><subtitle>Backend Developer</subtitle><entry><title type="html">(4) CPU 스케줄링</title><link href="http://localhost:4000/os05" rel="alternate" type="text/html" title="(4) CPU 스케줄링" /><published>2021-04-10T19:18:00+09:00</published><updated>2021-04-10T19:18:00+09:00</updated><id>http://localhost:4000/os05</id><content type="html" xml:base="http://localhost:4000/os05">&lt;p&gt;사용자 프로그램이 수행되는 과정은 &lt;strong&gt;CPU 작업과 I/O 작업의 반복&lt;/strong&gt;으로 수행된다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-25T23:12:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (5) CPU 스케줄링</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" rel="alternate" type="text/html" title="[운영체제] (5) CPU 스케줄링" /><published>2021-04-10T19:18:00+09:00</published><updated>2021-04-10T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html">&lt;p&gt;사용자 프로그램이 수행되는 과정은 &lt;strong&gt;CPU 작업과 I/O 작업의 반복&lt;/strong&gt;으로 수행된다.&lt;/p&gt;
 
 &lt;p&gt;사용자 프로그램이 CPU를 직접 가지고 빠른 명령을 수행하는 일련의 단계를 &lt;strong&gt;CPU 버스트&lt;/strong&gt;라고 하고,
 사용자 프로그램에 I/O 요청이 발생해 커널에 의해 입출력 작업을 진행하는 비교적 느린 &lt;strong&gt;I/O 버스트&lt;/strong&gt;라 한다.
@@ -234,7 +234,7 @@
       &lt;li&gt;알고리즘을 모의 프로그램으로 작성후 trace를 입력으로 하여 결과 비교&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="os" /><summary type="html">사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다.</summary></entry><entry><title type="html">(4) 프로세스 관리</title><link href="http://localhost:4000/os04" rel="alternate" type="text/html" title="(4) 프로세스 관리" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/os04</id><content type="html" xml:base="http://localhost:4000/os04">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다.</summary></entry><entry><title type="html">[운영체제] (4) 프로세스 관리</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" rel="alternate" type="text/html" title="[운영체제] (4) 프로세스 관리" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Process is &lt;strong&gt;&lt;span style=&quot;color:red;&quot;&gt;a Programin execution &lt;/span&gt;&lt;/strong&gt;
@@ -705,7 +705,7 @@
   hared memory VS Message passing
 &lt;div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</content><author><name>zangzangs</name></author><category term="os" /><summary type="html">프로세스의 개념</summary></entry><entry><title type="html">(3) 프로그램의 구조와 실행</title><link href="http://localhost:4000/os03" rel="alternate" type="text/html" title="(3) 프로그램의 구조와 실행" /><published>2021-03-28T19:18:00+09:00</published><updated>2021-03-28T19:18:00+09:00</updated><id>http://localhost:4000/os03</id><content type="html" xml:base="http://localhost:4000/os03">&lt;h2 id=&quot;프로그램의-실행&quot;&gt;프로그램의 실행&lt;/h2&gt;
+&lt;/div&gt;&lt;/div&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">프로세스의 개념</summary></entry><entry><title type="html">[운영체제] (3) 프로그램의 구조와 실행</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" rel="alternate" type="text/html" title="[운영체제] (3) 프로그램의 구조와 실행" /><published>2021-03-28T19:18:00+09:00</published><updated>2021-03-28T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html">&lt;h2 id=&quot;프로그램의-실행&quot;&gt;프로그램의 실행&lt;/h2&gt;
 
 &lt;p&gt;프로그램의 실행은 두가지 중요한 의미를 가진다.&lt;/p&gt;
 &lt;ol&gt;
@@ -848,156 +848,207 @@
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="os" /><summary type="html">프로그램의 실행</summary></entry><entry><title type="html">(2) 컴퓨터 시스템의 동작 원리</title><link href="http://localhost:4000/os02" rel="alternate" type="text/html" title="(2) 컴퓨터 시스템의 동작 원리" /><published>2021-03-21T19:18:00+09:00</published><updated>2021-03-21T19:18:00+09:00</updated><id>http://localhost:4000/os02</id><content type="html" xml:base="http://localhost:4000/os02">&lt;h2 id=&quot;컴퓨터-시스템-구조&quot;&gt;컴퓨터 시스템 구조&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">프로그램의 실행</summary></entry><entry><title type="html">[운영체제] (2) 컴퓨터 시스템의 동작 원리</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" rel="alternate" type="text/html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리" /><published>2021-03-21T19:18:00+09:00</published><updated>2021-03-21T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html">&lt;h2 id=&quot;컴퓨터-시스템-구조&quot;&gt;컴퓨터 시스템 구조&lt;/h2&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
 &lt;div style=&quot;text-align:center;&quot;&gt;
-  &lt;img src=&quot;../..\assets\images\operating_system\chap03_computer_system_structure.png&quot; style=&quot;zoom:60%&quot; /&gt;
-  &lt;span style=&quot;color:gray; size:10&quot;&gt;&lt;컴퓨터 시스템=&quot;&quot; 구조=&quot;&quot;&gt;&amp;lt;/span&amp;gt;
-&amp;lt;/div&amp;gt;
+  &lt;img src=&quot;/assets/images/operating_system/chap03_computer_system_structure.png&quot; style=&quot;zoom:60%&quot; /&gt;
+  &lt;span style=&quot;color:gray; size:10&quot;&gt;컴퓨터 시스템 구조&lt;/span&gt;
+&lt;/div&gt;
 
----
+&lt;h3 id=&quot;1-cpu&quot;&gt;1. CPU&lt;/h3&gt;
+&lt;p&gt;중앙처리장치라 불리는 CPU는 인간의 &lt;strong&gt;두뇌&lt;/strong&gt;와 같은 역할을 합니다. &lt;strong&gt;중앙처리장치&lt;/strong&gt; 라는 말 그대로 중앙에서 사용자가 입력한 명령어를 해석하고 연산한 후 그 결과를 처리합니다.&lt;/p&gt;
 
-### 1. CPU
-중앙처리장치라 불리는 CPU는 인간의 **두뇌**와 같은 역할을 합니다. **중앙처리장치** 라는 말 그대로 중앙에서 사용자가 입력한 명령어를 해석하고 연산한 후 그 결과를 처리합니다.
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;br /&gt;
+&lt;h3 id=&quot;2-메모리&quot;&gt;2. 메모리&lt;/h3&gt;
+&lt;p&gt;랜덤 액세스 메모리 즉, 램(RAM)은 임의의 영역에 접근하여 읽고 쓰기가 가능한 주기억 장치다. RAM은 어느 위치에 저장된 데이터든지 접근(읽기 및 쓰기)하는 데 동일한 시간이 걸리는 메모리이기에 ‘랜덤(Random, 무작위)’이라는 명칭이 주어진다.&lt;/p&gt;
 
-### 2. 메모리
- 랜덤 액세스 메모리 즉, 램(RAM)은 임의의 영역에 접근하여 읽고 쓰기가 가능한 주기억 장치다. RAM은 어느 위치에 저장된 데이터든지 접근(읽기 및 쓰기)하는 데 동일한 시간이 걸리는 메모리이기에 ‘랜덤(Random, 무작위)’이라는 명칭이 주어진다. 
- 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-### 3. Device Controller
-- I/O device controller
-  - 해당 I/O 장치 유형을 관리하는 일종의 작은 CPU
-  - 제어 정보를 위해 control register, status register가 있다.
-  - local buffer를 갖는다 (=일종의 data register)
-- I/O는 실제 device와 local buffer 사이에서 일어남
-- Device controller는 I/O가 끝났을 경우 interrupt로 CPU에 그 사실을 알림
+&lt;h3 id=&quot;3-device-controller&quot;&gt;3. Device Controller&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;I/O device controller
+    &lt;ul&gt;
+      &lt;li&gt;해당 I/O 장치 유형을 관리하는 일종의 작은 CPU&lt;/li&gt;
+      &lt;li&gt;제어 정보를 위해 control register, status register가 있다.&lt;/li&gt;
+      &lt;li&gt;local buffer를 갖는다 (=일종의 data register)&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;I/O는 실제 device와 local buffer 사이에서 일어남&lt;/li&gt;
+  &lt;li&gt;Device controller는 I/O가 끝났을 경우 interrupt로 CPU에 그 사실을 알림&lt;/li&gt;
+&lt;/ul&gt;
 
-&amp;gt; device driver(장치구동기)  
-&amp;gt; : os 코드 중 각 장치별 처리루틴 -&amp;gt; software  
-&amp;gt; device controller(장치제어기)  
-&amp;gt; : 각 장치를 통제하는 일종의 작은 cpu -&amp;gt; hardware
+&lt;blockquote&gt;
+  &lt;dl&gt;
+    &lt;dt&gt;device driver(장치구동기)&lt;/dt&gt;
+    &lt;dd&gt;os 코드 중 각 장치별 처리루틴 -&amp;gt; software&lt;br /&gt;
+device controller(장치제어기)&lt;/dd&gt;
+    &lt;dd&gt;각 장치를 통제하는 일종의 작은 cpu -&amp;gt; hardware&lt;/dd&gt;
+  &lt;/dl&gt;
+&lt;/blockquote&gt;
 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-### 4. Interrupt line
-CPU로 인터럽트 신호를 보낼 수 있는 하드웨어 라인
+&lt;h3 id=&quot;4-interrupt-line&quot;&gt;4. Interrupt line&lt;/h3&gt;
+&lt;p&gt;CPU로 인터럽트 신호를 보낼 수 있는 하드웨어 라인&lt;/p&gt;
 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-### 5. Mode bit
-사용자 프로그램의 잘못된 수행으로 다른 프로그램 및 운영체제에 피해가 가지 않도록 하기 위한 보호장치가 필요
-Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
+&lt;h3 id=&quot;5-mode-bit&quot;&gt;5. Mode bit&lt;/h3&gt;
+&lt;p&gt;사용자 프로그램의 잘못된 수행으로 다른 프로그램 및 운영체제에 피해가 가지 않도록 하기 위한 보호장치가 필요
+Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원&lt;/p&gt;
 
-&amp;gt; 1 &lt;span style=&quot;color:blue&quot;&gt;사용자 모드&lt;/span&gt; : 사용자 프로그램 수행  
-&amp;gt; 0 &lt;span style=&quot;color:red&quot;&gt;모니터 모드&lt;/span&gt; : OS 코드 수행 (=커널 모드, 시스템 모드)  
+&lt;blockquote&gt;
+  &lt;p&gt;1 &lt;span style=&quot;color:blue&quot;&gt;사용자 모드&lt;/span&gt; : 사용자 프로그램 수행&lt;br /&gt;
+0 &lt;span style=&quot;color:red&quot;&gt;모니터 모드&lt;/span&gt; : OS 코드 수행 (=커널 모드, 시스템 모드)&lt;/p&gt;
+&lt;/blockquote&gt;
 
-- 보안을 해칠 수 있는 중요한 명령어는 모니터 모드에서만 수행 가능한 **'특권명령'** 으로 규정
-- Interrupt나 Exception 발생시 하드웨어가 mode bit을 0으로 변경
-- 사용자 프로그램에게 CPU를 넘기기 전에 mode bit을 1로 변경
+&lt;ul&gt;
+  &lt;li&gt;보안을 해칠 수 있는 중요한 명령어는 모니터 모드에서만 수행 가능한 &lt;strong&gt;‘특권명령’&lt;/strong&gt; 으로 규정&lt;/li&gt;
+  &lt;li&gt;Interrupt나 Exception 발생시 하드웨어가 mode bit을 0으로 변경&lt;/li&gt;
+  &lt;li&gt;사용자 프로그램에게 CPU를 넘기기 전에 mode bit을 1로 변경&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-### 6. Timer
-- 타이머
-  - 정해진 시간이 흐른 뒤 운영체제에게 제어권이 넘어가도록 인터럽트를 발생
-  - 타이머는 매 클럭 틱 때마다 1씩 감소
-  - 타이머 값이 -이 되면 타이머 인터럽트 발생
-  - CPU를 특정 프로그램이 독점하는 것으로부터 보호
-  
-- 타이머는 time sharing을 구현하기 위해 널리 이용됨
-- 타이머는 현재 시간을 계산하기 위해서도 사용
+&lt;h3 id=&quot;6-timer&quot;&gt;6. Timer&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;타이머
+    &lt;ul&gt;
+      &lt;li&gt;정해진 시간이 흐른 뒤 운영체제에게 제어권이 넘어가도록 인터럽트를 발생&lt;/li&gt;
+      &lt;li&gt;타이머는 매 클럭 틱 때마다 1씩 감소&lt;/li&gt;
+      &lt;li&gt;타이머 값이 -이 되면 타이머 인터럽트 발생&lt;/li&gt;
+      &lt;li&gt;CPU를 특정 프로그램이 독점하는 것으로부터 보호&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;타이머는 time sharing을 구현하기 위해 널리 이용됨&lt;/li&gt;
+  &lt;li&gt;타이머는 현재 시간을 계산하기 위해서도 사용&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-### 7. DMA Controller
+&lt;h3 id=&quot;7-dma-controller&quot;&gt;7. DMA Controller&lt;/h3&gt;
 
-메모리에 접근할 수 있는 장치는 CPU가 유일하다. 메모리는 CPU의 작업 공간이다. I/O장치나 다른 장치들이 접근 할 수 없다. 그렇다보니 1ms 마다 인터럽트가 발생한다면 CPU는 계속해서 자잘한 인터럽트를 처리해야하는 이슈가 있다. 그래서 메모리에 접근 할 수 있도록 도와주는 장치가 DMA 컨트롤러이다. 
+&lt;p&gt;메모리에 접근할 수 있는 장치는 CPU가 유일하다. 메모리는 CPU의 작업 공간이다. I/O장치나 다른 장치들이 접근 할 수 없다. 그렇다보니 1ms 마다 인터럽트가 발생한다면 CPU는 계속해서 자잘한 인터럽트를 처리해야하는 이슈가 있다. 그래서 메모리에 접근 할 수 있도록 도와주는 장치가 DMA 컨트롤러이다.&lt;/p&gt;
 
-- 빠른 입출력 장치를 메모리에 가까운 속도로 처리하기 위해 사용
-- CPU의 중재 없이 device controller가 device의 buffer storage의 내용을 메모리에 block 단위로 직접 전손
-- 바이트 단위가 아니라 block 단위로 인터럽트를 발생시킴
-- 
-&lt;br /&gt;
+&lt;ul&gt;
+  &lt;li&gt;빠른 입출력 장치를 메모리에 가까운 속도로 처리하기 위해 사용&lt;/li&gt;
+  &lt;li&gt;CPU의 중재 없이 device controller가 device의 buffer storage의 내용을 메모리에 block 단위로 직접 전손&lt;/li&gt;
+  &lt;li&gt;바이트 단위가 아니라 block 단위로 인터럽트를 발생시킴&lt;/li&gt;
+  &lt;li&gt;&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-### 8. PC(Program counter)
-CPU의 레지스터중 하나.
+&lt;h3 id=&quot;8-pcprogram-counter&quot;&gt;8. PC(Program counter)&lt;/h3&gt;
+&lt;p&gt;CPU의 레지스터중 하나.
 pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
-하나의 기계어가 종료 이후의 다음 위치를 가리킨다.
+하나의 기계어가 종료 이후의 다음 위치를 가리킨다.&lt;/p&gt;
 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
----
+&lt;hr /&gt;
 
-## 인터럽트(Interrupt)
-### 인터럽트
-- 현대의 운영체제는 인터럽트에 의해 구동된다.
-- 인터럽트 당한 시점의 레지스터와 Program counter를 save 한 후 CPU의 제어를 인터럽트 처리 루틴에 넘긴다.
+&lt;h2 id=&quot;인터럽트interrupt&quot;&gt;인터럽트(Interrupt)&lt;/h2&gt;
+&lt;h3 id=&quot;인터럽트&quot;&gt;인터럽트&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;현대의 운영체제는 인터럽트에 의해 구동된다.&lt;/li&gt;
+  &lt;li&gt;인터럽트 당한 시점의 레지스터와 Program counter를 save 한 후 CPU의 제어를 인터럽트 처리 루틴에 넘긴다.&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-### 넓은 의미의 interrupt
-- 하드웨어 인터럽트
-  - 하드웨어가 발생시킨 인터럽트
-- 소프트웨어 인터럽트  
-    - Exception : 프로그램이 오류를 범한 경우
-    - Systeme Call : 프로그램이 커널 함수를 호출하는 경우
+&lt;h3 id=&quot;넓은-의미의-interrupt&quot;&gt;넓은 의미의 interrupt&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;하드웨어 인터럽트
+    &lt;ul&gt;
+      &lt;li&gt;하드웨어가 발생시킨 인터럽트&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;소프트웨어 인터럽트
+    &lt;ul&gt;
+      &lt;li&gt;Exception : 프로그램이 오류를 범한 경우&lt;/li&gt;
+      &lt;li&gt;Systeme Call : 프로그램이 커널 함수를 호출하는 경우&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-### 인터럽트 관련 용어
-- 인터럽트 백터  
-  해당 인터럽트 처리 루틴 주소를 가지고 있음
-- 인터럽트 처리 루틴(=Interrupt Service Routine, 인터럽트 핸들러)  
-  해당 인터럽트를 처리하는 커널 함수
+&lt;h3 id=&quot;인터럽트-관련-용어&quot;&gt;인터럽트 관련 용어&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;인터럽트 백터&lt;br /&gt;
+해당 인터럽트 처리 루틴 주소를 가지고 있음&lt;/li&gt;
+  &lt;li&gt;인터럽트 처리 루틴(=Interrupt Service Routine, 인터럽트 핸들러)&lt;br /&gt;
+해당 인터럽트를 처리하는 커널 함수&lt;/li&gt;
+&lt;/ul&gt;
 
-### 동작
-1. 인터럽트가 발생하면 CPU는 하던 일을 멈추고 커널 내에서 해당 인터럽트의 처리를 위해 정의된 코드를 찾게된다.  
-2. 운영체제는 할 일을 쉽게 찾아가기 위해 인터럽트 벡터(interrupt vector)를 가지고 있다. 인터럽트 백터란 인터럽트 종류마다 번호를 정해서 번호에 따라 처리해야 할 코드가 위치한 부분을 가리키는 자료구조를 말한다.  
-3. 인터럽트 백터를 따라가면 실제 처리해야 할 코드는 인터럽트 처리 루틴(Interrupt service routine) 또는 인터럽트 핸들러(Interrupt handler)라고 불리는 다른 곳에 정의된다.  
- 4. 인터럽트 처리 루틴을 통해 해당되는 인터럽트 처리를 완료하고 나면 원래 수행하던 작업으로 돌아가 중단되었던 일을 계속해서 수행한다.  
+&lt;h3 id=&quot;동작&quot;&gt;동작&lt;/h3&gt;
+&lt;ol&gt;
+  &lt;li&gt;인터럽트가 발생하면 CPU는 하던 일을 멈추고 커널 내에서 해당 인터럽트의 처리를 위해 정의된 코드를 찾게된다.&lt;/li&gt;
+  &lt;li&gt;운영체제는 할 일을 쉽게 찾아가기 위해 인터럽트 벡터(interrupt vector)를 가지고 있다. 인터럽트 백터란 인터럽트 종류마다 번호를 정해서 번호에 따라 처리해야 할 코드가 위치한 부분을 가리키는 자료구조를 말한다.&lt;/li&gt;
+  &lt;li&gt;인터럽트 백터를 따라가면 실제 처리해야 할 코드는 인터럽트 처리 루틴(Interrupt service routine) 또는 인터럽트 핸들러(Interrupt handler)라고 불리는 다른 곳에 정의된다.&lt;/li&gt;
+  &lt;li&gt;인터럽트 처리 루틴을 통해 해당되는 인터럽트 처리를 완료하고 나면 원래 수행하던 작업으로 돌아가 중단되었던 일을 계속해서 수행한다.&lt;/li&gt;
+&lt;/ol&gt;
 
-&lt;br /&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-### 시스템 콜(System Call)
-사용자 프로그램이 운영체제의 서비스를 받기 위해 커널함수(운영체제)를 호출하는 것
+&lt;h3 id=&quot;시스템-콜system-call&quot;&gt;시스템 콜(System Call)&lt;/h3&gt;
+&lt;p&gt;사용자 프로그램이 운영체제의 서비스를 받기 위해 커널함수(운영체제)를 호출하는 것&lt;/p&gt;
 
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;br /&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;질문: 운영체제한테 CPU가 넘어가는 경우&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;인터럽트 발생(Interrupt Line 사용하는 경우)
+      &lt;ul&gt;
+        &lt;li&gt;하드웨어 장치들이 I/O가 인터럽트를 요청 할 때&lt;/li&gt;
+        &lt;li&gt;timer 가 정해진 시간이 지난 후에 CPU에 제어권을 넘긴다.&lt;/li&gt;
+        &lt;li&gt;시스템 콜 발생시&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Exception 발생시&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
 
-&amp;gt; 질문: 운영체제한테 CPU가 넘어가는 경우  
-&amp;gt; - 인터럽트 발생(Interrupt Line 사용하는 경우)  
-&amp;gt;   - 하드웨어 장치들이 I/O가 인터럽트를 요청 할 때  
-&amp;gt;   - timer 가 정해진 시간이 지난 후에 CPU에 제어권을 넘긴다.  
-&amp;gt;   - 시스템 콜 발생시
-&amp;gt; - Exception 발생시
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
- &lt;br /&gt;
+&lt;hr /&gt;
 
----
+&lt;h2 id=&quot;동기식-입출력과-비동기식-입출력&quot;&gt;동기식 입출력과 비동기식 입출력&lt;/h2&gt;
 
-## 동기식 입출력과 비동기식 입출력
+&lt;ul&gt;
+  &lt;li&gt;동기식 입출력(synchronous I/O)
+    &lt;ul&gt;
+      &lt;li&gt;I/O 요청 후 입출력 작업이 완료된 후에야 제어가 사용자 프로그램에 넘어감&lt;/li&gt;
+      &lt;li&gt;구현 방법1
+        &lt;ul&gt;
+          &lt;li&gt;I/O가 끝날 때까지 CPU를 낭비시킴&lt;/li&gt;
+          &lt;li&gt;매시점 하나의 I/O만 일어날 수 있음&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;구현 방법2
+        &lt;ul&gt;
+          &lt;li&gt;I/O가 완료될 때까지 해당 프로그램에게서 CPU를 빼앗음&lt;/li&gt;
+          &lt;li&gt;I/O 처리를 기다리는 줄에 그 프로그램을 줄 세움&lt;/li&gt;
+          &lt;li&gt;다른 프로그램에게 CPU를 줌&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;비동기식 입출력(asynchronous I/O)
+    &lt;ul&gt;
+      &lt;li&gt;I/O가 시작된 후 입출력 작업이 끝나기를 기다리지 않고 제어가 사용자 프로그램에 즉시 넘어감&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
-- 동기식 입출력(synchronous I/O)
-  - I/O 요청 후 입출력 작업이 완료된 후에야 제어가 사용자 프로그램에 넘어감
-  - 구현 방법1
-    - I/O가 끝날 때까지 CPU를 낭비시킴
-    - 매시점 하나의 I/O만 일어날 수 있음
-  - 구현 방법2
-    - I/O가 완료될 때까지 해당 프로그램에게서 CPU를 빼앗음
-    - I/O 처리를 기다리는 줄에 그 프로그램을 줄 세움
-    - 다른 프로그램에게 CPU를 줌
+&lt;blockquote&gt;
+  &lt;p&gt;두 경우 모두 I/O 완료는 인터럽트로 알려준다.&lt;/p&gt;
+&lt;/blockquote&gt;
 
-- 비동기식 입출력(asynchronous I/O)
-  - I/O가 시작된 후 입출력 작업이 끝나기를 기다리지 않고 제어가 사용자 프로그램에 즉시 넘어감
-
-&amp;gt; 두 경우 모두 I/O 완료는 인터럽트로 알려준다.
-
-&lt;br /&gt;
-&lt;/컴퓨터&gt;&lt;/span&gt;&lt;/div&gt;</content><author><name>zangzangs</name></author><category term="os" /><summary type="html">컴퓨터 시스템 구조</summary></entry><entry><title type="html">(1) 운영체제 개요</title><link href="http://localhost:4000/os01" rel="alternate" type="text/html" title="(1) 운영체제 개요" /><published>2021-03-13T19:18:00+09:00</published><updated>2021-03-13T19:18:00+09:00</updated><id>http://localhost:4000/os01</id><content type="html" xml:base="http://localhost:4000/os01">&lt;h2 id=&quot;운영체제의-정의&quot;&gt;운영체제의 정의&lt;/h2&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">컴퓨터 시스템 구조</summary></entry><entry><title type="html">[운영체제] (1) 개요</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" rel="alternate" type="text/html" title="[운영체제] (1) 개요" /><published>2021-03-13T19:18:00+09:00</published><updated>2021-03-13T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html">&lt;h2 id=&quot;운영체제의-정의&quot;&gt;운영체제의 정의&lt;/h2&gt;
 &lt;p&gt;하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
@@ -1106,23 +1157,7 @@ CPU를 한 번 할당받아 사용할 수 있는 시간을 일정하게 고정�
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="os" /><summary type="html">운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층</summary></entry><entry><title type="html">[Interview] JAVA</title><link href="http://localhost:4000/interview-java" rel="alternate" type="text/html" title="[Interview] JAVA" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/interview-java</id><content type="html" xml:base="http://localhost:4000/interview-java">&lt;h1 id=&quot;java-interview&quot;&gt;Java Interview&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;java의 장단점&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;장점
-      &lt;ul&gt;
-        &lt;li&gt;운영체제에 독립적이다.
-          &lt;ul&gt;
-            &lt;li&gt;JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다.&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/li&gt;
-        &lt;li&gt;객체지향 언어이다.&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다.</summary></entry><entry><title type="html">[Interview] 데이터베이스</title><link href="http://localhost:4000/interview-database" rel="alternate" type="text/html" title="[Interview] 데이터베이스" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/interview-database</id><content type="html" xml:base="http://localhost:4000/interview-database">&lt;h3 id=&quot;database-기술면접-준비&quot;&gt;Database 기술면접 준비&lt;/h3&gt;
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층</summary></entry><entry><title type="html">[Interview] 데이터베이스</title><link href="http://localhost:4000/2021/03/12/interview-database.html" rel="alternate" type="text/html" title="[Interview] 데이터베이스" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/2021/03/12/interview-database</id><content type="html" xml:base="http://localhost:4000/2021/03/12/interview-database.html">&lt;h3 id=&quot;database-기술면접-준비&quot;&gt;Database 기술면접 준비&lt;/h3&gt;
 
 &lt;hr /&gt;
 
@@ -1280,8 +1315,8 @@ CPU를 한 번 할당받아 사용할 수 있는 시간을 일정하게 고정�
 전통적인 데이터베이스 RDBMS 보다 덜 제한적인 모델을 이용한다.&lt;/li&gt;
   &lt;li&gt;&lt;/li&gt;
   &lt;li&gt;프로시져&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">Database 기술면접 준비</summary></entry><entry><title type="html">[Interview] CS</title><link href="http://localhost:4000/interview-cs" rel="alternate" type="text/html" title="[Interview] CS" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/interview-cs</id><content type="html" xml:base="http://localhost:4000/interview-cs">&lt;p&gt;#CS 기본 지식 관련
-___&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">Database 기술면접 준비</summary></entry><entry><title type="html">[Interview] CS</title><link href="http://localhost:4000/2021/03/12/interview-cs.html" rel="alternate" type="text/html" title="[Interview] CS" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/2021/03/12/interview-cs</id><content type="html" xml:base="http://localhost:4000/2021/03/12/interview-cs.html">&lt;h2 id=&quot;cs-기본-지식-관련&quot;&gt;CS 기본 지식 관련&lt;/h2&gt;
+&lt;hr /&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;&lt;strong&gt;프로세스와 스레드 차이&lt;/strong&gt;&lt;/p&gt;
@@ -1311,7 +1346,7 @@ ___&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;스트립트 언어는 컴파일 단계 없이 실행 단계에서 한 줄씩 기계어로 번역 후 실행되므로 통상 컴파일 언어보다 실행이 느리다.&lt;/li&gt;
   &lt;li&gt;전체 코드에 대한 실행 코드 최적화가 어려움&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">#CS 기본 지식 관련 ___</summary></entry><entry><title type="html">커넥션 풀을 관리하는 방법, DBCP와 JNDI</title><link href="http://localhost:4000/dbcp-vs-jndi" rel="alternate" type="text/html" title="커넥션 풀을 관리하는 방법, DBCP와 JNDI" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/dbcp-vs-jndi</id><content type="html" xml:base="http://localhost:4000/dbcp-vs-jndi">&lt;p&gt;다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 이야기를 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다.&lt;/p&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">CS 기본 지식 관련</summary></entry><entry><title type="html">커넥션 풀을 관리하는 방법, DBCP와 JNDI</title><link href="http://localhost:4000/2021/03/12/dbcp-vs-jndi.html" rel="alternate" type="text/html" title="커넥션 풀을 관리하는 방법, DBCP와 JNDI" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/2021/03/12/dbcp-vs-jndi</id><content type="html" xml:base="http://localhost:4000/2021/03/12/dbcp-vs-jndi.html">&lt;p&gt;다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 내용을 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -1395,4 +1430,20 @@ Connection Pool을 사용하면 Connection을 생성하고 닫는 시간이 소�
   &lt;li&gt;&lt;a href=&quot;https://d2.naver.com/helloworld/1321&quot;&gt;https://d2.naver.com/helloworld/1321&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://eongeuni.tistory.com/43&quot;&gt;https://eongeuni.tistory.com/43&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://zunoxi.github.io/infra/2020/06/20/infra-db-jdbc/&quot;&gt;https://zunoxi.github.io/infra/2020/06/20/infra-db-jdbc/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="java" /><category term="spring" /><summary type="html">다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 이야기를 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="java" /><category term="spring" /><summary type="html">다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 내용을 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다.</summary></entry><entry><title type="html">[Interview] JAVA</title><link href="http://localhost:4000/2021/03/12/interview-java.html" rel="alternate" type="text/html" title="[Interview] JAVA" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/2021/03/12/interview-java</id><content type="html" xml:base="http://localhost:4000/2021/03/12/interview-java.html">&lt;h1 id=&quot;java-interview&quot;&gt;Java Interview&lt;/h1&gt;
+&lt;hr /&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;java의 장단점&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;장점
+      &lt;ul&gt;
+        &lt;li&gt;운영체제에 독립적이다.
+          &lt;ul&gt;
+            &lt;li&gt;JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다.&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;객체지향 언어이다.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다.</summary></entry></feed>

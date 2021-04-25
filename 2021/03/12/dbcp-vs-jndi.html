@@ -4,20 +4,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c"></meta><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Your awesome title | Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</title>
+<title>커넥션 풀을 관리하는 방법, DBCP와 JNDI | Your awesome title</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="Your awesome title" />
-<meta name="author" content="GitHub User" />
+<meta property="og:title" content="커넥션 풀을 관리하는 방법, DBCP와 JNDI" />
+<meta name="author" content="zangzangs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
-<meta property="og:description" content="Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description." />
-<link rel="canonical" href="http://localhost:4000/404.html" />
-<meta property="og:url" content="http://localhost:4000/404.html" />
+<meta name="description" content="다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 내용을 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다." />
+<meta property="og:description" content="다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 내용을 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다." />
+<link rel="canonical" href="http://localhost:4000/2021/03/12/dbcp-vs-jndi.html" />
+<meta property="og:url" content="http://localhost:4000/2021/03/12/dbcp-vs-jndi.html" />
 <meta property="og:site_name" content="Your awesome title" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-12T19:18:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Your awesome title" />
+<meta property="twitter:title" content="커넥션 풀을 관리하는 방법, DBCP와 JNDI" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"GitHub User"},"url":"http://localhost:4000/404.html","headline":"Your awesome title","description":"Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.","@type":"WebPage","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/2021/03/12/dbcp-vs-jndi.html","headline":"커넥션 풀을 관리하는 방법, DBCP와 JNDI","dateModified":"2021-03-12T19:18:00+09:00","datePublished":"2021-03-12T19:18:00+09:00","description":"다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 내용을 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/03/12/dbcp-vs-jndi.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -520,25 +522,291 @@ function googleTranslateElementInit() {
 </script>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <style type="text/css" media="screen">
-  .container {
-    margin: 10px auto;
-    max-width: 600px;
-    text-align: center;
-  }
-  h1 {
-    margin: 30px 0;
-    font-size: 4em;
-    line-height: 1;
-    letter-spacing: -1px;
-  }
+        <div class="framework">
+  <section class="main">
+
+     <div class="post">
+  <section>
+
+
+
+
+
+
+
+
+
+<header class="post-header">
+  <h1 class="post-title p-name" itemprop="name headline">커넥션 풀을 관리하는 방법, DBCP와 JNDI</h1>
+  <h3 class="post-subtitle"></h3>
+
+  <p class="post-meta">
+    <time class="dt-published" datetime="2021-03-12T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-03-12
+    </time>
+
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
+  </p><div class="post-tags"><a class="post-tag" href="/tags.html#java">#java</a><a class="post-tag" href="/tags.html#spring">#spring</a></div></header>
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+    <div class="post-content e-content" itemprop="articleBody">
+
+      <p>다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 내용을 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다.</p>
+
+<p><br /></p>
+
+<h2 id="커넥션-풀connection-pool이란">커넥션 풀(connection pool)이란</h2>
+
+<p>JAVA에서는 JDBC를 사용해서 커넥션을 생성합니다. 그리고 커넥션 풀은 생성된 커넥션을 관리합니다.</p>
+
+<blockquote>
+  <p><strong>JDBC</strong>( <strong>Java Database Connectivity</strong> )는 자바에서 데이터베이스에 접속할 수 있도록 하는 <strong>자바 표준 API</strong>이다.</p>
+</blockquote>
+
+<p>데이터베이스와 연결된 Connection을 미리 만들어서 pool 속에 저장해 두고 있다가 필요할 때 Connection을 Pool에서 쓰고 다시 Pool에 반환하는 기법을 말합니다.</p>
+
+<p>Pool 속에 미리 Connection이 생성되어 있기 때문에 Connection을 생성하는 시간이 소비되지 않습니다. Connection을 계속해서 재사용하기 때문에 많은 수의 Connection을 만들지는 않습니다. 
+Connection Pool을 사용하면 Connection을 생성하고 닫는 시간이 소모되지 않기 때문에 그만큼 애플리케이션의 실행 속도가 빨라집니다.</p>
+
+<p>한 번에 생성될 수 있는 Connection 수를 제어하기 때문에 동시 접속자 수가 몰려도 애플리케이션이 쉽게 다운되지 않습니다.</p>
+
+<p>Connection Pool에서 생성된 Connection의 개수는 한정적입니다. 동시 접속자가 많아 남아 있는 Connection이 없으면 해당 클라이언트는 대기 상태로 전환이 되고, Connection이 반환되면 대기하고 있는 순서대로 Connection이 제공됩니다.
+<br /></p>
+<div style="text-align:center;">
+    <img src="/assets/images/java/connection-pool.png" alt="커넥션 풀" style="zoom:50%;" />
+</div>
+
+<hr />
+
+<p><br /></p>
+
+<p>커넥션을 관리하는 것은 애플리케이션을 운영하는데 매우 중요합니다. DBCP와 JNDI는 이러한 커넥션 풀을 효율적으로 관리하기 위한 방법입니다.</p>
+
+<p><br /></p>
+
+<h2 id="dbcpdatabase-connection-pool">DBCP(Database Connection Pool)</h2>
+
+<blockquote>
+  <p>데이터베이스  Connection을 <strong>애플리케이션</strong>에서 제어하면서 하나의 커넥션 풀을 가진다.</p>
+</blockquote>
+
+<p>데이터베이스 애플리케이션을 효율적으로 연결하는 커넥션 풀 라이브러리는 웹 애플리케이션에서는 필수 요소입니다. 웹 애플리케이션 서버로 상용 제품을 사용한다면 보통 제조사에서 제공하는 커넥션 풀 구현체를 사용합니다. 그 외에 오픈소스 라이브러리로 Apache의 Commons DBCP와 Tomcat-JDBC, BoneCP, HikariCP 등이 있습니다.</p>
+
+<p>웹 애플리케이션의 요청은 대부분 DBMS를 사용되기 때문에 커넥션 풀 라이브러리의 설정은 전체 애플리케이션의 성능과 안정성에 영향을 미치는 <strong>핵심</strong> 입니다.</p>
+
+<h4 id="특징">특징</h4>
+<ul>
+  <li>데이터베이스와 애플리케이션의 일부분에서 발생하는 문제가 전체로 전파되지 않는다.</li>
+  <li>일시적인 문제가 긴 시간 이어지지 않게 한다.</li>
+  <li>값을 적절하지 못하게 설정해서 커넥션 풀이 애플리케이션에서 병목 지점이 되기도 한다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="jndijava-naming-and-directory-interface">JNDI(Java Naming and Directory Interface)</h2>
+
+<blockquote>
+  <p>데이터베이스  Connection을 <strong>WAS Server</strong>에서 제어하면서 하나의 커넥션 풀을 가진다.</p>
+</blockquote>
+
+<p>JNDI는 디렉터리 서비스에서 제공하는 데이터 및 객체를 발견(discover)하고 참고(lookup)하기 위한 자바 API입니다.</p>
+
+<p><br /></p>
+
+<h4 id="특징-1">특징</h4>
+
+<ul>
+  <li>데이터베이스 설정 정보를 관리가 쉽다.</li>
+  <li>애플리케이션 레벨에서 데이터베이스 Connection에 필요한 설정 정보들을 설정해 놓는다.</li>
+  <li>애플리케이션은 하나이더라도 여러 종류의 데이터베이스를 사용할 수 있다는 점에서 해당 애플리케이션 개발자가 아니라면 정보를 찾는데 꽤나 시간이 걸린다.</li>
+  <li>JNDI를 사용하게 되면 DB Connection 정보를 일반 개발자에게 노출되지 않아 보안상의 이점이 있다.</li>
+</ul>
+
+<p><br /></p>
+
+<h2 id="결론">결론</h2>
+<p>두가지 방식 모두 장단점이 있습니다. 꼭 어떤 방식이 좋고 나쁘다가 아니라 목적에 적합한 방법을 사용하면 됩니다.</p>
+
+<p><br /></p>
+
+<hr />
+<h3 id="refference">Refference</h3>
+<ul>
+  <li><a href="https://d2.naver.com/helloworld/1321">https://d2.naver.com/helloworld/1321</a></li>
+  <li><a href="https://eongeuni.tistory.com/43">https://eongeuni.tistory.com/43</a></li>
+  <li><a href="https://zunoxi.github.io/infra/2020/06/20/infra-db-jdbc/">https://zunoxi.github.io/infra/2020/06/20/infra-db-jdbc/</a></li>
+</ul>
+
+
+    </div>
+
+</article>
+<div class="post-nav"><span></span><a class="next" href="/2021/03/12/interview-cs.html" title="[Interview] CS">[Interview] CS</a></div><div class="post-related">
+      <div>Related Articles</div>
+      <ul>
+        <li><a class="post-link" href="/2021/03/12/interview-database.html" title="[Interview] CS">[Interview] 데이터베이스</a></li><li><a class="post-link" href="/2021/03/12/dbcp-vs-jndi.html" title="[Interview] CS">커넥션 풀을 관리하는 방법, DBCP와 JNDI</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" title="[Interview] CS">[운영체제] (1) 개요</a></li><li><a class="post-link" href="/2021/03/12/interview-java.html" title="[Interview] CS">[Interview] JAVA</a></li></ul>
+    </div><div class="post-comments"></div></section>
+</div>
+
+
+  </section>
+  <section class="sidebar" style="margin-left: 15px;">
+    <!-- Get sidebar items --><style type="text/css" media="screen">
+.post-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 </style>
 
-<div class="container">
-  <h1>404</h1>
+<div class="post-menu">
+  <div class="post-menu-title">개요</div>
+  <div class="post-menu-content"></div>
+</div>
 
-  <p><strong>Page not found :(</strong></p>
-  <p>Try to check other pages through the menu. </p>
+<script>
+  function generateContent() {
+    var menu = document.querySelector(".post-menu");
+    var menuContent =  menu.querySelector(".post-menu-content");
+    var headings = document.querySelector(".post-content").querySelectorAll("h2, h3, h4, h5, h6");
+
+    // Hide menu when no headings
+    if (headings.length === 0) {
+      return menu.style.display = "none";
+    }
+
+    // Generate post menu
+    var menuHTML = '';
+    for (var i = 0; i < headings.length; i++) {
+      var h = headings[i];
+      menuHTML += (
+        '<li class="h-' + h.tagName.toLowerCase() + '">'
+        + '<a href="#h-' + h.getAttribute('id') + '">' + h.textContent + '</a></li>');
+    }
+
+    menuContent.innerHTML = '<ul>' + menuHTML + '</ul>';
+
+    // The header element
+    var header = document.querySelector('header.site-header');
+
+    function doMenuCollapse(index, over_items) {
+      var items = menuContent.firstChild.children;
+
+      if (over_items == undefined) {
+        over_items = 20;
+      }
+
+      if (items.length < over_items) {
+        return;
+      }
+
+      var activeItem = items[index];
+      var beginItem = activeItem
+      var endItem = activeItem
+      var beginIndex = index;
+      var endIndex = index + 1;
+      while (beginIndex >= 0
+        && !items[beginIndex].classList.contains('h-h2')) {
+        beginIndex -= 1;
+      }
+      while (endIndex < items.length
+        && !items[endIndex].classList.contains('h-h2')) {
+        endIndex += 1;
+      }
+      for (var i = 0; i < beginIndex; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+      for (var i = beginIndex + 1; i < endIndex; i++) {
+        item = items[i]
+        // if (!item.classList.contains('h-h2')) {
+          item.style.display = '';
+        // }
+      }
+      for (var i = endIndex; i < items.length; i++) {
+        item = items[i]
+        if (!item.classList.contains('h-h2')) {
+          item.style.display = 'none';
+        }
+      }
+    }
+
+    // Init menu collapsed
+    doMenuCollapse(-1);
+
+    // Active the menu item
+    window.addEventListener('scroll', function (event) {
+      var lastActive = menuContent.querySelector('.active');
+      var changed = true;
+      var activeIndex = -1;
+      for (var i = headings.length - 1; i >= 0; i--) {
+        var h = headings[i];
+        var headingRect = h.getBoundingClientRect();
+        var headerRect = header.getBoundingClientRect();
+        var headerTop = Math.floor(headerRect.top);
+        var headerHeight = Math.floor(headerRect.height);
+        var headerHeight = headerTop + headerHeight + 20;
+        if (headingRect.top <= headerHeight) {
+          var id = 'h-' + h.getAttribute('id');
+          var a = menuContent.querySelector('a[href="#' + id  + '"]');
+          var curActive = a.parentNode;
+          if (curActive) {
+            curActive.classList.add('active');
+            activeIndex = i;
+          }
+          if (lastActive == curActive) {
+            changed = false;
+          }
+          break;
+        }
+      }
+      if (changed) {
+        if (lastActive) {
+          lastActive.classList.remove('active');
+        }
+        doMenuCollapse(activeIndex);
+      }
+      event.preventDefault();
+    });
+  }
+  generateContent();
+</script>
+</section>
 </div>
 
       </div>
