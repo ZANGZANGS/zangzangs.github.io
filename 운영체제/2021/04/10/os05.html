@@ -578,7 +578,7 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 4 mins</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span>
   </p><div class="post-tags"><a class="post-tag" href="/tags.html#os">#os</a></div></header>
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
@@ -659,9 +659,7 @@ function googleTranslateElementInit() {
   </li>
   <li>Throughput(처리량)
     <ul>
-      <li>
-        <h1 id="of-processes-that-complete-their-execution-per-time-unit">of processes that complete their execution per time unit</h1>
-      </li>
+      <li>of processes that complete their execution per time unit</li>
     </ul>
   </li>
   <li>Turnaround time (소요시간, 반환시간)
@@ -689,11 +687,22 @@ function googleTranslateElementInit() {
 
 <h3 id="fcfs-first-come-first-served">FCFS (First-Come First-Served)</h3>
 
-<p>먼저 도착한 프로세스 순서대로 처리</p>
+<p>프로세스가 준비 큐에 도착한 시간 순서대로 CPU를 할당하는 방식을 말한다.</p>
 
-<p>콘보이 이펙트</p>
+<ul>
+  <li>CPU를 먼저 요청한 프로세스에게 CPU를 할당</li>
+  <li>프로세스가 자발적으로 CPU를 반납할 때까지 CPU를 빼앗지 않음</li>
+  <li>콘보이 현상(convoy effect)이 발생
+    <ul>
+      <li>먼저 도착한 프로세스의 성격에 따라 평균시간이 크게 달라짐</li>
+      <li>긴 프로세스 짧은 프로세스가 순서대로 오면 뒤 쪽의 짧은 프로세스는 많은 시간 기다려야 함</li>
+    </ul>
+  </li>
+</ul>
+
 <h3 id="sjfshortest-job_first">SJF(Shortest-Job_First)</h3>
-<p>가장 짧은 시간의 job을 먼저 처리</p>
+<p>CPU 버스트가 가장 짧은 프로세스에 CPU를 먼저 할당하는 방식을 말한다.
+평균 시간을 가장 짧게 하는 최적 알고리즘으로 알려져 있다.</p>
 
 <ul>
   <li>nonpreemptive
@@ -710,7 +719,15 @@ function googleTranslateElementInit() {
 
 <h3 id="srtfshortest-remaining-time-first">SRTF(Shortest-Remaining-Time-First)</h3>
 
+<p>SJF의 선점형(preemptive) 구현 방식을 말한다.</p>
+
 <h3 id="priority-scheduling">Priority Scheduling</h3>
+<ul>
+  <li>우선순위가 가장 높은 프로세스에게 제일 먼저 CPU를 할당한다.</li>
+  <li>우선순위값이 작을수록 높은 우선 순위를 갖는다.</li>
+  <li>CPU버스트 시간을 우선순위값으로 정의하면 우선순위 스케줄링은 SFJ알고리즘과 동일한 의미를 갖게 된다.</li>
+  <li>우선순위가 높은 프로세스가 계속 도착하여 대기중인 프로세스가 계속 대기하는 기아 현상이 발생 할 수 있다. 대기중인 프로세스의 우선순위를 조금씩 높이는 aging 방법으로 해결 할 수 있다.</li>
+</ul>
 
 <h3 id="round-robin라운드-로빈">Round Robin(라운드 로빈)</h3>
 <ul>
@@ -718,6 +735,9 @@ function googleTranslateElementInit() {
   <li>할당 시간이 지나면 프로세스는 선점(preempted)당하고 ready queue의 제일 뒤에 가서 다시 줄을 선다</li>
   <li>n 개의 프로세스가 ready queue에 있고 할당 시간이 q  time unit인 경우 각 프로세스는 최대 q time unit 단위로 CPU 시간의 1/n을 얻는다.
 =&gt; 어떤 프로세스도 (n-1)q time unit 이상 기다리지 않는다.</li>
+  <li>할당시간이 너무 길면 FCFS와 같은 결과가 나온다.</li>
+  <li>할당시간이 너무 짧으면 오버헤드가 커지는 문제가 발생한다.</li>
+  <li>라운드로빈 스케줄링은 여러종류의 이질적인 프로세스가 실행중일 때 효과적이다.</li>
 </ul>
 
 <h3 id="multilevel-queue">Multilevel Queue</h3>
@@ -735,7 +755,6 @@ function googleTranslateElementInit() {
 <ul>
   <li>프로세스가 다른 큐로 이동 가능</li>
   <li>에이징을 이와 같은 방식으로 구현할 수 있다.</li>
-  <li></li>
 </ul>
 
 <h3 id="multiple-processor-scheduling">Multiple-Processor Scheduling</h3>
@@ -827,10 +846,10 @@ function googleTranslateElementInit() {
     </div>
 
 </article>
-<div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (4) 프로세스 관리">[운영체제] (4) 프로세스 관리</a><span></span></div><div class="post-related">
+<div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" title="[운영체제] (5) 병행제어">[운영체제] (5) 병행제어</a><a class="next" href="/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4.html" title="뷰 인스턴스">뷰 인스턴스</a></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/2021/03/12/interview-cs.html" title="">[Interview] CS</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="">[운영체제] (3) 프로그램의 구조와 실행</a></li><li><a class="post-link" href="/2021/03/12/interview-database.html" title="">[Interview] 데이터베이스</a></li><li><a class="post-link" href="/2021/03/12/interview-java.html" title="">[Interview] JAVA</a></li></ul>
+        <li><a class="post-link" href="/2021/03/12/interview-database.html" title="뷰 인스턴스">[Interview] 데이터베이스</a></li><li><a class="post-link" href="/2021/03/12/interview-cs.html" title="뷰 인스턴스">[Interview] CS</a></li><li><a class="post-link" href="/2021/04/30/vue-%EB%9D%BC%EC%9A%B0%ED%84%B0.html" title="뷰 인스턴스">뷰 라우터</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="뷰 인스턴스">[운영체제] (5) CPU 스케줄링</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 

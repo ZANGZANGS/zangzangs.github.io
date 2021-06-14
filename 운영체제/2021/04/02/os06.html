@@ -4,22 +4,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c"></meta><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>[Interview] JAVA | Your awesome title</title>
+<title>[운영체제] (5) 병행제어 | Your awesome title</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="[Interview] JAVA" />
+<meta property="og:title" content="[운영체제] (5) 병행제어" />
 <meta name="author" content="zangzangs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다." />
-<meta property="og:description" content="Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다." />
-<link rel="canonical" href="http://localhost:4000/2021/03/12/interview-java.html" />
-<meta property="og:url" content="http://localhost:4000/2021/03/12/interview-java.html" />
+<meta name="description" content="Race Condition" />
+<meta property="og:description" content="Race Condition" />
+<link rel="canonical" href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" />
+<meta property="og:url" content="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-03-12T19:18:00+09:00" />
+<meta property="article:published_time" content="2021-04-02T19:18:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[Interview] JAVA" />
+<meta property="twitter:title" content="[운영체제] (5) 병행제어" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/2021/03/12/interview-java.html","headline":"[Interview] JAVA","dateModified":"2021-03-12T19:18:00+09:00","datePublished":"2021-03-12T19:18:00+09:00","description":"Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/03/12/interview-java.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html","headline":"[운영체제] (5) 병행제어","dateModified":"2021-04-02T19:18:00+09:00","datePublished":"2021-04-02T19:18:00+09:00","description":"Race Condition","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -537,11 +537,11 @@ function googleTranslateElementInit() {
 
 
 <header class="post-header">
-  <h1 class="post-title p-name" itemprop="name headline">[Interview] JAVA</h1>
+  <h1 class="post-title p-name" itemprop="name headline">[운영체제] (5) 병행제어</h1>
   <h3 class="post-subtitle"></h3>
 
   <p class="post-meta">
-    <time class="dt-published" datetime="2021-03-12T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-03-12
+    <time class="dt-published" datetime="2021-04-02T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-04-02
     </time>
 
     
@@ -579,37 +579,80 @@ function googleTranslateElementInit() {
 
 
     <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-  </p><div class="post-tags"><a class="post-tag" href="/tags.html#interview">#interview</a></div></header>
+  </p><div class="post-tags"><a class="post-tag" href="/tags.html#os">#os</a></div></header>
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      <h1 id="java-interview">Java Interview</h1>
-<hr />
-<blockquote>
-  <p>java의 장단점</p>
-  <ul>
-    <li>장점
-      <ul>
-        <li>운영체제에 독립적이다.
-          <ul>
-            <li>JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다.</li>
-          </ul>
-        </li>
-        <li>객체지향 언어이다.</li>
-      </ul>
-    </li>
-  </ul>
-</blockquote>
+      <h2 id="race-condition">Race Condition</h2>
+
+<p>하나의 Storage에 다수가 접근하는 경우 발생한다.</p>
+
+<h3 id="언제-발생하는가">언제 발생하는가?</h3>
+
+<ol>
+  <li>커널 수행 중 인터럽트 발생 시</li>
+</ol>
+
+<p>그림 설명
+커널 수행 중에 인터럽트 처리 못하게 disable 한다. 커널 수행이 끝난 후 인터럽트 처리를 enable 하게 변경한다.</p>
+
+<ol>
+  <li>프로세스가 시스템콜을 하여 커널 모드로 수행 중인데 문맥교환이 일어나는 경우</li>
+</ol>
+
+<p>그림 설명</p>
+
+<ol>
+  <li>멀티프로세서에서 공유 메모리 내의 커널 데이타를 사용하는 경우</li>
+</ol>
+
+<h2 id="프로세스-동기화-문제">프로세스 동기화 문제</h2>
+
+<ul>
+  <li>공유데이터의 동시 접근은 데이터의 불일치 문제를 발생시킬 수 있다</li>
+  <li>일관성 유지를 위해서는 협력 프로세스 간의 실행 순서를 정해주는 메커니즘 필요</li>
+  <li>레이스 컨디션
+    <ul>
+      <li>여러 프로세스들이 동시에 공유 데이터를 접근하는 상황</li>
+      <li>데이터의 최종 연산 결과는 마지막에 그 데이터를 다룬 프로세스에 따라 달라짐</li>
+    </ul>
+  </li>
+  <li>레이스 컨디션을 막기 위해서는 concurrent process는 동기화되어야 한다.</li>
+</ul>
+
+<p>## Critical-Section Problem</p>
+<ul>
+  <li>n 개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우</li>
+  <li>각 프로세스의 code segment에는 공유 데이터를 접근하는 코드인 critical section이 존재</li>
+  <li>Problem
+    <ul>
+      <li>하나의 프로세스가 critical section에 있을 때 다른 모든 프로세스는 critical section에 들어갈 수 없어야 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="프로그램적-해결법의-충족-조건">프로그램적 해결법의 충족 조건</h2>
+
+<ul>
+  <li>상호 배제 (Mutual Exclusion)</li>
+  <li>진행 (Progress)</li>
+  <li>유한대기 (Bounded Waiting)</li>
+</ul>
+
+<h2 id="synchronization-hardware">Synchronization Hardware</h2>
+<ul>
+  <li>하드웨어적으로 Test &amp; modify를 atomic하게 수행할 수 있도록 지원하는 경우 앞의 문제는 간단히 해결</li>
+</ul>
 
 
     </div>
 
 </article>
-<div class="post-nav"><a class="previous" href="/2021/03/12/interview-database.html" title="[Interview] 데이터베이스">[Interview] 데이터베이스</a><a class="next" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" title="[운영체제] (1) 개요">[운영체제] (1) 개요</a></div><div class="post-related">
+<div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (4) 프로세스 관리">[운영체제] (4) 프로세스 관리</a><a class="next" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (5) CPU 스케줄링</a></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/2021/03/12/interview-cs.html" title="[운영체제] (1) 개요">[Interview] CS</a></li><li><a class="post-link" href="/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4.html" title="[운영체제] (1) 개요">뷰 인스턴스</a></li><li><a class="post-link" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" title="[운영체제] (1) 개요">뷰 엑시오스(Axios) 메서드와 옵션</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="[운영체제] (1) 개요">[운영체제] (3) 프로그램의 구조와 실행</a></li></ul>
+        <li><a class="post-link" href="/2021/03/12/interview-cs.html" title="[운영체제] (5) CPU 스케줄링">[Interview] CS</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (2) 컴퓨터 시스템의 동작 원리</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (5) 병행제어</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (4) 프로세스 관리</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 

@@ -594,10 +594,10 @@ function googleTranslateElementInit() {
 </div>
 
 <h3 id="1-cpu">1. CPU</h3>
-<p>중앙처리장치라 불리는 CPU는 인간의 <strong>두뇌</strong>와 같은 역할을 합니다. <strong>중앙처리장치</strong> 라는 말 그대로 중앙에서 사용자가 입력한 명령어를 해석하고 연산한 후 그 결과를</p>
+<p>중앙처리장치라 불리는 CPU는 인간의 <strong>두뇌</strong>와 같은 역할을 합니다. <strong>중앙처리장치(central processing unit)</strong> 라는 말 그대로 중앙에서 사용자가 입력한 명령어를 해석하고 연산한 후 그 결과를</p>
 
 <h3 id="2-메모리">2. 메모리</h3>
-<p>랜덤 액세스 메모리 즉, 램(RAM)은 임의의 영역에 접근하여 읽고 쓰기가 가능한 주기억 장치다. RAM은 어느 위치에 저장된 데이터든지 접근(읽기 및 쓰기)하는 데 동일한 시간이 걸리는 메모리이기에 ‘랜덤(Random, 무작위)’이라는 명칭이 주어진다.</p>
+<p>랜덤 액세스 메모리(Random Access Memory) 즉, 램(RAM)은 임의의 영역에 접근하여 읽고 쓰기가 가능한 주기억 장치다. RAM은 어느 위치에 저장된 데이터든지 접근(읽기 및 쓰기)하는 데 동일한 시간이 걸리는 메모리이기에 ‘랜덤(Random, 무작위)’이라는 명칭이 주어진다.</p>
 
 <p><br /></p>
 
@@ -653,7 +653,7 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원</
     <ul>
       <li>정해진 시간이 흐른 뒤 운영체제에게 제어권이 넘어가도록 인터럽트를 발생</li>
       <li>타이머는 매 클럭 틱 때마다 1씩 감소</li>
-      <li>타이머 값이 -이 되면 타이머 인터럽트 발생</li>
+      <li>타이머 값이 -(마이너스)가 되면 타이머 인터럽트 발생</li>
       <li>CPU를 특정 프로그램이 독점하는 것으로부터 보호</li>
     </ul>
   </li>
@@ -665,14 +665,15 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원</
 
 <h3 id="7-dma-controller">7. DMA Controller</h3>
 
-<p>메모리에 접근할 수 있는 장치는 CPU가 유일하다. 메모리는 CPU의 작업 공간이다. I/O장치나 다른 장치들이 접근 할 수 없다. 그렇다보니 1ms 마다 인터럽트가 발생한다면 CPU는 계속해서 자잘한 인터럽트를 처리해야하는 이슈가 있다. 그래서 메모리에 접근 할 수 있도록 도와주는 장치가 DMA 컨트롤러이다.</p>
+<p>메모리에 접근할 수 있는 장치는 CPU가 유일하다. 메모리는 CPU의 작업 공간이다. I/O장치나 다른 장치들이 접근 할 수 없다. 그렇다보니 1ms 마다 인터럽트가 발생한다면 CPU는 계속해서 자잘한 인터럽트를 처리해야하는 문제가 생긴다. 때문에 이를 해결하기 위해 메모리에 접근 할 수 있도록 도와주는 장치가 DMA 컨트롤러이다.</p>
 
 <ul>
   <li>빠른 입출력 장치를 메모리에 가까운 속도로 처리하기 위해 사용</li>
-  <li>CPU의 중재 없이 device controller가 device의 buffer storage의 내용을 메모리에 block 단위로 직접 전손</li>
+  <li>CPU의 중재 없이 device controller가 device의 buffer storage의 내용을 메모리에 block 단위로 직접 전송</li>
   <li>바이트 단위가 아니라 block 단위로 인터럽트를 발생시킴</li>
-  <li><br /></li>
 </ul>
+
+<p><br /></p>
 
 <h3 id="8-pcprogram-counter">8. PC(Program counter)</h3>
 <p>CPU의 레지스터중 하나.
@@ -681,10 +682,8 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
 
 <p><br /></p>
 
-<hr />
-
 <h2 id="인터럽트interrupt">인터럽트(Interrupt)</h2>
-<h3 id="인터럽트">인터럽트</h3>
+
 <ul>
   <li>현대의 운영체제는 인터럽트에 의해 구동된다.</li>
   <li>인터럽트 당한 시점의 레지스터와 Program counter를 save 한 후 CPU의 제어를 인터럽트 처리 루틴에 넘긴다.</li>
@@ -733,12 +732,12 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
 <p><br /></p>
 
 <blockquote>
-  <p>질문: 운영체제한테 CPU가 넘어가는 경우</p>
+  <p><strong>Q. 운영체제한테 CPU가 넘어가는 경우는 언제인가?</strong></p>
   <ul>
     <li>인터럽트 발생(Interrupt Line 사용하는 경우)
       <ul>
         <li>하드웨어 장치들이 I/O가 인터럽트를 요청 할 때</li>
-        <li>timer 가 정해진 시간이 지난 후에 CPU에 제어권을 넘긴다.</li>
+        <li>timer 가 정해진 시간이 지난 후에 CPU에 제어권을 넘기는 경우</li>
         <li>시스템 콜 발생시</li>
       </ul>
     </li>
@@ -747,8 +746,6 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
 </blockquote>
 
 <p><br /></p>
-
-<hr />
 
 <h2 id="동기식-입출력과-비동기식-입출력">동기식 입출력과 비동기식 입출력</h2>
 
@@ -791,7 +788,7 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
 <div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" title="[운영체제] (1) 개요">[운영체제] (1) 개요</a><a class="next" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="[운영체제] (3) 프로그램의 구조와 실행">[운영체제] (3) 프로그램의 구조와 실행</a></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" title="[운영체제] (3) 프로그램의 구조와 실행">[운영체제] (2) 컴퓨터 시스템의 동작 원리</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="[운영체제] (3) 프로그램의 구조와 실행">[운영체제] (5) CPU 스케줄링</a></li><li><a class="post-link" href="/2021/03/12/dbcp-vs-jndi.html" title="[운영체제] (3) 프로그램의 구조와 실행">커넥션 풀을 관리하는 방법, DBCP와 JNDI</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (3) 프로그램의 구조와 실행">[운영체제] (4) 프로세스 관리</a></li></ul>
+        <li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="[운영체제] (3) 프로그램의 구조와 실행">[운영체제] (5) CPU 스케줄링</a></li><li><a class="post-link" href="/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4.html" title="[운영체제] (3) 프로그램의 구조와 실행">뷰 인스턴스</a></li><li><a class="post-link" href="/2021/03/12/interview-cs.html" title="[운영체제] (3) 프로그램의 구조와 실행">[Interview] CS</a></li><li><a class="post-link" href="/2021/03/12/dbcp-vs-jndi.html" title="[운영체제] (3) 프로그램의 구조와 실행">커넥션 풀을 관리하는 방법, DBCP와 JNDI</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 

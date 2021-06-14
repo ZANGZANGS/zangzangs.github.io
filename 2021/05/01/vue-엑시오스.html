@@ -4,22 +4,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c"></meta><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>[Interview] JAVA | Your awesome title</title>
+<title>뷰 엑시오스(Axios) 메서드와 옵션 | Your awesome title</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="[Interview] JAVA" />
+<meta property="og:title" content="뷰 엑시오스(Axios) 메서드와 옵션" />
 <meta name="author" content="zangzangs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다." />
-<meta property="og:description" content="Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다." />
-<link rel="canonical" href="http://localhost:4000/2021/03/12/interview-java.html" />
-<meta property="og:url" content="http://localhost:4000/2021/03/12/interview-java.html" />
+<meta name="description" content="액시오스(Axios) http 통신을 하기 위한 라이브러리로 Promise 기반의 API형식이 다양하게 제공된다. 따라서 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현할 수 있습니다." />
+<meta property="og:description" content="액시오스(Axios) http 통신을 하기 위한 라이브러리로 Promise 기반의 API형식이 다양하게 제공된다. 따라서 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현할 수 있습니다." />
+<link rel="canonical" href="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" />
+<meta property="og:url" content="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-03-12T19:18:00+09:00" />
+<meta property="article:published_time" content="2021-05-01T20:11:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[Interview] JAVA" />
+<meta property="twitter:title" content="뷰 엑시오스(Axios) 메서드와 옵션" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/2021/03/12/interview-java.html","headline":"[Interview] JAVA","dateModified":"2021-03-12T19:18:00+09:00","datePublished":"2021-03-12T19:18:00+09:00","description":"Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/03/12/interview-java.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html","headline":"뷰 엑시오스(Axios) 메서드와 옵션","dateModified":"2021-05-01T20:11:00+09:00","datePublished":"2021-05-01T20:11:00+09:00","description":"액시오스(Axios) http 통신을 하기 위한 라이브러리로 Promise 기반의 API형식이 다양하게 제공된다. 따라서 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현할 수 있습니다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -537,11 +537,11 @@ function googleTranslateElementInit() {
 
 
 <header class="post-header">
-  <h1 class="post-title p-name" itemprop="name headline">[Interview] JAVA</h1>
+  <h1 class="post-title p-name" itemprop="name headline">뷰 엑시오스(Axios) 메서드와 옵션</h1>
   <h3 class="post-subtitle"></h3>
 
   <p class="post-meta">
-    <time class="dt-published" datetime="2021-03-12T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-03-12
+    <time class="dt-published" datetime="2021-05-01T20:11:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-05-01
     </time>
 
     
@@ -578,38 +578,401 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-  </p><div class="post-tags"><a class="post-tag" href="/tags.html#interview">#interview</a></div></header>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 6 mins</span>
+  </p></header>
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      <h1 id="java-interview">Java Interview</h1>
-<hr />
+      <h2 id="액시오스axios">액시오스(Axios)</h2>
+<p>http 통신을 하기 위한 라이브러리로 Promise 기반의 API형식이 다양하게 제공된다. 따라서 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현할 수 있습니다.</p>
+
 <blockquote>
-  <p>java의 장단점</p>
-  <ul>
-    <li>장점
-      <ul>
-        <li>운영체제에 독립적이다.
-          <ul>
-            <li>JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다.</li>
-          </ul>
-        </li>
-        <li>객체지향 언어이다.</li>
-      </ul>
-    </li>
-  </ul>
+  <p><strong>promise 기반의 API 형식</strong>
+Pormise란 서버에 데이터를 요청하여 받아오는 동작과 같은 비동기 로직 처리에 유용한 javascript 객체입니다. javascript는 단일 스레드로 코드를 처리하기 때문에 특정 로직의 처리가 끝날 때까지 기다려주지 않습니다. 따라서 데이터를 요청하고 받아올 때까지 기다렸다가 화면에 나타내는 로직을 실행해야 할 때 주로 Promise를 활용합니다. 그리고 데이터를 받아왔을 때 Promise로 데이터를 화면에  표시하거나 연산을 수행하는 등 특정 로직을 수행합니다.</p>
 </blockquote>
+
+<blockquote>
+  <p><strong>뷰 리소스</strong>
+엑시오스와 마찬가지로 http 통신을 위한 라이브러리이다. 엑시오스에 이어 두 번째로 많이 사용되고 있다.</p>
+</blockquote>
+
+<h2 id="액시오스-request-methods">액시오스 Request methods</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">옵션</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left">axios.request(config)</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">axios.get(url[, config])</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">axios.delete(url[, config])</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">axios.head(url[, config])</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">axios.options(url[, config])</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">axios.post(url[, data[, config]])</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">axios.put(url[, data[, config]])</td>
+    </tr>
+    <tr>
+      <td style="text-align: left">axios.patch(url[, data[, config]])</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="config-옵션">Config 옵션</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+  url: '/user',
+  method: 'get', // default
+  baseURL: 'https://some-domain.com/api/',
+  transformRequest: [function (data, headers) {
+    // Do whatever you want to transform the data
+    return data;
+  }],
+  transformResponse: [function (data) {
+    // Do whatever you want to transform the data
+    return data;
+  }],
+  headers: {'X-Requested-With': 'XMLHttpRequest'},
+  params: {
+    ID: 12345
+  },
+  paramsSerializer: function (params) {
+    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  },
+  data: {
+    firstName: 'Fred'
+  },
+  timeout: 1000, // default is `0` (no timeout)
+  withCredentials: false, // default
+  adapter: function (config) {
+    /* ... */
+  },
+  auth: {
+    username: 'janedoe',
+    password: 's00pers3cret'
+  },
+  responseType: 'json', // default
+  responseEncoding: 'utf8', // default
+  xsrfCookieName: 'XSRF-TOKEN', // default
+  xsrfHeaderName: 'X-XSRF-TOKEN', // default
+  onUploadProgress: function (progressEvent) {
+    // Do whatever you want with the native progress event
+  },
+  onDownloadProgress: function (progressEvent) {
+    // Do whatever you want with the native progress event
+  },
+  maxContentLength: 2000,
+  maxBodyLength: 2000,
+  validateStatus: function (status) {
+    return status &gt;= 200 &amp;&amp; status &lt; 300; // default
+  },
+  maxRedirects: 5, // default
+  socketPath: null, // default
+  httpAgent: new http.Agent({ keepAlive: true }),
+  httpsAgent: new https.Agent({ keepAlive: true }),
+  proxy: {
+    protocol: 'https',
+    host: '127.0.0.1',
+    port: 9000,
+    auth: {
+      username: 'mikeymike',
+      password: 'rapunz3l'
+    }
+  },
+  cancelToken: new CancelToken(function (cancel) {
+  }),
+  decompress: true // default 
+  transitional: {
+    silentJSONParsing: true; // default value for the current Axios version
+    forcedJSONParsing: true;
+    clarifyTimeoutError: false;
+  }
+}
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">옵션</th>
+      <th style="text-align: left">설명</th>
+      <th style="text-align: left">기타</th>
+      <th> </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">url</td>
+      <td style="text-align: left">request를 요청할 서버 주소</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">method</td>
+      <td style="text-align: left">request를 요청 방법</td>
+      <td style="text-align: left">get, post, put …</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">baseURL</td>
+      <td style="text-align: left">url이 절대적인 경우가 아니라면</td>
+      <td style="text-align: left">https://some-domain.com/api/</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">transformRequest</td>
+      <td style="text-align: left">서버에 request전에 data를 변환 PUT, POST, PATCH, DELETE 메소드의 경우 적용 가능</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">transformResponse</td>
+      <td style="text-align: left">then/catch 전에 respponse 데이터를 변환한다</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">headers</td>
+      <td style="text-align: left">XMLHttpRequest</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">params</td>
+      <td style="text-align: left">request시 보낼 URL parameters, 반드시  plain object로 전송</td>
+      <td style="text-align: left">params: {ID: 12345}</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">paramsSerializer</td>
+      <td style="text-align: left">params을 serializing (직렬화) 하기 위한 옵션 함수</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">data</td>
+      <td style="text-align: left">request body로서 전송하는 데이타</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">timeout</td>
+      <td style="text-align: left">milliseconds 단위로 timeout 초과시 요청이 중단된다.</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">withCredentials</td>
+      <td style="text-align: left">cross-site Access 허용할지 선택한다. 기본값 false</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">adapter</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">auth</td>
+      <td style="text-align: left">Authorization 헤더를 세팅해야 함.</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">responseType</td>
+      <td style="text-align: left">기본값 json</td>
+      <td style="text-align: left">arraybuffer, document, json, text, stream</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">responseEncoding</td>
+      <td style="text-align: left">response 인코딩 설정. 기본값 utf8</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">xsrfCookieName</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">xsrfHeaderName</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">onUploadProgress</td>
+      <td style="text-align: left">업로드 프로그래스 이벤트를 핸들링합니다.</td>
+      <td style="text-align: left">이해X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">onDownloadProgress</td>
+      <td style="text-align: left">다운로드 프로그래스 이벤트를 핸들링합니다.</td>
+      <td style="text-align: left">이해X</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">maxContentLength</td>
+      <td style="text-align: left">response content의 최대 byte 수를 정의함</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">maxBodyLength</td>
+      <td style="text-align: left">response body의 최대 byte 수를 정의함</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">validateStatus</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">maxRedirects</td>
+      <td style="text-align: left">node.js에서 최대 리다이렉트 개수를 설정함. 기본값 5</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">socketPath</td>
+      <td style="text-align: left">node.js에서 UNIX 소켓을 정의함. 기본값 null</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">httpAgent<br />httpsAgent</td>
+      <td style="text-align: left">커스텀 agent를 정의한다</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">proxy</td>
+      <td style="text-align: left">프록시 서버의 hostname, port, and protocol를 정의함</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">cancelToken</td>
+      <td style="text-align: left">이전 request의 취소.. 이해 X</td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">decompress</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">transitional</td>
+      <td style="text-align: left"> </td>
+      <td style="text-align: left"> </td>
+      <td> </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="액시오스-response">액시오스 Response</h2>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>{
+    data: {},
+    status: 200,
+    statusText: 'OK',
+    headers: {},
+    config: {},
+    request: {}
+}
+</code></pre></div></div>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: center">스키마</th>
+      <th style="text-align: left">설명</th>
+      <th style="text-align: left">기타</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: center">data</td>
+      <td style="text-align: left">서버에서 제공하는 응답 데이터</td>
+      <td style="text-align: left">{fe1: “Angular”, fe2: “React”, fe3: “Vue.js”}</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">status</td>
+      <td style="text-align: left">HTTP status 코드</td>
+      <td style="text-align: left">status: 200</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">statusText</td>
+      <td style="text-align: left">HTTP status 메시지</td>
+      <td style="text-align: left">statusText: ‘OK’</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">headers</td>
+      <td style="text-align: left">서버에서 응답한 HTTP 헤더 정보</td>
+      <td style="text-align: left">response.headers[‘content-type’]</td>
+    </tr>
+    <tr>
+      <td style="text-align: center">config</td>
+      <td style="text-align: left">axios request에 주어진 config정보</td>
+      <td style="text-align: left"> </td>
+    </tr>
+    <tr>
+      <td style="text-align: center">request</td>
+      <td style="text-align: left">응답을 생성한 request (ClientRequest , XMLHttpRequest)</td>
+      <td style="text-align: left"> </td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<h2 id="reference">reference</h2>
+<ul>
+  <li><a href="https://google.com">구글</a></li>
+  <li><a href="https://www.naver.com/">네이버</a></li>
+</ul>
 
 
     </div>
 
 </article>
-<div class="post-nav"><a class="previous" href="/2021/03/12/interview-database.html" title="[Interview] 데이터베이스">[Interview] 데이터베이스</a><a class="next" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" title="[운영체제] (1) 개요">[운영체제] (1) 개요</a></div><div class="post-related">
+<div class="post-nav"><a class="previous" href="/2021/04/30/vue-%EB%9D%BC%EC%9A%B0%ED%84%B0.html" title="뷰 라우터">뷰 라우터</a><span></span></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/2021/03/12/interview-cs.html" title="[운영체제] (1) 개요">[Interview] CS</a></li><li><a class="post-link" href="/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4.html" title="[운영체제] (1) 개요">뷰 인스턴스</a></li><li><a class="post-link" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" title="[운영체제] (1) 개요">뷰 엑시오스(Axios) 메서드와 옵션</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="[운영체제] (1) 개요">[운영체제] (3) 프로그램의 구조와 실행</a></li></ul>
+        <li><a class="post-link" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" title="">뷰 엑시오스(Axios) 메서드와 옵션</a></li><li><a class="post-link" href="/2021/03/12/interview-database.html" title="">[Interview] 데이터베이스</a></li><li><a class="post-link" href="/2021/04/28/vue-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8.html" title="">뷰 컴포넌트</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="">[운영체제] (4) 프로세스 관리</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 

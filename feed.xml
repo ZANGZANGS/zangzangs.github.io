@@ -1,4 +1,539 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-04-25T23:32:40+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (5) CPU 스케줄링</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" rel="alternate" type="text/html" title="[운영체제] (5) CPU 스케줄링" /><published>2021-04-10T19:18:00+09:00</published><updated>2021-04-10T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html">&lt;p&gt;사용자 프로그램이 수행되는 과정은 &lt;strong&gt;CPU 작업과 I/O 작업의 반복&lt;/strong&gt;으로 수행된다.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-14T22:54:05+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">뷰 엑시오스(Axios) 메서드와 옵션</title><link href="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" rel="alternate" type="text/html" title="뷰 엑시오스(Axios) 메서드와 옵션" /><published>2021-05-01T20:11:00+09:00</published><updated>2021-05-01T20:11:00+09:00</updated><id>http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4</id><content type="html" xml:base="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html">&lt;h2 id=&quot;액시오스axios&quot;&gt;액시오스(Axios)&lt;/h2&gt;
+&lt;p&gt;http 통신을 하기 위한 라이브러리로 Promise 기반의 API형식이 다양하게 제공된다. 따라서 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현할 수 있습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;promise 기반의 API 형식&lt;/strong&gt;
+Pormise란 서버에 데이터를 요청하여 받아오는 동작과 같은 비동기 로직 처리에 유용한 javascript 객체입니다. javascript는 단일 스레드로 코드를 처리하기 때문에 특정 로직의 처리가 끝날 때까지 기다려주지 않습니다. 따라서 데이터를 요청하고 받아올 때까지 기다렸다가 화면에 나타내는 로직을 실행해야 할 때 주로 Promise를 활용합니다. 그리고 데이터를 받아왔을 때 Promise로 데이터를 화면에  표시하거나 연산을 수행하는 등 특정 로직을 수행합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;뷰 리소스&lt;/strong&gt;
+엑시오스와 마찬가지로 http 통신을 위한 라이브러리이다. 엑시오스에 이어 두 번째로 많이 사용되고 있다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;액시오스-request-methods&quot;&gt;액시오스 Request methods&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;axios.post('/user', {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;옵션&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios.request(config)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios.get(url[, config])&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios.delete(url[, config])&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios.head(url[, config])&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios.options(url[, config])&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios.post(url[, data[, config]])&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios.put(url[, data[, config]])&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios.patch(url[, data[, config]])&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;config-옵션&quot;&gt;Config 옵션&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+  url: '/user',
+  method: 'get', // default
+  baseURL: 'https://some-domain.com/api/',
+  transformRequest: [function (data, headers) {
+    // Do whatever you want to transform the data
+    return data;
+  }],
+  transformResponse: [function (data) {
+    // Do whatever you want to transform the data
+    return data;
+  }],
+  headers: {'X-Requested-With': 'XMLHttpRequest'},
+  params: {
+    ID: 12345
+  },
+  paramsSerializer: function (params) {
+    return Qs.stringify(params, {arrayFormat: 'brackets'})
+  },
+  data: {
+    firstName: 'Fred'
+  },
+  timeout: 1000, // default is `0` (no timeout)
+  withCredentials: false, // default
+  adapter: function (config) {
+    /* ... */
+  },
+  auth: {
+    username: 'janedoe',
+    password: 's00pers3cret'
+  },
+  responseType: 'json', // default
+  responseEncoding: 'utf8', // default
+  xsrfCookieName: 'XSRF-TOKEN', // default
+  xsrfHeaderName: 'X-XSRF-TOKEN', // default
+  onUploadProgress: function (progressEvent) {
+    // Do whatever you want with the native progress event
+  },
+  onDownloadProgress: function (progressEvent) {
+    // Do whatever you want with the native progress event
+  },
+  maxContentLength: 2000,
+  maxBodyLength: 2000,
+  validateStatus: function (status) {
+    return status &amp;gt;= 200 &amp;amp;&amp;amp; status &amp;lt; 300; // default
+  },
+  maxRedirects: 5, // default
+  socketPath: null, // default
+  httpAgent: new http.Agent({ keepAlive: true }),
+  httpsAgent: new https.Agent({ keepAlive: true }),
+  proxy: {
+    protocol: 'https',
+    host: '127.0.0.1',
+    port: 9000,
+    auth: {
+      username: 'mikeymike',
+      password: 'rapunz3l'
+    }
+  },
+  cancelToken: new CancelToken(function (cancel) {
+  }),
+  decompress: true // default 
+  transitional: {
+    silentJSONParsing: true; // default value for the current Axios version
+    forcedJSONParsing: true;
+    clarifyTimeoutError: false;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;옵션&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;설명&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;기타&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;url&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;request를 요청할 서버 주소&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;method&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;request를 요청 방법&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;get, post, put …&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;baseURL&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;url이 절대적인 경우가 아니라면&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;https://some-domain.com/api/&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;transformRequest&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;서버에 request전에 data를 변환 PUT, POST, PATCH, DELETE 메소드의 경우 적용 가능&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;transformResponse&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;then/catch 전에 respponse 데이터를 변환한다&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;headers&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;XMLHttpRequest&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;params&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;request시 보낼 URL parameters, 반드시  plain object로 전송&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;params: {ID: 12345}&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;paramsSerializer&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;params을 serializing (직렬화) 하기 위한 옵션 함수&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;data&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;request body로서 전송하는 데이타&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;timeout&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;milliseconds 단위로 timeout 초과시 요청이 중단된다.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;withCredentials&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;cross-site Access 허용할지 선택한다. 기본값 false&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;adapter&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;auth&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Authorization 헤더를 세팅해야 함.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;responseType&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;기본값 json&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;arraybuffer, document, json, text, stream&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;responseEncoding&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;response 인코딩 설정. 기본값 utf8&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;xsrfCookieName&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;xsrfHeaderName&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;onUploadProgress&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;업로드 프로그래스 이벤트를 핸들링합니다.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;이해X&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;onDownloadProgress&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;다운로드 프로그래스 이벤트를 핸들링합니다.&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;이해X&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;maxContentLength&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;response content의 최대 byte 수를 정의함&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;maxBodyLength&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;response body의 최대 byte 수를 정의함&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;validateStatus&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;maxRedirects&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;node.js에서 최대 리다이렉트 개수를 설정함. 기본값 5&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;socketPath&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;node.js에서 UNIX 소켓을 정의함. 기본값 null&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;httpAgent&lt;br /&gt;httpsAgent&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;커스텀 agent를 정의한다&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;proxy&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;프록시 서버의 hostname, port, and protocol를 정의함&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;cancelToken&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;이전 request의 취소.. 이해 X&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;decompress&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;transitional&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;액시오스-response&quot;&gt;액시오스 Response&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;{
+    data: {},
+    status: 200,
+    statusText: 'OK',
+    headers: {},
+    config: {},
+    request: {}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;스키마&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;설명&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;기타&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;data&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;서버에서 제공하는 응답 데이터&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;{fe1: “Angular”, fe2: “React”, fe3: “Vue.js”}&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;status&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;HTTP status 코드&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;status: 200&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;statusText&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;HTTP status 메시지&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;statusText: ‘OK’&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;headers&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;서버에서 응답한 HTTP 헤더 정보&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;response.headers[‘content-type’]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;config&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;axios request에 주어진 config정보&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;request&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;응답을 생성한 request (ClientRequest , XMLHttpRequest)&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;reference&quot;&gt;reference&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://google.com&quot;&gt;구글&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.naver.com/&quot;&gt;네이버&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><summary type="html">액시오스(Axios) http 통신을 하기 위한 라이브러리로 Promise 기반의 API형식이 다양하게 제공된다. 따라서 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현할 수 있습니다.</summary></entry><entry><title type="html">뷰 라우터</title><link href="http://localhost:4000/2021/04/30/vue-%EB%9D%BC%EC%9A%B0%ED%84%B0.html" rel="alternate" type="text/html" title="뷰 라우터" /><published>2021-04-30T20:11:00+09:00</published><updated>2021-04-30T20:11:00+09:00</updated><id>http://localhost:4000/2021/04/30/vue-%EB%9D%BC%EC%9A%B0%ED%84%B0</id><content type="html" xml:base="http://localhost:4000/2021/04/30/vue-%EB%9D%BC%EC%9A%B0%ED%84%B0.html">&lt;h2 id=&quot;라우팅이란&quot;&gt;🔹라우팅이란?&lt;/h2&gt;
+&lt;p&gt;웹 페이지 간의 이동 방법을 말합니다. 라우팅은 현대 웹 앱 형태 중 하나인 실글 페이지 애플리케이션(SPA)에서 주로 사용하고 있습니다.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;SPA, Single Page Application
+단일 페이지로 구성된 웹 어플리케이션을 말한다. spa는 화면 이동 시에 필요한 데이터를 서버사이드에서 HTML로 전달 받지 않고(렌더링 X), 필요한 데이터만 서버로부터 필요한 데이터만 전달 받아 동적으로 렌더링한다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;reference&quot;&gt;reference&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://google.com&quot;&gt;구글&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.naver.com/&quot;&gt;네이버&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><summary type="html">🔹라우팅이란? 웹 페이지 간의 이동 방법을 말합니다. 라우팅은 현대 웹 앱 형태 중 하나인 실글 페이지 애플리케이션(SPA)에서 주로 사용하고 있습니다.</summary></entry><entry><title type="html">뷰 컴포넌트 통신</title><link href="http://localhost:4000/2021/04/29/vue-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%ED%86%B5%EC%8B%A0.html" rel="alternate" type="text/html" title="뷰 컴포넌트 통신" /><published>2021-04-29T20:11:00+09:00</published><updated>2021-04-29T20:11:00+09:00</updated><id>http://localhost:4000/2021/04/29/vue-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8%20%ED%86%B5%EC%8B%A0</id><content type="html" xml:base="http://localhost:4000/2021/04/29/vue-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%ED%86%B5%EC%8B%A0.html">&lt;p&gt;각각의 뷰 컴포넌트들은 독립적인 유효 범위(scope)를 갖기 때문에 직접적으로 컴포넌트의 data값을 참조할 수 없습니다.&lt;/p&gt;
+
+&lt;h2 id=&quot;상위에서-하위-컴포넌트로-데이터-전달&quot;&gt;🔹상위에서 하위 컴포넌트로 데이터 전달&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;props 속성 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;하위에서-상위-컴포넌트로-데이터-전달&quot;&gt;🔹하위에서 상위 컴포넌트로 데이터 전달&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;하위에서 발생한 이벤트를 통해 상위 컴포넌트로 데이터 전달&lt;/li&gt;
+  &lt;li&gt;$emit() 과 v-on: 속성을 사용하여 구현한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;하위에서 상위 컴포넌트로 데이터를 넘기지 못하는 이유&lt;/strong&gt;
+뷰의 데이터는 단방향으로 흐르도록 되어 있다.
+공식 사이트에서 하위-&amp;gt;상위 컴포넌트로 데이터 전달을 다루고 있지 않다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;같은-레벨의-컴포넌트-간-통신&quot;&gt;같은 레벨의 컴포넌트 간 통신&lt;/h2&gt;
+
+&lt;p&gt;🔹이벤트 버스&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;reference&quot;&gt;reference&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://google.com&quot;&gt;구글&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.naver.com/&quot;&gt;네이버&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><summary type="html">각각의 뷰 컴포넌트들은 독립적인 유효 범위(scope)를 갖기 때문에 직접적으로 컴포넌트의 data값을 참조할 수 없습니다.</summary></entry><entry><title type="html">뷰 컴포넌트</title><link href="http://localhost:4000/2021/04/28/vue-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8.html" rel="alternate" type="text/html" title="뷰 컴포넌트" /><published>2021-04-28T20:11:00+09:00</published><updated>2021-04-28T20:11:00+09:00</updated><id>http://localhost:4000/2021/04/28/vue-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8</id><content type="html" xml:base="http://localhost:4000/2021/04/28/vue-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8.html">&lt;h2 id=&quot;전역-컴포넌트global-components&quot;&gt;🔹전역 컴포넌트(global components)&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Vue.component('컴포넌트 이름', {
+    //컴포넌트 내용
+    template: '&amp;lt;div&amp;gt;전역 컴포넌트가 등록되었습니다!&amp;lt;/div&amp;gt;'
+});
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;지역-컴포넌트local-components&quot;&gt;🔹지역 컴포넌트(local components)&lt;/h2&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var cmp = {
+    template: '&amp;lt;div&amp;gt;지역 컴포넌트 입니다.&amp;lt;/div&amp;gt;'
+};
+
+new Vue({
+    el: '#app',
+    components: {
+        'my-local-component': cmp
+    }
+});
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;-vue-instance란&quot;&gt;▪ vue instance란?&lt;/h3&gt;
+
+&lt;h3 id=&quot;-뷰-인스턴스-생성자&quot;&gt;▪ 뷰 인스턴스 생성자&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;dom&quot;&gt;DOM&lt;/h2&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;reference&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://google.com&quot;&gt;구글&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.naver.com/&quot;&gt;네이버&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><summary type="html">🔹전역 컴포넌트(global components)</summary></entry><entry><title type="html">뷰 인스턴스</title><link href="http://localhost:4000/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4.html" rel="alternate" type="text/html" title="뷰 인스턴스" /><published>2021-04-27T20:11:00+09:00</published><updated>2021-04-27T20:11:00+09:00</updated><id>http://localhost:4000/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4</id><content type="html" xml:base="http://localhost:4000/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4.html">&lt;p&gt;안녕하세요?&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&amp;lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js&quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+    var tmp = new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue.js!'
+    },
+    beforeCreate: function() {
+        console.log(&quot;beforeCreate&quot;);
+    },
+    created: function() {
+        console.log(&quot;created&quot;);
+    },
+    beforeMount: function(){
+        console.log(&quot;beforeMount&quot;);
+    },
+    mounted: function() {
+        console.log(&quot;mounted&quot;);
+    },
+    beforeUpdate: function(){
+        console.log(&quot;beforeUpdate&quot;);
+    },
+    updated: function() {
+        console.log(&quot;updated&quot;);
+    },
+    beforeDestroy:function(){
+        console.log(&quot;beforeDestroy&quot;);
+    },
+    destroyed:function(){
+        console.log(&quot;destroyed&quot;);
+    }
+
+    });
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;뷰-인스턴스&quot;&gt;🔹뷰 인스턴스&lt;/h2&gt;
+
+&lt;h3 id=&quot;-vue-instance란&quot;&gt;▪ vue instance란?&lt;/h3&gt;
+
+&lt;h3 id=&quot;-뷰-인스턴스-생성자&quot;&gt;▪ 뷰 인스턴스 생성자&lt;/h3&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;new Vue({
+    el: '#app',
+    data: {
+        message: 'Hello Vue.js!'
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;dom&quot;&gt;DOM&lt;/h2&gt;
+
+&lt;h3 id=&quot;-부제목-1&quot;&gt;▪ 부제목 1&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;el&lt;/li&gt;
+  &lt;li&gt;templete&lt;/li&gt;
+  &lt;li&gt;render&lt;/li&gt;
+  &lt;li&gt;
+    &lt;h2 id=&quot;rendererror&quot;&gt;renderError&lt;/h2&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;뷰-인스턴스-라이프-사이클-훅&quot;&gt;뷰 인스턴스 라이프 사이클 훅&lt;/h2&gt;
+
+&lt;h3 id=&quot;-부제목-1-1&quot;&gt;▪ 부제목 1&lt;/h3&gt;
+
+&lt;h3 id=&quot;-부제목-2&quot;&gt;▪ 부제목 2&lt;/h3&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;reference&quot;&gt;reference&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://google.com&quot;&gt;구글&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.naver.com/&quot;&gt;네이버&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><summary type="html">안녕하세요?</summary></entry><entry><title type="html">[운영체제] (5) CPU 스케줄링</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" rel="alternate" type="text/html" title="[운영체제] (5) CPU 스케줄링" /><published>2021-04-10T19:18:00+09:00</published><updated>2021-04-10T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html">&lt;p&gt;사용자 프로그램이 수행되는 과정은 &lt;strong&gt;CPU 작업과 I/O 작업의 반복&lt;/strong&gt;으로 수행된다.&lt;/p&gt;
 
 &lt;p&gt;사용자 프로그램이 CPU를 직접 가지고 빠른 명령을 수행하는 일련의 단계를 &lt;strong&gt;CPU 버스트&lt;/strong&gt;라고 하고,
 사용자 프로그램에 I/O 요청이 발생해 커널에 의해 입출력 작업을 진행하는 비교적 느린 &lt;strong&gt;I/O 버스트&lt;/strong&gt;라 한다.
@@ -73,9 +608,7 @@
   &lt;/li&gt;
   &lt;li&gt;Throughput(처리량)
     &lt;ul&gt;
-      &lt;li&gt;
-        &lt;h1 id=&quot;of-processes-that-complete-their-execution-per-time-unit&quot;&gt;of processes that complete their execution per time unit&lt;/h1&gt;
-      &lt;/li&gt;
+      &lt;li&gt;of processes that complete their execution per time unit&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;Turnaround time (소요시간, 반환시간)
@@ -103,11 +636,22 @@
 
 &lt;h3 id=&quot;fcfs-first-come-first-served&quot;&gt;FCFS (First-Come First-Served)&lt;/h3&gt;
 
-&lt;p&gt;먼저 도착한 프로세스 순서대로 처리&lt;/p&gt;
+&lt;p&gt;프로세스가 준비 큐에 도착한 시간 순서대로 CPU를 할당하는 방식을 말한다.&lt;/p&gt;
 
-&lt;p&gt;콘보이 이펙트&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;CPU를 먼저 요청한 프로세스에게 CPU를 할당&lt;/li&gt;
+  &lt;li&gt;프로세스가 자발적으로 CPU를 반납할 때까지 CPU를 빼앗지 않음&lt;/li&gt;
+  &lt;li&gt;콘보이 현상(convoy effect)이 발생
+    &lt;ul&gt;
+      &lt;li&gt;먼저 도착한 프로세스의 성격에 따라 평균시간이 크게 달라짐&lt;/li&gt;
+      &lt;li&gt;긴 프로세스 짧은 프로세스가 순서대로 오면 뒤 쪽의 짧은 프로세스는 많은 시간 기다려야 함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id=&quot;sjfshortest-job_first&quot;&gt;SJF(Shortest-Job_First)&lt;/h3&gt;
-&lt;p&gt;가장 짧은 시간의 job을 먼저 처리&lt;/p&gt;
+&lt;p&gt;CPU 버스트가 가장 짧은 프로세스에 CPU를 먼저 할당하는 방식을 말한다.
+평균 시간을 가장 짧게 하는 최적 알고리즘으로 알려져 있다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;nonpreemptive
@@ -124,7 +668,15 @@
 
 &lt;h3 id=&quot;srtfshortest-remaining-time-first&quot;&gt;SRTF(Shortest-Remaining-Time-First)&lt;/h3&gt;
 
+&lt;p&gt;SJF의 선점형(preemptive) 구현 방식을 말한다.&lt;/p&gt;
+
 &lt;h3 id=&quot;priority-scheduling&quot;&gt;Priority Scheduling&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;우선순위가 가장 높은 프로세스에게 제일 먼저 CPU를 할당한다.&lt;/li&gt;
+  &lt;li&gt;우선순위값이 작을수록 높은 우선 순위를 갖는다.&lt;/li&gt;
+  &lt;li&gt;CPU버스트 시간을 우선순위값으로 정의하면 우선순위 스케줄링은 SFJ알고리즘과 동일한 의미를 갖게 된다.&lt;/li&gt;
+  &lt;li&gt;우선순위가 높은 프로세스가 계속 도착하여 대기중인 프로세스가 계속 대기하는 기아 현상이 발생 할 수 있다. 대기중인 프로세스의 우선순위를 조금씩 높이는 aging 방법으로 해결 할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;h3 id=&quot;round-robin라운드-로빈&quot;&gt;Round Robin(라운드 로빈)&lt;/h3&gt;
 &lt;ul&gt;
@@ -132,6 +684,9 @@
   &lt;li&gt;할당 시간이 지나면 프로세스는 선점(preempted)당하고 ready queue의 제일 뒤에 가서 다시 줄을 선다&lt;/li&gt;
   &lt;li&gt;n 개의 프로세스가 ready queue에 있고 할당 시간이 q  time unit인 경우 각 프로세스는 최대 q time unit 단위로 CPU 시간의 1/n을 얻는다.
 =&amp;gt; 어떤 프로세스도 (n-1)q time unit 이상 기다리지 않는다.&lt;/li&gt;
+  &lt;li&gt;할당시간이 너무 길면 FCFS와 같은 결과가 나온다.&lt;/li&gt;
+  &lt;li&gt;할당시간이 너무 짧으면 오버헤드가 커지는 문제가 발생한다.&lt;/li&gt;
+  &lt;li&gt;라운드로빈 스케줄링은 여러종류의 이질적인 프로세스가 실행중일 때 효과적이다.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;multilevel-queue&quot;&gt;Multilevel Queue&lt;/h3&gt;
@@ -149,7 +704,6 @@
 &lt;ul&gt;
   &lt;li&gt;프로세스가 다른 큐로 이동 가능&lt;/li&gt;
   &lt;li&gt;에이징을 이와 같은 방식으로 구현할 수 있다.&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;multiple-processor-scheduling&quot;&gt;Multiple-Processor Scheduling&lt;/h3&gt;
@@ -234,7 +788,66 @@
       &lt;li&gt;알고리즘을 모의 프로그램으로 작성후 trace를 입력으로 하여 결과 비교&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다.</summary></entry><entry><title type="html">[운영체제] (4) 프로세스 관리</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" rel="alternate" type="text/html" title="[운영체제] (4) 프로세스 관리" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다.</summary></entry><entry><title type="html">[운영체제] (5) 병행제어</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" rel="alternate" type="text/html" title="[운영체제] (5) 병행제어" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html">&lt;h2 id=&quot;race-condition&quot;&gt;Race Condition&lt;/h2&gt;
+
+&lt;p&gt;하나의 Storage에 다수가 접근하는 경우 발생한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;언제-발생하는가&quot;&gt;언제 발생하는가?&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;커널 수행 중 인터럽트 발생 시&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;그림 설명
+커널 수행 중에 인터럽트 처리 못하게 disable 한다. 커널 수행이 끝난 후 인터럽트 처리를 enable 하게 변경한다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;프로세스가 시스템콜을 하여 커널 모드로 수행 중인데 문맥교환이 일어나는 경우&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;그림 설명&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;멀티프로세서에서 공유 메모리 내의 커널 데이타를 사용하는 경우&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&quot;프로세스-동기화-문제&quot;&gt;프로세스 동기화 문제&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;공유데이터의 동시 접근은 데이터의 불일치 문제를 발생시킬 수 있다&lt;/li&gt;
+  &lt;li&gt;일관성 유지를 위해서는 협력 프로세스 간의 실행 순서를 정해주는 메커니즘 필요&lt;/li&gt;
+  &lt;li&gt;레이스 컨디션
+    &lt;ul&gt;
+      &lt;li&gt;여러 프로세스들이 동시에 공유 데이터를 접근하는 상황&lt;/li&gt;
+      &lt;li&gt;데이터의 최종 연산 결과는 마지막에 그 데이터를 다룬 프로세스에 따라 달라짐&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;레이스 컨디션을 막기 위해서는 concurrent process는 동기화되어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;## Critical-Section Problem&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;n 개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우&lt;/li&gt;
+  &lt;li&gt;각 프로세스의 code segment에는 공유 데이터를 접근하는 코드인 critical section이 존재&lt;/li&gt;
+  &lt;li&gt;Problem
+    &lt;ul&gt;
+      &lt;li&gt;하나의 프로세스가 critical section에 있을 때 다른 모든 프로세스는 critical section에 들어갈 수 없어야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;프로그램적-해결법의-충족-조건&quot;&gt;프로그램적 해결법의 충족 조건&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;상호 배제 (Mutual Exclusion)&lt;/li&gt;
+  &lt;li&gt;진행 (Progress)&lt;/li&gt;
+  &lt;li&gt;유한대기 (Bounded Waiting)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;synchronization-hardware&quot;&gt;Synchronization Hardware&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;하드웨어적으로 Test &amp;amp; modify를 atomic하게 수행할 수 있도록 지원하는 경우 앞의 문제는 간단히 해결&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">Race Condition</summary></entry><entry><title type="html">[운영체제] (4) 프로세스 관리</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" rel="alternate" type="text/html" title="[운영체제] (4) 프로세스 관리" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Process is &lt;strong&gt;&lt;span style=&quot;color:red;&quot;&gt;a Programin execution &lt;/span&gt;&lt;/strong&gt;
@@ -722,17 +1335,17 @@
 &lt;p&gt;프로세스의 주소 공간은 코드(code), 데이타(data), 스택(stack)영역으로 구성된다. 이러한 주소 공간을 우리는 가상 메모리 (또는 논리적 메모리: logical memory)라고 부른다.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;code
+  &lt;li&gt;&lt;strong&gt;code&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;사용자가 작성한 프로그램 함수들의 코드가 CPU에서 수행할 수 있는 기계어 명령 형태로 변환되어 저장되는 공간&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;data
+  &lt;li&gt;&lt;strong&gt;data&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;전역 변수 등 프로그램이 사용하는 데이터를 저장하는 공간&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;stack
+  &lt;li&gt;&lt;strong&gt;stack&lt;/strong&gt;
     &lt;ul&gt;
       &lt;li&gt;호출된 함수의 수행을 마치고 복귀할 주소 및 데이터를 임시로 저장하는 공간&lt;/li&gt;
     &lt;/ul&gt;
@@ -858,10 +1471,10 @@
 &lt;/div&gt;
 
 &lt;h3 id=&quot;1-cpu&quot;&gt;1. CPU&lt;/h3&gt;
-&lt;p&gt;중앙처리장치라 불리는 CPU는 인간의 &lt;strong&gt;두뇌&lt;/strong&gt;와 같은 역할을 합니다. &lt;strong&gt;중앙처리장치&lt;/strong&gt; 라는 말 그대로 중앙에서 사용자가 입력한 명령어를 해석하고 연산한 후 그 결과를&lt;/p&gt;
+&lt;p&gt;중앙처리장치라 불리는 CPU는 인간의 &lt;strong&gt;두뇌&lt;/strong&gt;와 같은 역할을 합니다. &lt;strong&gt;중앙처리장치(central processing unit)&lt;/strong&gt; 라는 말 그대로 중앙에서 사용자가 입력한 명령어를 해석하고 연산한 후 그 결과를&lt;/p&gt;
 
 &lt;h3 id=&quot;2-메모리&quot;&gt;2. 메모리&lt;/h3&gt;
-&lt;p&gt;랜덤 액세스 메모리 즉, 램(RAM)은 임의의 영역에 접근하여 읽고 쓰기가 가능한 주기억 장치다. RAM은 어느 위치에 저장된 데이터든지 접근(읽기 및 쓰기)하는 데 동일한 시간이 걸리는 메모리이기에 ‘랜덤(Random, 무작위)’이라는 명칭이 주어진다.&lt;/p&gt;
+&lt;p&gt;랜덤 액세스 메모리(Random Access Memory) 즉, 램(RAM)은 임의의 영역에 접근하여 읽고 쓰기가 가능한 주기억 장치다. RAM은 어느 위치에 저장된 데이터든지 접근(읽기 및 쓰기)하는 데 동일한 시간이 걸리는 메모리이기에 ‘랜덤(Random, 무작위)’이라는 명칭이 주어진다.&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -917,7 +1530,7 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원&l
     &lt;ul&gt;
       &lt;li&gt;정해진 시간이 흐른 뒤 운영체제에게 제어권이 넘어가도록 인터럽트를 발생&lt;/li&gt;
       &lt;li&gt;타이머는 매 클럭 틱 때마다 1씩 감소&lt;/li&gt;
-      &lt;li&gt;타이머 값이 -이 되면 타이머 인터럽트 발생&lt;/li&gt;
+      &lt;li&gt;타이머 값이 -(마이너스)가 되면 타이머 인터럽트 발생&lt;/li&gt;
       &lt;li&gt;CPU를 특정 프로그램이 독점하는 것으로부터 보호&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
@@ -929,14 +1542,15 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원&l
 
 &lt;h3 id=&quot;7-dma-controller&quot;&gt;7. DMA Controller&lt;/h3&gt;
 
-&lt;p&gt;메모리에 접근할 수 있는 장치는 CPU가 유일하다. 메모리는 CPU의 작업 공간이다. I/O장치나 다른 장치들이 접근 할 수 없다. 그렇다보니 1ms 마다 인터럽트가 발생한다면 CPU는 계속해서 자잘한 인터럽트를 처리해야하는 이슈가 있다. 그래서 메모리에 접근 할 수 있도록 도와주는 장치가 DMA 컨트롤러이다.&lt;/p&gt;
+&lt;p&gt;메모리에 접근할 수 있는 장치는 CPU가 유일하다. 메모리는 CPU의 작업 공간이다. I/O장치나 다른 장치들이 접근 할 수 없다. 그렇다보니 1ms 마다 인터럽트가 발생한다면 CPU는 계속해서 자잘한 인터럽트를 처리해야하는 문제가 생긴다. 때문에 이를 해결하기 위해 메모리에 접근 할 수 있도록 도와주는 장치가 DMA 컨트롤러이다.&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;빠른 입출력 장치를 메모리에 가까운 속도로 처리하기 위해 사용&lt;/li&gt;
-  &lt;li&gt;CPU의 중재 없이 device controller가 device의 buffer storage의 내용을 메모리에 block 단위로 직접 전손&lt;/li&gt;
+  &lt;li&gt;CPU의 중재 없이 device controller가 device의 buffer storage의 내용을 메모리에 block 단위로 직접 전송&lt;/li&gt;
   &lt;li&gt;바이트 단위가 아니라 block 단위로 인터럽트를 발생시킴&lt;/li&gt;
-  &lt;li&gt;&lt;br /&gt;&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;8-pcprogram-counter&quot;&gt;8. PC(Program counter)&lt;/h3&gt;
 &lt;p&gt;CPU의 레지스터중 하나.
@@ -945,10 +1559,8 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
-&lt;hr /&gt;
-
 &lt;h2 id=&quot;인터럽트interrupt&quot;&gt;인터럽트(Interrupt)&lt;/h2&gt;
-&lt;h3 id=&quot;인터럽트&quot;&gt;인터럽트&lt;/h3&gt;
+
 &lt;ul&gt;
   &lt;li&gt;현대의 운영체제는 인터럽트에 의해 구동된다.&lt;/li&gt;
   &lt;li&gt;인터럽트 당한 시점의 레지스터와 Program counter를 save 한 후 CPU의 제어를 인터럽트 처리 루틴에 넘긴다.&lt;/li&gt;
@@ -997,12 +1609,12 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;질문: 운영체제한테 CPU가 넘어가는 경우&lt;/p&gt;
+  &lt;p&gt;&lt;strong&gt;Q. 운영체제한테 CPU가 넘어가는 경우는 언제인가?&lt;/strong&gt;&lt;/p&gt;
   &lt;ul&gt;
     &lt;li&gt;인터럽트 발생(Interrupt Line 사용하는 경우)
       &lt;ul&gt;
         &lt;li&gt;하드웨어 장치들이 I/O가 인터럽트를 요청 할 때&lt;/li&gt;
-        &lt;li&gt;timer 가 정해진 시간이 지난 후에 CPU에 제어권을 넘긴다.&lt;/li&gt;
+        &lt;li&gt;timer 가 정해진 시간이 지난 후에 CPU에 제어권을 넘기는 경우&lt;/li&gt;
         &lt;li&gt;시스템 콜 발생시&lt;/li&gt;
       &lt;/ul&gt;
     &lt;/li&gt;
@@ -1011,8 +1623,6 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
 
 &lt;h2 id=&quot;동기식-입출력과-비동기식-입출력&quot;&gt;동기식 입출력과 비동기식 입출력&lt;/h2&gt;
 
@@ -1046,402 +1656,4 @@ pc는 다음번에 실행할 명령어의 주소를 가지고 있다.
   &lt;p&gt;두 경우 모두 I/O 완료는 인터럽트로 알려준다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">컴퓨터 시스템 구조</summary></entry><entry><title type="html">[운영체제] (1) 개요</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" rel="alternate" type="text/html" title="[운영체제] (1) 개요" /><published>2021-03-13T19:18:00+09:00</published><updated>2021-03-13T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html">&lt;h2 id=&quot;운영체제의-정의&quot;&gt;운영체제의 정의&lt;/h2&gt;
-&lt;p&gt;하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;div style=&quot;text-align:center;&quot;&gt;
-&lt;img src=&quot;/assets/images/operating_system/chap02_os.png&quot; style=&quot;zoom:67%;&quot; /&gt;
-&lt;/div&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;운영체제의-기능&quot;&gt;운영체제의 기능&lt;/h2&gt;
-&lt;ol&gt;
-  &lt;li&gt;자원을 효율적으로 관리한다.
-    &lt;ul&gt;
-      &lt;li&gt;효율성: 효율적이나 일부가 지나치게 희생되지 않도록&lt;/li&gt;
-      &lt;li&gt;형평성: 프로그램들 간의 자원을 형평성 있게 분배&lt;/li&gt;
-      &lt;li&gt;보안 및 보호&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;사용자 및 운영체제 자신의 보호한다.&lt;/li&gt;
-  &lt;li&gt;프로세스, 파일, 메시지 등을 관리한다.&lt;/li&gt;
-  &lt;li&gt;컴퓨터 시스템을 편리하게 사용할 수 있는 환경을 제공한다.&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;운영체제의-분류&quot;&gt;운영체제의 분류&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;동시 작업 가능 여부
-    &lt;ul&gt;
-      &lt;li&gt;단일작업(single tasking)&lt;/li&gt;
-      &lt;li&gt;다중작업(multi tasking)&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;사용자 수
-    &lt;ul&gt;
-      &lt;li&gt;단일 사용자&lt;/li&gt;
-      &lt;li&gt;다중 사용자&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;처리방식
-    &lt;ul&gt;
-      &lt;li&gt;일괄처리 방식(batch processing)&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;시분할 방식(time sharing system)&lt;/strong&gt;&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;&lt;/li&gt;
-      &lt;li&gt;실시간(real time)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;운영-체제의-자원-관리-기능&quot;&gt;운영 체제의 자원 관리 기능&lt;/h2&gt;
-
-&lt;h3 id=&quot;1-cpu-스케쥴링cpu-scheduling&quot;&gt;1. CPU 스케쥴링(CPU scheduling)&lt;/h3&gt;
-&lt;p&gt;CPU를 가장 효율적으로 사용하면서도, 특정 프로세스가 불이익을 당하지 않도록 하는 것&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;선입선출
-CPU를 사용하기 위해 도착한 프로세스들 중 먼저 온 것을 먼저 처리해주는 방식&lt;/li&gt;
-  &lt;li&gt;라운드 로빈(Round Robin)&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;
-CPU를 한 번 할당받아 사용할 수 있는 시간을 일정하게 고정된 시간으로 제한한다.&lt;/li&gt;
-  &lt;li&gt;우선순위
-대기 중인 프로세스들에 우선순위를 부여하고 우선순위가 높은 프로세스에 CPU를 먼저 할당한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;2-메모리-관리&quot;&gt;2. 메모리 관리&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;고정분할 방식(fixed partition)
-    &lt;ul&gt;
-      &lt;li&gt;물리적 메모리를 일정 개수로 분할 하여 사용하는 방식을 말한다.&lt;/li&gt;
-      &lt;li&gt;단점으로 분할 개수만큼만 프로그램을 사용할 수 있으며, 분할된 메모리보다 큰 프로그램은 적재가 불가능하다.&lt;/li&gt;
-      &lt;li&gt;분할된 메모리보다 적은 메모리를 사용하는 프로그램이 적재가 되면 남는 메모리영역이 발생하는데 이를 &lt;span style=&quot;color:blue&quot;&gt;내부조각(internal fragment)&lt;/span&gt; 이라고 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;가변분할 방식(variable partition)
-    &lt;ul&gt;
-      &lt;li&gt;프로그램 크기에 맞게 메모리를 분할해서 사용하는 방식을 말한다.&lt;/li&gt;
-      &lt;li&gt;메모리가 일정부분 20이 남았다고 했을 때, 40의 메모리를 가진 프로그램을 적재할 수 없어 남는 메모리 영역이 발생한다. 이를 &lt;span style=&quot;color:blue&quot;&gt;외부조각(external fragment)&lt;/span&gt;이라고 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;가상메모리(virtual memory)&lt;span style=&quot;color:red&quot;&gt; ✓pick&lt;/span&gt;
-    &lt;ul&gt;
-      &lt;li&gt;물리적 메모리보다 더 큰 프로그램이 실행되는 것을 지원한다.&lt;/li&gt;
-      &lt;li&gt;현재 사용되고 있는 부분만 메모리에 올리고, 나머지는 하드디스크와 같은 보조기억장치에 저장해두었다가 필요할 때 적재하는 방식을 취한다. 이떄 사용되는 보조기억장치의 영역을 &lt;span style=&quot;color:blue&quot;&gt;스왑 영역(swap area)&lt;/span&gt;이라고 부른다.&lt;/li&gt;
-      &lt;li&gt;가상메모리 주소 공간은 페이지(page)라는 동일한 크기의 작은 단위로 나뉘어 물리적 메모리와 스왑 영역에 일부분씩 저장된다. 이렇게 동일한 단위로 메모리를 나누는 기업을 &lt;span style=&quot;color:blue&quot;&gt;페이징(paging) 기법&lt;/span&gt;이라고 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;3-주변장치-및-입출력-관리&quot;&gt;3. 주변장치 및 입출력 관리&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;인터럽트
-    &lt;ul&gt;
-      &lt;li&gt;주변장치들이 CPU의 서비스가 필요한 경우 보내는 신호&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;컨트롤러
-    &lt;ul&gt;
-      &lt;li&gt;주변장치들이 메인 CPU에 인터럽트를 발생시켜 보고하는 역할&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층</summary></entry><entry><title type="html">[Interview] 데이터베이스</title><link href="http://localhost:4000/2021/03/12/interview-database.html" rel="alternate" type="text/html" title="[Interview] 데이터베이스" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/2021/03/12/interview-database</id><content type="html" xml:base="http://localhost:4000/2021/03/12/interview-database.html">&lt;h3 id=&quot;database-기술면접-준비&quot;&gt;Database 기술면접 준비&lt;/h3&gt;
-
-&lt;hr /&gt;
-
-&lt;h3 id=&quot;트랜잭션&quot;&gt;트랜잭션&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;데이터베이스 내에 하나의 그룹으로 처리해야하는 명령문을 모아놓은 작업단위 또는 데이터 처리의 한 단위&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;acid-트랜잭션의-특징&quot;&gt;ACID, 트랜잭션의 특징&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;Atomicity (원자성) &lt;br /&gt;
-트랜잭션과 관련된 일은 모두 실행되던지 모두 실행되지 않도록 하던지를 보장하는 특성이다.&lt;/li&gt;
-  &lt;li&gt;Consistency (일관성)&lt;br /&gt;
- 트랜잭션이 성공했다면, 데이터베이스는 그 일관성을 유지해야 한다. 일관성은 특정한 조건을 두고, 그 조건을 만족하는지를 확인하는 방식으로 검사할 수 있다.&lt;/li&gt;
-  &lt;li&gt;Isolation (독립성)&lt;br /&gt;
-독립성. 트랜잭션을 수행하는 도중에 다른 연산작업이 끼어들지 못하도록 한다. 임계영역을 두는 것으로 달성할 수 있다.&lt;/li&gt;
-  &lt;li&gt;Durability (지속성)&lt;br /&gt;
-성공적으로 트랜잭션이 수행되었다면, 그 결과는 완전히 반영이 되어야 한다. 완전히 반영되면 로그를 남기게 되는데, 후에 이 로그를 이용해서 트랜잭션 수행전 상태로 되돌릴 수 있어야 한다. 때문에 트랜잭션은 로그저장이 완료된 시점에서 종료가 되어야 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;데이터베이스-언어의-종류-3가지&quot;&gt;데이터베이스 언어의 종류 3가지&lt;/h3&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;DDL(Data Definition Language)
-데이터베이스를 정의하는 언어이며, 데이터리를 생성, 수정, 삭제하는 등의 데이터의 전체의 골격을 결정하는 역할을 하는 언어 입니다.&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;thead&gt;
-        &lt;tr&gt;
-          &lt;th&gt;종류&lt;/th&gt;
-          &lt;th&gt;역할&lt;/th&gt;
-        &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;CREATE&lt;/td&gt;
-          &lt;td&gt;데이터베이스, 테이블 등을 생성하는 역할을 합니다.&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;ALTER&lt;/td&gt;
-          &lt;td&gt;테이블을 수정하는 역할을 합니다.&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;DROP&lt;/td&gt;
-          &lt;td&gt;데이터베이스,테이블을 삭제&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;RENAME&lt;/td&gt;
-          &lt;td&gt;데이터베이스의 객체 이름을 변경&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;COMMENT&lt;/td&gt;
-          &lt;td&gt;데이터에 주석 등을 추가한다.&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;TRUNCATE&lt;/td&gt;
-          &lt;td&gt;테이블을 초기화 한다&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;DML(Data Manipulation Language)
-정의된 데이터베이스에 입력된 레코드를 조회하거나 수정하거나 삭제하는 등의 역할을 하는 언어를 말합니다.
-|종류|역할|
-|—|—|
-|SELECT|데이터를 조회하는 명령어|
-|INSERT|데이터 삽입하는 명령어|
-|UPDATE| 데이터를 수정하는 명령어|
-|DELETE|데이터를 삭제하는 명령어|
-|MERGE|데이터가 테이블에 없으면 INSERT, 있다면 UPDATE를 수행한다. UPSERT 라는 별명이 있다.|&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;DCL(Data Control Language)
-데이터베이스에 접근하거나 객체에 권한을 주는등의 역할을 하는 언어를 입니다.
-|종류|역할|
-|—|—|
-|GRANT|특정 데이터베이스 사용자에게 특정 작업에 대한 수행권한을 부여|
-|REVOKE|특정 데이터베이스 사용자에게 특정 작업에 대한 수행 권한을 박탈, 회수|&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;TCL(Transaction Control Language)
-데이터의 보안, 무결성, 회복, 병행 수행제어 등을 제어하는 역할을 하는 언어입니다.&lt;/p&gt;
-
-    &lt;table&gt;
-      &lt;thead&gt;
-        &lt;tr&gt;
-          &lt;th&gt;종류&lt;/th&gt;
-          &lt;th&gt;역할&lt;/th&gt;
-        &lt;/tr&gt;
-      &lt;/thead&gt;
-      &lt;tbody&gt;
-        &lt;tr&gt;
-          &lt;td&gt;COMMIT&lt;/td&gt;
-          &lt;td&gt;트랜잭션의 작업 결과를 저장 반영한다.&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;ROLLBACK&lt;/td&gt;
-          &lt;td&gt;데이터베이스를 마지막 COMMIT 시점으로 복원&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;SAVEPOIN&lt;/td&gt;
-          &lt;td&gt;ROOLBACK시 저장위치까지 트랜잭션의 일부만 롤백 할 수 있다.&lt;/td&gt;
-        &lt;/tr&gt;
-        &lt;tr&gt;
-          &lt;td&gt;SET TRANSACTION&lt;/td&gt;
-          &lt;td&gt;transaction 지정&lt;/td&gt;
-        &lt;/tr&gt;
-      &lt;/tbody&gt;
-    &lt;/table&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;오라클-힌트-oracle-hint&quot;&gt;오라클 힌트 (Oracle Hint)&lt;/h3&gt;
-&lt;p&gt;오라클 옵티마이저에게 SQL문 실행을 위한 데이터를 스캐닝하는 경로, 조인하는 방법 등을 알려주기 위해 SQL 작성자가 직접 작성해주는 구문이다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;옵티마이저란?&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;정규화&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;튜플&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;카디널리티&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;JOIN&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;GROUP BY, HAVING&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;NoSQL
-전통적인 데이터베이스 RDBMS 보다 덜 제한적인 모델을 이용한다.&lt;/li&gt;
-  &lt;li&gt;&lt;/li&gt;
-  &lt;li&gt;프로시져&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">Database 기술면접 준비</summary></entry><entry><title type="html">[Interview] CS</title><link href="http://localhost:4000/2021/03/12/interview-cs.html" rel="alternate" type="text/html" title="[Interview] CS" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/2021/03/12/interview-cs</id><content type="html" xml:base="http://localhost:4000/2021/03/12/interview-cs.html">&lt;h2 id=&quot;cs-기본-지식-관련&quot;&gt;CS 기본 지식 관련&lt;/h2&gt;
-&lt;hr /&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;프로세스와 스레드 차이&lt;/strong&gt;&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;프로세스는 운영체제로부터 자원을 할당받아 실행하고, 스레드는 프로세스로부터 자원을 할당받아 실행&lt;/li&gt;
-    &lt;li&gt;하나의 프로세스 안에서 여러 스레드가 생성 가능&lt;/li&gt;
-    &lt;li&gt;각 스레드는 개별 스택을 가지고, 프로세스의 전역 메모리 공간을 고유하며 프로그램을 실행
-      &lt;ul&gt;
-        &lt;li&gt;보통 프로세스는 코드/데이터/스택/힙 메모리 영역을 기반으로 실행한다&lt;/li&gt;
-        &lt;li&gt;스레드는 프로세스 안에서, 개별적인 스택을 가지고, 코드/데이터/힙 영역을 공유하며 실행&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;스크립트 언어와 컴파일 언어를 나열하고 차이점을 설명하세요&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;&lt;strong&gt;컴파일 언어:C, C++, java 등&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;컴파일언어는 컴파일러를 통해 사전에 컴파일되어 기계어 상태로 실행되므로 실행이 빠름.&lt;/li&gt;
-  &lt;li&gt;또한 컴파일 단계에서 전체 코드를 기계어로 변환할 때, 최적화작업을 진행하여 실행 시간을 보다 빠르게 할 수 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;스트립트 언어:: python, javascript, ruby 등&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;스트립트 언어는 컴파일 단계 없이 실행 단계에서 한 줄씩 기계어로 번역 후 실행되므로 통상 컴파일 언어보다 실행이 느리다.&lt;/li&gt;
-  &lt;li&gt;전체 코드에 대한 실행 코드 최적화가 어려움&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">CS 기본 지식 관련</summary></entry><entry><title type="html">커넥션 풀을 관리하는 방법, DBCP와 JNDI</title><link href="http://localhost:4000/2021/03/12/dbcp-vs-jndi.html" rel="alternate" type="text/html" title="커넥션 풀을 관리하는 방법, DBCP와 JNDI" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/2021/03/12/dbcp-vs-jndi</id><content type="html" xml:base="http://localhost:4000/2021/03/12/dbcp-vs-jndi.html">&lt;p&gt;다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 내용을 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;커넥션-풀connection-pool이란&quot;&gt;커넥션 풀(connection pool)이란&lt;/h2&gt;
-
-&lt;p&gt;JAVA에서는 JDBC를 사용해서 커넥션을 생성합니다. 그리고 커넥션 풀은 생성된 커넥션을 관리합니다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;&lt;strong&gt;JDBC&lt;/strong&gt;( &lt;strong&gt;Java Database Connectivity&lt;/strong&gt; )는 자바에서 데이터베이스에 접속할 수 있도록 하는 &lt;strong&gt;자바 표준 API&lt;/strong&gt;이다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;데이터베이스와 연결된 Connection을 미리 만들어서 pool 속에 저장해 두고 있다가 필요할 때 Connection을 Pool에서 쓰고 다시 Pool에 반환하는 기법을 말합니다.&lt;/p&gt;
-
-&lt;p&gt;Pool 속에 미리 Connection이 생성되어 있기 때문에 Connection을 생성하는 시간이 소비되지 않습니다. Connection을 계속해서 재사용하기 때문에 많은 수의 Connection을 만들지는 않습니다. 
-Connection Pool을 사용하면 Connection을 생성하고 닫는 시간이 소모되지 않기 때문에 그만큼 애플리케이션의 실행 속도가 빨라집니다.&lt;/p&gt;
-
-&lt;p&gt;한 번에 생성될 수 있는 Connection 수를 제어하기 때문에 동시 접속자 수가 몰려도 애플리케이션이 쉽게 다운되지 않습니다.&lt;/p&gt;
-
-&lt;p&gt;Connection Pool에서 생성된 Connection의 개수는 한정적입니다. 동시 접속자가 많아 남아 있는 Connection이 없으면 해당 클라이언트는 대기 상태로 전환이 되고, Connection이 반환되면 대기하고 있는 순서대로 Connection이 제공됩니다.
-&lt;br /&gt;&lt;/p&gt;
-&lt;div style=&quot;text-align:center;&quot;&gt;
-    &lt;img src=&quot;/assets/images/java/connection-pool.png&quot; alt=&quot;커넥션 풀&quot; style=&quot;zoom:50%;&quot; /&gt;
-&lt;/div&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;p&gt;커넥션을 관리하는 것은 애플리케이션을 운영하는데 매우 중요합니다. DBCP와 JNDI는 이러한 커넥션 풀을 효율적으로 관리하기 위한 방법입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;dbcpdatabase-connection-pool&quot;&gt;DBCP(Database Connection Pool)&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;데이터베이스  Connection을 &lt;strong&gt;애플리케이션&lt;/strong&gt;에서 제어하면서 하나의 커넥션 풀을 가진다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;데이터베이스 애플리케이션을 효율적으로 연결하는 커넥션 풀 라이브러리는 웹 애플리케이션에서는 필수 요소입니다. 웹 애플리케이션 서버로 상용 제품을 사용한다면 보통 제조사에서 제공하는 커넥션 풀 구현체를 사용합니다. 그 외에 오픈소스 라이브러리로 Apache의 Commons DBCP와 Tomcat-JDBC, BoneCP, HikariCP 등이 있습니다.&lt;/p&gt;
-
-&lt;p&gt;웹 애플리케이션의 요청은 대부분 DBMS를 사용되기 때문에 커넥션 풀 라이브러리의 설정은 전체 애플리케이션의 성능과 안정성에 영향을 미치는 &lt;strong&gt;핵심&lt;/strong&gt; 입니다.&lt;/p&gt;
-
-&lt;h4 id=&quot;특징&quot;&gt;특징&lt;/h4&gt;
-&lt;ul&gt;
-  &lt;li&gt;데이터베이스와 애플리케이션의 일부분에서 발생하는 문제가 전체로 전파되지 않는다.&lt;/li&gt;
-  &lt;li&gt;일시적인 문제가 긴 시간 이어지지 않게 한다.&lt;/li&gt;
-  &lt;li&gt;값을 적절하지 못하게 설정해서 커넥션 풀이 애플리케이션에서 병목 지점이 되기도 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;jndijava-naming-and-directory-interface&quot;&gt;JNDI(Java Naming and Directory Interface)&lt;/h2&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;데이터베이스  Connection을 &lt;strong&gt;WAS Server&lt;/strong&gt;에서 제어하면서 하나의 커넥션 풀을 가진다.&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;JNDI는 디렉터리 서비스에서 제공하는 데이터 및 객체를 발견(discover)하고 참고(lookup)하기 위한 자바 API입니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h4 id=&quot;특징-1&quot;&gt;특징&lt;/h4&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;데이터베이스 설정 정보를 관리가 쉽다.&lt;/li&gt;
-  &lt;li&gt;애플리케이션 레벨에서 데이터베이스 Connection에 필요한 설정 정보들을 설정해 놓는다.&lt;/li&gt;
-  &lt;li&gt;애플리케이션은 하나이더라도 여러 종류의 데이터베이스를 사용할 수 있다는 점에서 해당 애플리케이션 개발자가 아니라면 정보를 찾는데 꽤나 시간이 걸린다.&lt;/li&gt;
-  &lt;li&gt;JNDI를 사용하게 되면 DB Connection 정보를 일반 개발자에게 노출되지 않아 보안상의 이점이 있다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;결론&quot;&gt;결론&lt;/h2&gt;
-&lt;p&gt;두가지 방식 모두 장단점이 있습니다. 꼭 어떤 방식이 좋고 나쁘다가 아니라 목적에 적합한 방법을 사용하면 됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h3 id=&quot;refference&quot;&gt;Refference&lt;/h3&gt;
-&lt;ul&gt;
-  &lt;li&gt;&lt;a href=&quot;https://d2.naver.com/helloworld/1321&quot;&gt;https://d2.naver.com/helloworld/1321&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://eongeuni.tistory.com/43&quot;&gt;https://eongeuni.tistory.com/43&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;https://zunoxi.github.io/infra/2020/06/20/infra-db-jdbc/&quot;&gt;https://zunoxi.github.io/infra/2020/06/20/infra-db-jdbc/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="java" /><category term="spring" /><summary type="html">다음 프로젝트 준비를 하다가 커넥션 풀을 DBCP에서 JNDI로 변경한다는 내용을 들었습니다. 커넥션 풀에 대해서는 알고 있었지만 DBCP와 JNDI에 대해서는 처음 듣는 단어라 생소하여 해당 내용을 찾아봤습니다.</summary></entry><entry><title type="html">[Interview] JAVA</title><link href="http://localhost:4000/2021/03/12/interview-java.html" rel="alternate" type="text/html" title="[Interview] JAVA" /><published>2021-03-12T19:18:00+09:00</published><updated>2021-03-12T19:18:00+09:00</updated><id>http://localhost:4000/2021/03/12/interview-java</id><content type="html" xml:base="http://localhost:4000/2021/03/12/interview-java.html">&lt;h1 id=&quot;java-interview&quot;&gt;Java Interview&lt;/h1&gt;
-&lt;hr /&gt;
-&lt;blockquote&gt;
-  &lt;p&gt;java의 장단점&lt;/p&gt;
-  &lt;ul&gt;
-    &lt;li&gt;장점
-      &lt;ul&gt;
-        &lt;li&gt;운영체제에 독립적이다.
-          &lt;ul&gt;
-            &lt;li&gt;JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다.&lt;/li&gt;
-          &lt;/ul&gt;
-        &lt;/li&gt;
-        &lt;li&gt;객체지향 언어이다.&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/blockquote&gt;</content><author><name>zangzangs</name></author><category term="interview" /><summary type="html">Java Interview java의 장단점 장점 운영체제에 독립적이다. JVM에서 동작하기 때문에, 특적 운영체제에 종속되지 않는다. 객체지향 언어이다.</summary></entry></feed>
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">컴퓨터 시스템 구조</summary></entry></feed>

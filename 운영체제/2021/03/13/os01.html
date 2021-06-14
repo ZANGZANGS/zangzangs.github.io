@@ -9,8 +9,8 @@
 <meta property="og:title" content="[운영체제] (1) 개요" />
 <meta name="author" content="zangzangs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층" />
-<meta property="og:description" content="운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층" />
+<meta name="description" content="운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층을 말합니다." />
+<meta property="og:description" content="운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층을 말합니다." />
 <link rel="canonical" href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" />
 <meta property="og:url" content="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" />
 <meta property="og:site_name" content="Your awesome title" />
@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[운영체제] (1) 개요" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html","headline":"[운영체제] (1) 개요","dateModified":"2021-03-13T19:18:00+09:00","datePublished":"2021-03-13T19:18:00+09:00","description":"운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html","headline":"[운영체제] (1) 개요","dateModified":"2021-03-13T19:18:00+09:00","datePublished":"2021-03-13T19:18:00+09:00","description":"운영체제의 정의 하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층을 말합니다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -585,7 +585,7 @@ function googleTranslateElementInit() {
     <div class="post-content e-content" itemprop="articleBody">
 
       <h2 id="운영체제의-정의">운영체제의 정의</h2>
-<p>하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층</p>
+<p>하드웨어 바로 위에 설치되어 사용자 및 다른 모든 소프트웨어와 하드웨어를 연결하는 소프트웨어 계층을 말합니다.</p>
 
 <p><br /></p>
 
@@ -644,7 +644,7 @@ function googleTranslateElementInit() {
 <ul>
   <li>선입선출
 CPU를 사용하기 위해 도착한 프로세스들 중 먼저 온 것을 먼저 처리해주는 방식</li>
-  <li>라운드 로빈(Round Robin)<span style="color:red"> ✓pick</span>
+  <li><strong>라운드 로빈(Round Robin)</strong><span style="color:red"> ✓pick</span>
 CPU를 한 번 할당받아 사용할 수 있는 시간을 일정하게 고정된 시간으로 제한한다.</li>
   <li>우선순위
 대기 중인 프로세스들에 우선순위를 부여하고 우선순위가 높은 프로세스에 CPU를 먼저 할당한다.</li>
@@ -659,13 +659,15 @@ CPU를 한 번 할당받아 사용할 수 있는 시간을 일정하게 고정�
     <ul>
       <li>물리적 메모리를 일정 개수로 분할 하여 사용하는 방식을 말한다.</li>
       <li>단점으로 분할 개수만큼만 프로그램을 사용할 수 있으며, 분할된 메모리보다 큰 프로그램은 적재가 불가능하다.</li>
-      <li>분할된 메모리보다 적은 메모리를 사용하는 프로그램이 적재가 되면 남는 메모리영역이 발생하는데 이를 <span style="color:blue">내부조각(internal fragment)</span> 이라고 한다.</li>
+      <li>분할된 메모리보다 적은 메모리를 사용하는 프로그램이 적재가 되면 남는 메모리영역이 발생하는데 이를 <span style="color:blue">내부조각(internal fragment)</span> 이라고 한다.
+<br /></li>
     </ul>
   </li>
   <li>가변분할 방식(variable partition)
     <ul>
       <li>프로그램 크기에 맞게 메모리를 분할해서 사용하는 방식을 말한다.</li>
-      <li>메모리가 일정부분 20이 남았다고 했을 때, 40의 메모리를 가진 프로그램을 적재할 수 없어 남는 메모리 영역이 발생한다. 이를 <span style="color:blue">외부조각(external fragment)</span>이라고 한다.</li>
+      <li>메모리가 일정부분 20이 남았다고 했을 때, 40의 메모리를 가진 프로그램을 적재할 수 없어 남는 메모리 영역이 발생한다. 이를 <span style="color:blue">외부조각(external fragment)</span>이라고 한다.
+<br /></li>
     </ul>
   </li>
   <li>가상메모리(virtual memory)<span style="color:red"> ✓pick</span>
@@ -702,7 +704,7 @@ CPU를 한 번 할당받아 사용할 수 있는 시간을 일정하게 고정�
 <div class="post-nav"><a class="previous" href="/2021/03/12/interview-java.html" title="[Interview] JAVA">[Interview] JAVA</a><a class="next" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">[운영체제] (2) 컴퓨터 시스템의 동작 원리...</a></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/2021/03/12/interview-java.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">[Interview] JAVA</a></li><li><a class="post-link" href="/2021/03/12/dbcp-vs-jndi.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">커넥션 풀을 관리하는 방법, DBCP와 JNDI</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">[운영체제] (5) CPU 스케줄링</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">[운영체제] (4) 프로세스 관리</a></li></ul>
+        <li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">[운영체제] (3) 프로그램의 구조와 실행</a></li><li><a class="post-link" href="/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">뷰 인스턴스</a></li><li><a class="post-link" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">뷰 엑시오스(Axios) 메서드와 옵션</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" title="[운영체제] (2) 컴퓨터 시스템의 동작 원리">[운영체제] (1) 개요</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 
