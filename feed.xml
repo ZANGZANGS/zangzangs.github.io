@@ -1,4 +1,103 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-14T22:54:05+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">뷰 엑시오스(Axios) 메서드와 옵션</title><link href="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" rel="alternate" type="text/html" title="뷰 엑시오스(Axios) 메서드와 옵션" /><published>2021-05-01T20:11:00+09:00</published><updated>2021-05-01T20:11:00+09:00</updated><id>http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4</id><content type="html" xml:base="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html">&lt;h2 id=&quot;액시오스axios&quot;&gt;액시오스(Axios)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-15T22:43:53+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (5) 병행제어</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" rel="alternate" type="text/html" title="[운영체제] (5) 병행제어" /><published>2021-05-26T19:18:00+09:00</published><updated>2021-05-26T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html">&lt;h2 id=&quot;race-condition&quot;&gt;Race Condition&lt;/h2&gt;
+
+&lt;p&gt;하나의 Storage에 다수가 접근하는 경우 발생한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;언제-발생하는가&quot;&gt;언제 발생하는가?&lt;/h3&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;커널 수행 중 인터럽트 발생 시&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+  &lt;img src=&quot;/assets/images/operating_system/race%20condition%20ex1.png&quot; style=&quot;zoom:110%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;해결 방법
+    &lt;ul&gt;
+      &lt;li&gt;커널 수행 중에 인터럽트 처리 못하게 disable 한다. 커널 수행이 끝난 후 인터럽트 처리를 enable 하게 변경한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;프로세스가 시스템콜을 하여 커널 모드로 수행 중인데 문맥교환이 일어나는 경우&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+  &lt;img src=&quot;/assets/images/operating_system/race%20condition%20ex2.png&quot; style=&quot;zoom:110%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;해결방법
+    &lt;ul&gt;
+      &lt;li&gt;커널 모드에서 수행 중일 때는 CPU를 점유하지 못하도록 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;멀티프로세서에서 공유 메모리 내의 커널 데이타를 사용하는 경우&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div style=&quot;text-align:center;&quot;&gt;
+  &lt;img src=&quot;/assets/images/operating_system/race%20condition%20ex3.png&quot; style=&quot;zoom:110%&quot; /&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;해결방법
+    &lt;ul&gt;
+      &lt;li&gt;멀티프로세서의 경우 인터럽트를 enable/disable 하는 것으로 해결이 되지 않는다.&lt;/li&gt;
+      &lt;li&gt;방법1. 한번에 하나의 CPU만 커널에 들어가게 한다&lt;/li&gt;
+      &lt;li&gt;방법2. 커널 내부에 있는 각 공유 데이터에 접근할 때마다 그 데이터에 대한 lock/unlock을 하는 방법&lt;/li&gt;
+      &lt;li&gt;방법 1처럼 운영체제 자체를 접근못하게 막으면 오베헤드가 너무 커지는 문제가 있다. 이와 같은 문제를 해결하기 위해 방법 2와 같이 lock을 걸어 해결할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;프로세스-동기화-문제&quot;&gt;프로세스 동기화 문제&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;공유데이터의 동시 접근은 데이터의 불일치 문제를 발생시킬 수 있다&lt;/li&gt;
+  &lt;li&gt;일관성 유지를 위해서는 협력 프로세스 간의 실행 순서를 정해주는 메커니즘 필요&lt;/li&gt;
+  &lt;li&gt;레이스 컨디션
+    &lt;ul&gt;
+      &lt;li&gt;여러 프로세스들이 동시에 공유 데이터를 접근하는 상황&lt;/li&gt;
+      &lt;li&gt;데이터의 최종 연산 결과는 마지막에 그 데이터를 다룬 프로세스에 따라 달라짐&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;레이스 컨디션을 막기 위해서는 concurrent process는 동기화되어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;## Critical-Section Problem&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;n 개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우&lt;/li&gt;
+  &lt;li&gt;각 프로세스의 code segment에는 공유 데이터를 접근하는 코드인 critical section이 존재&lt;/li&gt;
+  &lt;li&gt;Problem
+    &lt;ul&gt;
+      &lt;li&gt;하나의 프로세스가 critical section에 있을 때 다른 모든 프로세스는 critical section에 들어갈 수 없어야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;프로그램적-해결법의-충족-조건&quot;&gt;프로그램적 해결법의 충족 조건&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;상호 배제 (Mutual Exclusion)&lt;/li&gt;
+  &lt;li&gt;진행 (Progress)&lt;/li&gt;
+  &lt;li&gt;유한대기 (Bounded Waiting)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;synchronization-hardware&quot;&gt;Synchronization Hardware&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;하드웨어적으로 Test &amp;amp; modify를 atomic하게 수행할 수 있도록 지원하는 경우 앞의 문제는 간단히 해결&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">Race Condition</summary></entry><entry><title type="html">뷰 엑시오스(Axios) 메서드와 옵션</title><link href="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" rel="alternate" type="text/html" title="뷰 엑시오스(Axios) 메서드와 옵션" /><published>2021-05-01T20:11:00+09:00</published><updated>2021-05-01T20:11:00+09:00</updated><id>http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4</id><content type="html" xml:base="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html">&lt;h2 id=&quot;액시오스axios&quot;&gt;액시오스(Axios)&lt;/h2&gt;
 &lt;p&gt;http 통신을 하기 위한 라이브러리로 Promise 기반의 API형식이 다양하게 제공된다. 따라서 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현할 수 있습니다.&lt;/p&gt;
 
 &lt;blockquote&gt;
@@ -788,66 +887,7 @@ new Vue({
       &lt;li&gt;알고리즘을 모의 프로그램으로 작성후 trace를 입력으로 하여 결과 비교&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다.</summary></entry><entry><title type="html">[운영체제] (5) 병행제어</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" rel="alternate" type="text/html" title="[운영체제] (5) 병행제어" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html">&lt;h2 id=&quot;race-condition&quot;&gt;Race Condition&lt;/h2&gt;
-
-&lt;p&gt;하나의 Storage에 다수가 접근하는 경우 발생한다.&lt;/p&gt;
-
-&lt;h3 id=&quot;언제-발생하는가&quot;&gt;언제 발생하는가?&lt;/h3&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;커널 수행 중 인터럽트 발생 시&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;그림 설명
-커널 수행 중에 인터럽트 처리 못하게 disable 한다. 커널 수행이 끝난 후 인터럽트 처리를 enable 하게 변경한다.&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;프로세스가 시스템콜을 하여 커널 모드로 수행 중인데 문맥교환이 일어나는 경우&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;그림 설명&lt;/p&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;멀티프로세서에서 공유 메모리 내의 커널 데이타를 사용하는 경우&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&quot;프로세스-동기화-문제&quot;&gt;프로세스 동기화 문제&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;공유데이터의 동시 접근은 데이터의 불일치 문제를 발생시킬 수 있다&lt;/li&gt;
-  &lt;li&gt;일관성 유지를 위해서는 협력 프로세스 간의 실행 순서를 정해주는 메커니즘 필요&lt;/li&gt;
-  &lt;li&gt;레이스 컨디션
-    &lt;ul&gt;
-      &lt;li&gt;여러 프로세스들이 동시에 공유 데이터를 접근하는 상황&lt;/li&gt;
-      &lt;li&gt;데이터의 최종 연산 결과는 마지막에 그 데이터를 다룬 프로세스에 따라 달라짐&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;레이스 컨디션을 막기 위해서는 concurrent process는 동기화되어야 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;## Critical-Section Problem&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;n 개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우&lt;/li&gt;
-  &lt;li&gt;각 프로세스의 code segment에는 공유 데이터를 접근하는 코드인 critical section이 존재&lt;/li&gt;
-  &lt;li&gt;Problem
-    &lt;ul&gt;
-      &lt;li&gt;하나의 프로세스가 critical section에 있을 때 다른 모든 프로세스는 critical section에 들어갈 수 없어야 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;프로그램적-해결법의-충족-조건&quot;&gt;프로그램적 해결법의 충족 조건&lt;/h2&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;상호 배제 (Mutual Exclusion)&lt;/li&gt;
-  &lt;li&gt;진행 (Progress)&lt;/li&gt;
-  &lt;li&gt;유한대기 (Bounded Waiting)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h2 id=&quot;synchronization-hardware&quot;&gt;Synchronization Hardware&lt;/h2&gt;
-&lt;ul&gt;
-  &lt;li&gt;하드웨어적으로 Test &amp;amp; modify를 atomic하게 수행할 수 있도록 지원하는 경우 앞의 문제는 간단히 해결&lt;/li&gt;
-&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">Race Condition</summary></entry><entry><title type="html">[운영체제] (4) 프로세스 관리</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" rel="alternate" type="text/html" title="[운영체제] (4) 프로세스 관리" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
+&lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다.</summary></entry><entry><title type="html">[운영체제] (4) 프로세스 관리</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" rel="alternate" type="text/html" title="[운영체제] (4) 프로세스 관리" /><published>2021-04-02T19:18:00+09:00</published><updated>2021-04-02T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html">&lt;h2 id=&quot;프로세스의-개념&quot;&gt;&lt;strong&gt;프로세스의 개념&lt;/strong&gt;&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Process is &lt;strong&gt;&lt;span style=&quot;color:red;&quot;&gt;a Programin execution &lt;/span&gt;&lt;/strong&gt;

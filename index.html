@@ -611,6 +611,126 @@ function googleTranslateElementInit() {
 
 
 
+      <h2 class="post-title"><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html">
+          [운영체제] (5) 병행제어
+        </a>
+      </h2>
+      <div class="post-meta">
+        <span class="post-date"><i class="fa fa-calendar"></i> 2021-05-26</span>
+        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+      </div>
+      <p class="post-excerpt">
+        Race Condition
+
+하나의 Storage에 다수가 접근하는 경우 발생한다.
+
+언제 발생하는가?
+
+
+  커널 수행 중 인터럽트 발생 시
+
+
+
+  
+
+
+
+  해결 방법
+    
+      커널 수행 중에 인터럽트 처리 못하게 disable 한다. 커널 수행이 끝난 후 인터럽트 처리를 enable 하게 변경한다.
+    
+  
+
+
+
+
+
+  프로세스가 시스템콜을 하여 커널 모드로 수행 중인데 문맥교환이 일어나는 경우
+
+
+
+  
+
+
+
+  해결방법
+    
+      커널 모드에서 수행 중일 때는 CPU를 점유하지 못하도록 한다.
+    
+  
+
+
+
+
+
+  멀티프로세서에서 공유 메모리 내의 커널 데이타를 사용하는 경...
+      </p>
+      <div class="post-tags"><a class="post-tag" href="/tags.html#os">#os</a></div>
+    </li><li>
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       <h2 class="post-title"><a class="post-link" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html">
           뷰 엑시오스(Axios) 메서드와 옵션
         </a>
@@ -1104,110 +1224,6 @@ new Vue({
 모든 작업이 동일하다면 순서대로 처리하면 되겠지만, 실제 프로세스는 매우 다양한 작업이 섞여있다.
 그렇다면 어떤 작업에 어떤 응답을 주어야 가장 효율이 높게 사용할 수 있을까?란 의문이 든다. 그래서 CPU 스케줄링이 필요하다.
 ...
-      </p>
-      <div class="post-tags"><a class="post-tag" href="/tags.html#os">#os</a></div>
-    </li><li>
-      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <h2 class="post-title"><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html">
-          [운영체제] (5) 병행제어
-        </a>
-      </h2>
-      <div class="post-meta">
-        <span class="post-date"><i class="fa fa-calendar"></i> 2021-04-02</span>
-        <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
-      </div>
-      <p class="post-excerpt">
-        Race Condition
-
-하나의 Storage에 다수가 접근하는 경우 발생한다.
-
-언제 발생하는가?
-
-
-  커널 수행 중 인터럽트 발생 시
-
-
-그림 설명
-커널 수행 중에 인터럽트 처리 못하게 disable 한다. 커널 수행이 끝난 후 인터럽트 처리를 enable 하게 변경한다.
-
-
-  프로세스가 시스템콜을 하여 커널 모드로 수행 중인데 문맥교환이 일어나는 경우
-
-
-그림 설명
-
-
-  멀티프로세서에서 공유 메모리 내의 커널 데이타를 사용하는 경우
-
-
-프로세스 동기화 문제
-
-
-  공유데이터의 동시 접근은 데이터의 불일치 문제를 발생시킬 수 있다
-  일관성 유지를 위해서는 협력 프로세스 간의 실행 순서를 정해주는 메커...
       </p>
       <div class="post-tags"><a class="post-tag" href="/tags.html#os">#os</a></div>
     </li><li>

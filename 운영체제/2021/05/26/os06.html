@@ -11,15 +11,15 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Race Condition" />
 <meta property="og:description" content="Race Condition" />
-<link rel="canonical" href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" />
-<meta property="og:url" content="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" />
+<link rel="canonical" href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" />
+<meta property="og:url" content="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-04-02T19:18:00+09:00" />
+<meta property="article:published_time" content="2021-05-26T19:18:00+09:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="[운영체제] (5) 병행제어" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html","headline":"[운영체제] (5) 병행제어","dateModified":"2021-04-02T19:18:00+09:00","datePublished":"2021-04-02T19:18:00+09:00","description":"Race Condition","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html","headline":"[운영체제] (5) 병행제어","dateModified":"2021-05-26T19:18:00+09:00","datePublished":"2021-05-26T19:18:00+09:00","description":"Race Condition","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -541,7 +541,7 @@ function googleTranslateElementInit() {
   <h3 class="post-subtitle"></h3>
 
   <p class="post-meta">
-    <time class="dt-published" datetime="2021-04-02T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-04-02
+    <time class="dt-published" datetime="2021-05-26T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-05-26
     </time>
 
     
@@ -594,18 +594,58 @@ function googleTranslateElementInit() {
   <li>커널 수행 중 인터럽트 발생 시</li>
 </ol>
 
-<p>그림 설명
-커널 수행 중에 인터럽트 처리 못하게 disable 한다. 커널 수행이 끝난 후 인터럽트 처리를 enable 하게 변경한다.</p>
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/race%20condition%20ex1.png" style="zoom:110%" />
+</div>
+
+<ul>
+  <li>해결 방법
+    <ul>
+      <li>커널 수행 중에 인터럽트 처리 못하게 disable 한다. 커널 수행이 끝난 후 인터럽트 처리를 enable 하게 변경한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
 
 <ol>
   <li>프로세스가 시스템콜을 하여 커널 모드로 수행 중인데 문맥교환이 일어나는 경우</li>
 </ol>
 
-<p>그림 설명</p>
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/race%20condition%20ex2.png" style="zoom:110%" />
+</div>
+
+<ul>
+  <li>해결방법
+    <ul>
+      <li>커널 모드에서 수행 중일 때는 CPU를 점유하지 못하도록 한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
 
 <ol>
   <li>멀티프로세서에서 공유 메모리 내의 커널 데이타를 사용하는 경우</li>
 </ol>
+
+<div style="text-align:center;">
+  <img src="/assets/images/operating_system/race%20condition%20ex3.png" style="zoom:110%" />
+</div>
+
+<ul>
+  <li>해결방법
+    <ul>
+      <li>멀티프로세서의 경우 인터럽트를 enable/disable 하는 것으로 해결이 되지 않는다.</li>
+      <li>방법1. 한번에 하나의 CPU만 커널에 들어가게 한다</li>
+      <li>방법2. 커널 내부에 있는 각 공유 데이터에 접근할 때마다 그 데이터에 대한 lock/unlock을 하는 방법</li>
+      <li>방법 1처럼 운영체제 자체를 접근못하게 막으면 오베헤드가 너무 커지는 문제가 있다. 이와 같은 문제를 해결하기 위해 방법 2와 같이 lock을 걸어 해결할 수 있다.</li>
+    </ul>
+  </li>
+</ul>
+
+<p><br /></p>
 
 <h2 id="프로세스-동기화-문제">프로세스 동기화 문제</h2>
 
@@ -649,10 +689,10 @@ function googleTranslateElementInit() {
     </div>
 
 </article>
-<div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (4) 프로세스 관리">[운영체제] (4) 프로세스 관리</a><a class="next" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (5) CPU 스케줄링</a></div><div class="post-related">
+<div class="post-nav"><a class="previous" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" title="뷰 엑시오스(Axios) 메서드와 옵션">뷰 엑시오스(Axios) 메서드와 옵션</a><span></span></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/2021/03/12/interview-cs.html" title="[운영체제] (5) CPU 스케줄링">[Interview] CS</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (2) 컴퓨터 시스템의 동작 원리</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os06.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (5) 병행제어</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (4) 프로세스 관리</a></li></ul>
+        <li><a class="post-link" href="/2021/03/12/interview-database.html" title="">[Interview] 데이터베이스</a></li><li><a class="post-link" href="/2021/04/30/vue-%EB%9D%BC%EC%9A%B0%ED%84%B0.html" title="">뷰 라우터</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="">[운영체제] (3) 프로그램의 구조와 실행</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="">[운영체제] (5) CPU 스케줄링</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 
