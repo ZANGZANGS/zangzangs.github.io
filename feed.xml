@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-17T00:34:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (6) 병행제어</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" rel="alternate" type="text/html" title="[운영체제] (6) 병행제어" /><published>2021-05-26T19:18:00+09:00</published><updated>2021-05-26T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html">&lt;h2 id=&quot;race-condition&quot;&gt;Race Condition&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-17T23:47:15+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (6) 병행제어</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" rel="alternate" type="text/html" title="[운영체제] (6) 병행제어" /><published>2021-05-26T19:18:00+09:00</published><updated>2021-05-26T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html">&lt;h2 id=&quot;race-condition&quot;&gt;Race Condition&lt;/h2&gt;
 
 &lt;p&gt;하나의 Storage에 다수가 접근하는 경우 발생한다.&lt;/p&gt;
 
@@ -76,27 +76,93 @@
 &lt;/ul&gt;
 
 &lt;p&gt;## Critical-Section Problem&lt;/p&gt;
+
+&lt;p&gt;n 개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우에 발생한다.&lt;/p&gt;
+
 &lt;ul&gt;
-  &lt;li&gt;n 개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우&lt;/li&gt;
   &lt;li&gt;각 프로세스의 code segment에는 공유 데이터를 접근하는 코드인 critical section이 존재&lt;/li&gt;
-  &lt;li&gt;Problem
+  &lt;li&gt;문제점
     &lt;ul&gt;
       &lt;li&gt;하나의 프로세스가 critical section에 있을 때 다른 모든 프로세스는 critical section에 들어갈 수 없어야 한다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;프로그램적-해결법의-충족-조건&quot;&gt;프로그램적 해결법의 충족 조건&lt;/h2&gt;
+&lt;h3 id=&quot;프로그램적-해결법의-충족-조건&quot;&gt;프로그램적 해결법의 충족 조건&lt;/h3&gt;
+
+&lt;h4 id=&quot;1번-알고리즘&quot;&gt;1번 알고리즘&lt;/h4&gt;
+&lt;p&gt;크리티컬 섹션을 사용하는 프로세스 번호를 지정하는 int turn 변수를 사용한다.&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;상호 배제 (Mutual Exclusion)&lt;/li&gt;
-  &lt;li&gt;진행 (Progress)&lt;/li&gt;
-  &lt;li&gt;유한대기 (Bounded Waiting)&lt;/li&gt;
+  &lt;li&gt;상호 배제 (Mutual Exclusion)
+    &lt;ul&gt;
+      &lt;li&gt;프로세스 P(i)가 크리티컬 섹션 부분을 수행 중이면 다른 모든 프로세스들은 그들의 크리티컬 섹션에 들어가면 안된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;진행 (Progress)
+    &lt;ul&gt;
+      &lt;li&gt;아무도 크리티컬 섹션에 있지 않은 상태에서 크리티컬 섹션에 들어가고자 하는 프로세스가 있으면 크리티컬 섹션에 들어가게 해주어야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;유한대기 (Bounded Waiting)
+    &lt;ul&gt;
+      &lt;li&gt;프로세스가 크리티컬 섹션에 들어가려고 요청한 후부터 그 요청이 허용될 때까지 다른 프로세스들이 크리티컬 섹션에 들어가는 횟수에 한계가 있어야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;synchronization-hardware&quot;&gt;Synchronization Hardware&lt;/h2&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;가정
+#1 모든 프로세스의 수행 속도는 0보다 크다.
+#2 모든프로세스들 간의 상대적인 수행 속도는 가정하지 않는다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h4 id=&quot;2번-알고리즘&quot;&gt;2번 알고리즘&lt;/h4&gt;
+&lt;p&gt;프로세스마다 플레그를 두어 크리티컬 섹션을 사용하겠다는 의사표현을 한다.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;문제점
+    &lt;ul&gt;
+      &lt;li&gt;서로 계속해서 양보하는 상황이 발생한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;3번-알고리즘-피터슨의-알고리즘&quot;&gt;3번 알고리즘 (피터슨의 알고리즘)&lt;/h4&gt;
+&lt;p&gt;알고리즘 1번, 2번을 함꼐 사용한다.
+상대가 크리티컬 섹션을 사용하고자 하는지 확인하는 플레그를 확인한다.
+크리티컬 섹션의 사용 차례를 지정하는 turn 값을 셋팅한다.&lt;/p&gt;
+
+&lt;h3 id=&quot;synchronization-hardware&quot;&gt;Synchronization Hardware&lt;/h3&gt;
+&lt;p&gt;앞에서말한 문제를 해결하는 가장 간단한 방법은 추가적인 하드웨어를 하나 갖는 방법이 있다.&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;하드웨어적으로 Test &amp;amp; modify를 atomic하게 수행할 수 있도록 지원하는 경우 앞의 문제는 간단히 해결&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;semaphores&quot;&gt;Semaphores&lt;/h3&gt;
+&lt;p&gt;추상화 시킨 방법&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Semaphore S
+    &lt;ul&gt;
+      &lt;li&gt;integer variable&lt;/li&gt;
+      &lt;li&gt;아래의 두 가지 atomic 연산에 의해서만 접근 가능
+        &lt;blockquote&gt;
+          &lt;p&gt;P(S) : 자원을 획득하는 과정, lock을 거는 과정을 말함
+V(S) : lock을 푸는 과정&lt;/p&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;데드락 (Deadlock)
+    &lt;ul&gt;
+      &lt;li&gt;둘 이상의 프로세스가 서로 상대방에 의해 충족될 수 있는 event를 무한히 기다리는 현상&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;starvation
+    &lt;ul&gt;
+      &lt;li&gt;indifinite blocking. 프로세스가 suspend된 이유에 해당하는 세마포어 큐에서 빠져나갈 수 없는 현상&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">Race Condition</summary></entry><entry><title type="html">뷰 엑시오스(Axios) 메서드와 옵션</title><link href="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" rel="alternate" type="text/html" title="뷰 엑시오스(Axios) 메서드와 옵션" /><published>2021-05-01T20:11:00+09:00</published><updated>2021-05-01T20:11:00+09:00</updated><id>http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4</id><content type="html" xml:base="http://localhost:4000/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html">&lt;h2 id=&quot;액시오스axios&quot;&gt;액시오스(Axios)&lt;/h2&gt;
 &lt;p&gt;http 통신을 하기 위한 라이브러리로 Promise 기반의 API형식이 다양하게 제공된다. 따라서 별도의 로직을 구현할 필요 없이 주어진 API만으로도 간편하게 원하는 로직을 구현할 수 있습니다.&lt;/p&gt;
 

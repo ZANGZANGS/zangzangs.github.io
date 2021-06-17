@@ -578,7 +578,7 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 1 min</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 3 mins</span>
   </p><div class="post-tags"><a class="post-tag" href="/tags.html#os">#os</a></div></header>
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
@@ -662,28 +662,95 @@ function googleTranslateElementInit() {
 </ul>
 
 <p>## Critical-Section Problem</p>
+
+<p>n 개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우에 발생한다.</p>
+
 <ul>
-  <li>n 개의 프로세스가 공유 데이터를 동시에 사용하기를 원하는 경우</li>
   <li>각 프로세스의 code segment에는 공유 데이터를 접근하는 코드인 critical section이 존재</li>
-  <li>Problem
+  <li>문제점
     <ul>
       <li>하나의 프로세스가 critical section에 있을 때 다른 모든 프로세스는 critical section에 들어갈 수 없어야 한다.</li>
     </ul>
   </li>
 </ul>
 
-<h2 id="프로그램적-해결법의-충족-조건">프로그램적 해결법의 충족 조건</h2>
+<h3 id="프로그램적-해결법의-충족-조건">프로그램적 해결법의 충족 조건</h3>
+
+<h4 id="1번-알고리즘">1번 알고리즘</h4>
+<p>크리티컬 섹션을 사용하는 프로세스 번호를 지정하는 int turn 변수를 사용한다.</p>
 
 <ul>
-  <li>상호 배제 (Mutual Exclusion)</li>
-  <li>진행 (Progress)</li>
-  <li>유한대기 (Bounded Waiting)</li>
+  <li>상호 배제 (Mutual Exclusion)
+    <ul>
+      <li>프로세스 P(i)가 크리티컬 섹션 부분을 수행 중이면 다른 모든 프로세스들은 그들의 크리티컬 섹션에 들어가면 안된다.</li>
+    </ul>
+  </li>
+  <li>진행 (Progress)
+    <ul>
+      <li>아무도 크리티컬 섹션에 있지 않은 상태에서 크리티컬 섹션에 들어가고자 하는 프로세스가 있으면 크리티컬 섹션에 들어가게 해주어야 한다.</li>
+    </ul>
+  </li>
+  <li>유한대기 (Bounded Waiting)
+    <ul>
+      <li>프로세스가 크리티컬 섹션에 들어가려고 요청한 후부터 그 요청이 허용될 때까지 다른 프로세스들이 크리티컬 섹션에 들어가는 횟수에 한계가 있어야 한다.</li>
+    </ul>
+  </li>
 </ul>
 
-<h2 id="synchronization-hardware">Synchronization Hardware</h2>
+<blockquote>
+  <p>가정
+#1 모든 프로세스의 수행 속도는 0보다 크다.
+#2 모든프로세스들 간의 상대적인 수행 속도는 가정하지 않는다.</p>
+</blockquote>
+
+<h4 id="2번-알고리즘">2번 알고리즘</h4>
+<p>프로세스마다 플레그를 두어 크리티컬 섹션을 사용하겠다는 의사표현을 한다.</p>
+
+<ul>
+  <li>문제점
+    <ul>
+      <li>서로 계속해서 양보하는 상황이 발생한다.</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="3번-알고리즘-피터슨의-알고리즘">3번 알고리즘 (피터슨의 알고리즘)</h4>
+<p>알고리즘 1번, 2번을 함꼐 사용한다.
+상대가 크리티컬 섹션을 사용하고자 하는지 확인하는 플레그를 확인한다.
+크리티컬 섹션의 사용 차례를 지정하는 turn 값을 셋팅한다.</p>
+
+<h3 id="synchronization-hardware">Synchronization Hardware</h3>
+<p>앞에서말한 문제를 해결하는 가장 간단한 방법은 추가적인 하드웨어를 하나 갖는 방법이 있다.</p>
 <ul>
   <li>하드웨어적으로 Test &amp; modify를 atomic하게 수행할 수 있도록 지원하는 경우 앞의 문제는 간단히 해결</li>
 </ul>
+
+<h3 id="semaphores">Semaphores</h3>
+<p>추상화 시킨 방법</p>
+<ul>
+  <li>Semaphore S
+    <ul>
+      <li>integer variable</li>
+      <li>아래의 두 가지 atomic 연산에 의해서만 접근 가능
+        <blockquote>
+          <p>P(S) : 자원을 획득하는 과정, lock을 거는 과정을 말함
+V(S) : lock을 푸는 과정</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+  <li>데드락 (Deadlock)
+    <ul>
+      <li>둘 이상의 프로세스가 서로 상대방에 의해 충족될 수 있는 event를 무한히 기다리는 현상</li>
+    </ul>
+  </li>
+  <li>starvation
+    <ul>
+      <li>indifinite blocking. 프로세스가 suspend된 이유에 해당하는 세마포어 큐에서 빠져나갈 수 없는 현상</li>
+    </ul>
+  </li>
+</ul>
+
 
 
     </div>
@@ -692,7 +759,7 @@ function googleTranslateElementInit() {
 <div class="post-nav"><a class="previous" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" title="뷰 엑시오스(Axios) 메서드와 옵션">뷰 엑시오스(Axios) 메서드와 옵션</a><span></span></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/2021/04/30/vue-%EB%9D%BC%EC%9A%B0%ED%84%B0.html" title="">뷰 라우터</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" title="">[운영체제] (2) 컴퓨터 시스템의 동작 원리</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" title="">[운영체제] (6) 병행제어</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="">[운영체제] (5) CPU 스케줄링</a></li></ul>
+        <li><a class="post-link" href="/2021/03/12/dbcp-vs-jndi.html" title="">커넥션 풀을 관리하는 방법, DBCP와 JNDI</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="">[운영체제] (4) 프로세스 관리</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" title="">[운영체제] (2) 컴퓨터 시스템의 동작 원리</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/13/os01.html" title="">[운영체제] (1) 개요</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 
