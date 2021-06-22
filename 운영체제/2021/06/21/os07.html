@@ -686,14 +686,29 @@ function googleTranslateElementInit() {
       <li>자원 요청에 대한 부가적인 정보를 이용해서 데드락의 가능성이 없는 경우에만 자원을 할당</li>
       <li>시스템 state가 원래 state로 돌아올 수 있는 경우에만 자원 할당
         <blockquote>
-          <p>safe system</p>
+          <p>safe system
+-리소스 할당 그래프 알고리즘에 의해 사이클이 형성되는 경우라면 자원을 할당하지 않는다
+-Banker’s 알고리즘
+자원이 여유가 있더라도 데드락이 발생할 가능성이 조금이라도 있다면 자원을 허용하지 않는다</p>
         </blockquote>
       </li>
     </ul>
   </li>
   <li>Deadlock Detection and recovery
     <ul>
-      <li>데드락 발생은 허용하나 그에 대한 detection 루틴을 두어 deadlock 발견시 recover</li>
+      <li>데드락 발생은 허용하나 그에 대한 detection 루틴을 두어 deadlock 발견시 recovery
+        <blockquote>
+          <p>-프로세스 종료 방법
+1.데드락이 발생한 프로세스 모두 종료
+2.데드락 사이클이 발생한 프로세스를 하나씩 종료
+-자원 점유방법
+1.비용을 최소화할 희생자 선정
+2.safe state로 롤백하여 프로세스를 재시작한다
+3.Starvation 문제
+– 동일한 프로세스가 계속해서 희생자로 선정되는 경우
+– cost factor에 롤백 횟수도 같이 고려</p>
+        </blockquote>
+      </li>
     </ul>
   </li>
   <li>Deadlock lgnorance
@@ -711,7 +726,7 @@ function googleTranslateElementInit() {
 <div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" title="[운영체제] (6) 병행제어">[운영체제] (6) 병행제어</a><span></span></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="">[운영체제] (3) 프로그램의 구조와 실행</a></li><li><a class="post-link" href="/2021/03/12/interview-cs.html" title="">[Interview] CS</a></li><li><a class="post-link" href="/2021/03/12/dbcp-vs-jndi.html" title="">커넥션 풀을 관리하는 방법, DBCP와 JNDI</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="">[운영체제] (5) CPU 스케줄링</a></li></ul>
+        <li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="">[운영체제] (4) 프로세스 관리</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/21/os02.html" title="">[운영체제] (2) 컴퓨터 시스템의 동작 원리</a></li><li><a class="post-link" href="/2021/04/28/vue-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8.html" title="">뷰 컴포넌트</a></li><li><a class="post-link" href="/2021/03/12/interview-database.html" title="">[Interview] 데이터베이스</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 

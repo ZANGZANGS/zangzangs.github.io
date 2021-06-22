@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-21T23:58:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (7) 데드락</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html" rel="alternate" type="text/html" title="[운영체제] (7) 데드락" /><published>2021-06-21T19:18:00+09:00</published><updated>2021-06-21T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html">&lt;h2 id=&quot;교착상태-deadlock&quot;&gt;교착상태 (Deadlock)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-22T23:52:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (7) 데드락</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html" rel="alternate" type="text/html" title="[운영체제] (7) 데드락" /><published>2021-06-21T19:18:00+09:00</published><updated>2021-06-21T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html">&lt;h2 id=&quot;교착상태-deadlock&quot;&gt;교착상태 (Deadlock)&lt;/h2&gt;
 
 &lt;h3 id=&quot;데드락&quot;&gt;데드락&lt;/h3&gt;
 &lt;ul&gt;
@@ -100,14 +100,29 @@
       &lt;li&gt;자원 요청에 대한 부가적인 정보를 이용해서 데드락의 가능성이 없는 경우에만 자원을 할당&lt;/li&gt;
       &lt;li&gt;시스템 state가 원래 state로 돌아올 수 있는 경우에만 자원 할당
         &lt;blockquote&gt;
-          &lt;p&gt;safe system&lt;/p&gt;
+          &lt;p&gt;safe system
+-리소스 할당 그래프 알고리즘에 의해 사이클이 형성되는 경우라면 자원을 할당하지 않는다
+-Banker’s 알고리즘
+자원이 여유가 있더라도 데드락이 발생할 가능성이 조금이라도 있다면 자원을 허용하지 않는다&lt;/p&gt;
         &lt;/blockquote&gt;
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;Deadlock Detection and recovery
     &lt;ul&gt;
-      &lt;li&gt;데드락 발생은 허용하나 그에 대한 detection 루틴을 두어 deadlock 발견시 recover&lt;/li&gt;
+      &lt;li&gt;데드락 발생은 허용하나 그에 대한 detection 루틴을 두어 deadlock 발견시 recovery
+        &lt;blockquote&gt;
+          &lt;p&gt;-프로세스 종료 방법
+1.데드락이 발생한 프로세스 모두 종료
+2.데드락 사이클이 발생한 프로세스를 하나씩 종료
+-자원 점유방법
+1.비용을 최소화할 희생자 선정
+2.safe state로 롤백하여 프로세스를 재시작한다
+3.Starvation 문제
+– 동일한 프로세스가 계속해서 희생자로 선정되는 경우
+– cost factor에 롤백 횟수도 같이 고려&lt;/p&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;Deadlock lgnorance
