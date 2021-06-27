@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-22T23:52:35+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (7) 데드락</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html" rel="alternate" type="text/html" title="[운영체제] (7) 데드락" /><published>2021-06-21T19:18:00+09:00</published><updated>2021-06-21T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html">&lt;h2 id=&quot;교착상태-deadlock&quot;&gt;교착상태 (Deadlock)&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-28T01:36:11+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Your awesome title</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><author><name>GitHub User</name></author><entry><title type="html">[운영체제] (7) 데드락</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08.html" rel="alternate" type="text/html" title="[운영체제] (7) 데드락" /><published>2021-06-21T19:18:00+09:00</published><updated>2021-06-21T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08.html">&lt;h2 id=&quot;logical-vs-physical-주소&quot;&gt;Logical VS Physical 주소&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;프로그램이 실행을 위해 메모리에 적재되면 그 프로세스를 위한 독자적인 주소 공간이 생성된다. 이 주소를 &lt;strong&gt;논리적 주소 (logical address) 혹은 가상 주소(virtual address)&lt;/strong&gt; 라고 부른다. 논리적 주소는  각 프로세스마다 독립적으로 할당되며 0번지 부터 시작된다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;strong&gt;물리적 주소(physical address)&lt;/strong&gt; 는 물리적 메모리에 실제로 올라가는 위치를 말한다. 보통 낮은 주소 영역에는 운영체제가 올라가고, 높은 주소 영역에는 사용자 프로세스들이 올라간다.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;주소-바인딩&quot;&gt;주소 바인딩&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;논리적 주소를 물리적 메모리 주소로 연결시켜주는 작업을 주소 바인딩이라고 한다.&lt;/li&gt;
+  &lt;li&gt;주소 바인딩 방법 3가지
+    &lt;ul&gt;
+      &lt;li&gt;&lt;strong&gt;1.컴파일 바인딩&lt;/strong&gt;
+        &lt;ul&gt;
+          &lt;li&gt;컴파일 하는 시점에서 해당 프로그램이 물리적 메모리의 몇 번지에 위치할 것인지를 결정한다.&lt;/li&gt;
+          &lt;li&gt;프로그램이 올라가 있느 물리적 메모리의 위치를 변경하고 싶다면 컴파일을 다시 하는 수고가 필요하다.&lt;/li&gt;
+          &lt;li&gt;현대의 시분할 시스템에서 잘 사용하지 않는다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;2.로드 타임 바인딩&lt;/strong&gt;
+        &lt;ul&gt;
+          &lt;li&gt;프로그램의 실행이 시작될 때에 물리적 메모리 주소가 결정되는 주소 바인딩 방식을 말한다.&lt;/li&gt;
+          &lt;li&gt;로더(loader)의 책임하에 물리적 메모리 주소가 부여되며 프로그램이 종료될 때까지 물리적 메모리상의 위치가 고정된다.&lt;/li&gt;
+          &lt;li&gt;로더란 사용자 프로그램을 메모리에 적재시키는 프로그램을 말한다.&lt;/li&gt;
+          &lt;li&gt;로드 타임 바인딩은 컴파일러가 재배치 가능 코드를 생성한 경우에 가능한 주소 바인딩 방식.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;3.실행시간 바인딩&lt;/strong&gt;
+        &lt;ul&gt;
+          &lt;li&gt;프로그램이 실행을 시작한 후에도 그 프로그램이 위치한 물리적 메모리상의 주소가 변경될 수 있는 바인딩 방식이다이다.&lt;/li&gt;
+          &lt;li&gt;CPU가 주소를 참조할 때마다 해당 데이터가 물리적 메모리의 어느 위치에 존재하는지, 주소 매핑 테이블을 이용해 바인딩을 점검해야 한다.&lt;/li&gt;
+          &lt;li&gt;실행시간 바인딩 방식을 위한 기준 레지스터와 한계 레지스터를 포함하는 MMU(Memory Management Unit)라는 하드웨어가 필요하다.&lt;/li&gt;
+          &lt;li&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;mmu&quot;&gt;MMU&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;MMU는 논리적 주소를 물리적 주소로 매핑해주는 하드웨어 장치이다.&lt;/li&gt;
+  &lt;li&gt;기준 레지스터(base register)의 값을 더해 물리적 메모리 주소 값을 알아낸다.&lt;/li&gt;
+  &lt;li&gt;물리적 메모리의 시작 위치인 베이스 레지스터로부터 얼마나 떨어져 있는지를 나타내는 일종의 오프셋(offset) 개념으로 생각할 수 있다.&lt;/li&gt;
+  &lt;li&gt;MMU 기법에서는 문맥교환으로 CPU에서 수행 중인 프로세스가 바뀔 때마다 재배치 레지스터의 값을 그 프로세스에 해당되는 값으로 재설정함으로써 각 프로세스에 맞는, 물리적 메모리 위치에 접근하는 것을 지원한다.&lt;/li&gt;
+  &lt;li&gt;다중 프로그래밍 환경에서 물리적 메모리 안에는 여러 개의 프로세스가 동시에 올라가 있다. MMU 기법을 사용하여 주소 변환을 할 경우 CPU가 요청한 논리적 주소값과 베이스 레지스터 안에 있는 값을 더한 결과가 해당 프로세스의 주소 공간을 벗어나는 경우가 발생하여 &lt;strong&gt;메모리 보안&lt;/strong&gt; 이 이루어 지지 않는다. 이처럼 메모리 영역을 침범하여 os에서 치명적 결과를 초래하는 것을 막기 위해 한계 레지스터를 사용한다.&lt;/li&gt;
+  &lt;li&gt;한계 레지스터는 프로세스가 자신의 주소 공간을 넘어서는 메모리 참조를 하려고 하는지 체크한다.&lt;/li&gt;
+  &lt;li&gt;한계 레지스터는 논리적 주소의 최댓값. 즉 프로세스의 크기를 담고 있다.&lt;/li&gt;
+  &lt;li&gt;CPU가 요청한 프로세스의 논리적 주소값이 한계 레지스터 내에 저장된 프로세스의 크기보다 작은지 확인한다. 이를 넘어가면 트랩을 발생시켜 해당 프로세스를 강제 종료시킨다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;다이나믹-로딩-dynamic-loading&quot;&gt;다이나믹 로딩 (Dynamic Loading)&lt;/h2&gt;
+
+&lt;h2 id=&quot;오버레이overlays&quot;&gt;오버레이(Overlays)&lt;/h2&gt;
+
+&lt;h2 id=&quot;스와핑-swapping&quot;&gt;스와핑 (Swapping)&lt;/h2&gt;
+
+&lt;h2 id=&quot;다이나믹-링킹-dynamic-linking&quot;&gt;다이나믹 링킹 (Dynamic Linking)&lt;/h2&gt;
+
+&lt;p&gt;리눅스에서는 .so
+윈도우에서는 .dll 파일&lt;/p&gt;
+
+&lt;hr /&gt;
+&lt;p&gt;파트 나눠야하나&lt;/p&gt;
+
+&lt;h2 id=&quot;물리적-메모리-할당&quot;&gt;물리적 메모리 할당&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;연속할당
+    &lt;ul&gt;
+      &lt;li&gt;고정 분할 방식 (현대에선 안씀)&lt;/li&gt;
+      &lt;li&gt;가변 분할 방식&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;홀(Holl)
+    &lt;ul&gt;
+      &lt;li&gt;가용 메모리 공간&lt;/li&gt;
+      &lt;li&gt;다양한 크기의 홀들이 메모리 여러 곳에 흩어져 있음&lt;/li&gt;
+      &lt;li&gt;프로세스가 도착하면 수용가능한 홀을 할당&lt;/li&gt;
+      &lt;li&gt;운영체제는 다음의 정보를 유지&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;페이징&quot;&gt;페이징&lt;/h2&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">Logical VS Physical 주소</summary></entry><entry><title type="html">[운영체제] (7) 데드락</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html" rel="alternate" type="text/html" title="[운영체제] (7) 데드락" /><published>2021-06-21T19:18:00+09:00</published><updated>2021-06-21T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html">&lt;h2 id=&quot;교착상태-deadlock&quot;&gt;교착상태 (Deadlock)&lt;/h2&gt;
 
 &lt;h3 id=&quot;데드락&quot;&gt;데드락&lt;/h3&gt;
 &lt;ul&gt;
@@ -128,7 +218,15 @@
   &lt;li&gt;Deadlock lgnorance
     &lt;ul&gt;
       &lt;li&gt;Deadlock을 시스템이 책임지지 않음&lt;/li&gt;
-      &lt;li&gt;UNIX를 포함한 대부분의 OS가 채택&lt;/li&gt;
+      &lt;li&gt;UNIX를 포함한 대부분의 OS가 채택
+        &lt;blockquote&gt;
+          &lt;p&gt;데드락이 일어나지 않는다고 생각하고 아무런 조치도 취하지 않음&lt;/p&gt;
+          &lt;ul&gt;
+            &lt;li&gt;데드락이 매우 드물게 발생하므로 데드락에 대한 조치 자체가 더 큰 오버헤일 수 있음&lt;/li&gt;
+            &lt;li&gt;만약, 시스템에 데드락이 발생한 경우 시스템이 비정상적으로 작동하는 것을 사람이 느낀 후 직접 프로세스를 죽이는 등의 방법으로 대처함&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/blockquote&gt;
+      &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">교착상태 (Deadlock)</summary></entry><entry><title type="html">[운영체제] (6) 병행제어</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" rel="alternate" type="text/html" title="[운영체제] (6) 병행제어" /><published>2021-05-26T19:18:00+09:00</published><updated>2021-05-26T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html">&lt;h2 id=&quot;race-condition&quot;&gt;Race Condition&lt;/h2&gt;
@@ -1149,6 +1247,11 @@ new Vue({
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;이 외에도 다음과 같은 프로세스 상태가 존재한다.&lt;/p&gt;
+
+&lt;ul&gt;
   &lt;li&gt;시작 상태
     &lt;ul&gt;
       &lt;li&gt;프로세스가 시작되어 그 프로세스를 위한 각종 자료구조는 생성되었지만 아직 메모리 획득을 승인받지 못한 상태&lt;/li&gt;
@@ -1183,7 +1286,7 @@ new Vue({
 &lt;h2 id=&quot;-1&quot;&gt;&lt;br /&gt;&lt;/h2&gt;
 
 &lt;h2 id=&quot;process-control-block-pcb&quot;&gt;Process Control Block (PCB)&lt;/h2&gt;
-&lt;p&gt;프로세스 제어블록이란 운영체제가 시스템 내의 프로세스들을 관리하기 위해 프로세스마다 유지하는 정보들을 담는 커널 내의 자료구조를 말한다.&lt;/p&gt;
+&lt;p&gt;프로세스 제어블록이란 &lt;strong&gt;운영체제가 시스템 내의 프로세스들을 관리하기 위해 프로세스마다 유지하는 정보들을 담는 커널 내의 자료구조&lt;/strong&gt;를 말한다.&lt;/p&gt;
 
 &lt;div style=&quot;text-align:center;&quot;&gt;
   &lt;img src=&quot;/assets/images/operating_system/ch05_PCB구성.png&quot; style=&quot;zoom:50%&quot; /&gt;
@@ -1229,7 +1332,7 @@ new Vue({
   &lt;li&gt;System call이나 interrupt 발생시 반드시 context switch가 일어나는 것은 아니다
     &lt;ol&gt;
       &lt;li&gt;&lt;strong&gt;문맥교환 &lt;span style=&quot;color:red&quot;&gt;X&lt;/span&gt;&lt;/strong&gt;
- 사용자 프로세스 A -&amp;gt; interrupt or system call -&amp;gt; 커널모드) -&amp;gt; &lt;strong&gt;&lt;span style=&quot;color:red&quot;&gt;문맥 교환 없이 user 모드 복귀&lt;/span&gt;&lt;/strong&gt; -&amp;gt; 사용자 프로세스 A&lt;/li&gt;
+ 사용자 프로세스 A -&amp;gt; interrupt or system call -&amp;gt; 커널모드 -&amp;gt; &lt;strong&gt;&lt;span style=&quot;color:red&quot;&gt;문맥 교환 없이 user 모드 복귀&lt;/span&gt;&lt;/strong&gt; -&amp;gt; 사용자 프로세스 A&lt;/li&gt;
       &lt;li&gt;&lt;strong&gt;문맥교환 &lt;span style=&quot;color:blue&quot;&gt;O&lt;/span&gt;&lt;/strong&gt;
  사용자 프로세스 A -&amp;gt; interrupt or I/O 요청 system call  -&amp;gt; 커널모드(ISR or system call) -&amp;gt; &lt;strong&gt;&lt;span style=&quot;color:blue&quot;&gt;문맥 교환 발생&lt;/span&gt;&lt;/strong&gt; -&amp;gt; 사용자 프로세스 B&lt;/li&gt;
     &lt;/ol&gt;
@@ -1414,8 +1517,8 @@ new Vue({
   &lt;/li&gt;
   &lt;li&gt;주소 공간 (Address space)
     &lt;ul&gt;
-      &lt;li&gt;자식은 부모의 공간을 복사함 (binary and OS data)&lt;/li&gt;
-      &lt;li&gt;자식은 부모의 공간을 복사함 (binary and OS data)&lt;/li&gt;
+      &lt;li&gt;자식은 부모의 공간을 복사함 (binary and OS data)
+&lt;!-- - 자식은 부모의 공간을 복사함 (binary and OS data) --&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;유닉스의 예
@@ -1470,7 +1573,7 @@ new Vue({
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;exit() 시스템 콜&lt;/strong&gt;
-프로세스의 종료 종료하는 명령이다. 종료 명령은 자발적 종료와 비자발적 종료로 구분 된다.
+프로세스의 종료하는 명령이다. 종료 명령은 자발적 종료와 비자발적 종료로 구분 된다.
     &lt;ul&gt;
       &lt;li&gt;자발적 종료
         &lt;ul&gt;
@@ -1557,147 +1660,4 @@ new Vue({
   hared memory VS Message passing
 &lt;div&gt;
 
-&lt;/div&gt;&lt;/div&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">프로세스의 개념</summary></entry><entry><title type="html">[운영체제] (3) 프로그램의 구조와 실행</title><link href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" rel="alternate" type="text/html" title="[운영체제] (3) 프로그램의 구조와 실행" /><published>2021-03-28T19:18:00+09:00</published><updated>2021-03-28T19:18:00+09:00</updated><id>http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03</id><content type="html" xml:base="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html">&lt;h2 id=&quot;프로그램의-실행&quot;&gt;프로그램의 실행&lt;/h2&gt;
-
-&lt;p&gt;프로그램의 실행은 두가지 중요한 의미를 가진다.&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;파일 시스템에 존재하던 실행파일이 메모리에 적재된다는 의미&lt;/li&gt;
-  &lt;li&gt;프로그램이 CPU를 할당받고 명령을 수행하고 있는 상태&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;파일 시스템에 있는 실행 파일이 메모리에 적재될 때, 실행파일 전체가 메모리에 올라가지 않는다. 일부분만 메모리에 올라가고 나머지는 디스크의 특정영역인 스왑 영역에 존재한다.&lt;/p&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;가상-메모리-virtual-memory&quot;&gt;가상 메모리 (virtual memory)&lt;/h2&gt;
-
-&lt;p&gt;프로세스의 주소 공간은 코드(code), 데이타(data), 스택(stack)영역으로 구성된다. 이러한 주소 공간을 우리는 가상 메모리 (또는 논리적 메모리: logical memory)라고 부른다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;code&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;사용자가 작성한 프로그램 함수들의 코드가 CPU에서 수행할 수 있는 기계어 명령 형태로 변환되어 저장되는 공간&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;data&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;전역 변수 등 프로그램이 사용하는 데이터를 저장하는 공간&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;stack&lt;/strong&gt;
-    &lt;ul&gt;
-      &lt;li&gt;호출된 함수의 수행을 마치고 복귀할 주소 및 데이터를 임시로 저장하는 공간&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;커널-주소-공간의-내용&quot;&gt;커널 주소 공간의 내용&lt;/h2&gt;
-
-&lt;p&gt;운영체제도 하나의 프로세스이기 때문에 커널 역시 동일한 주소 공간인 code, data, stack 영역을 갖는다.&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;code&quot;&gt;code&lt;/h4&gt;
-    &lt;ul&gt;
-      &lt;li&gt;시스템 콜, 인터럽트 처리 코드&lt;/li&gt;
-      &lt;li&gt;CPU, 메모리 등 자원 관리를 위한 코드&lt;/li&gt;
-      &lt;li&gt;편리한 인터페이스 제공을 위한 코드&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;data&quot;&gt;data&lt;/h4&gt;
-    &lt;ul&gt;
-      &lt;li&gt;PCB(Process Controll Block)
-        &lt;ul&gt;
-          &lt;li&gt;현재 수행 중인 프로세스의 상태, CPU 사용 정보 등을 유지하기 위한 자료구조&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-      &lt;li&gt;CPU, Memory 등 하드웨어 자원을 관리하기 위한 자료구조가 저장&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;h4 id=&quot;stack&quot;&gt;stack&lt;/h4&gt;
-    &lt;ul&gt;
-      &lt;li&gt;각 Process의 커널 스택을 저장
-        &lt;ul&gt;
-          &lt;li&gt;프로세스는 함수 호출시 자신의 복귀 주소를 저장하지만, 커널은 커널 내의 주소가 된다.&lt;/li&gt;
-          &lt;li&gt;각각의 프로세스마다 별도의 스택을 두어 관리한다.&lt;/li&gt;
-        &lt;/ul&gt;
-      &lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;사용자-프로그램이-사용하는-함수&quot;&gt;사용자 프로그램이 사용하는 함수&lt;/h2&gt;
-&lt;p&gt;함수는 크게 두가지로 나눌 수 있다. 프로세스 함수와 커널함수&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;사용자 정의 함수(프로세스 함수)
-    &lt;ul&gt;
-      &lt;li&gt;자신의 프로그램에서 정의한 함수&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;라이브러리 함수(프로세스 함수)
-    &lt;ul&gt;
-      &lt;li&gt;자신의 프로그램에서 정의하지 않고 갖다 쓴 함수&lt;/li&gt;
-      &lt;li&gt;자신의 프로그램의 실행 파일에 포함되어 있다.&lt;br /&gt;
-&lt;br /&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;커널 함수
-    &lt;ul&gt;
-      &lt;li&gt;운영체제 프로그램의 함수&lt;/li&gt;
-      &lt;li&gt;커널 함수의 호출 = 시스템 콜&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;인터럽트&quot;&gt;인터럽트&lt;/h2&gt;
-
-&lt;p&gt;CPU는 매번 프로그램 카운터가 가리키고 있는 지점의 명령을 하나씩 수행하고 나서, 다음 명령을 수행하기 직전에 인터럽트 라인이 세팅되었는지 체크한다. 인터럽트 라인 체크를 통해 인터럽트가 발생했으면 CPU는 현재 수행하던 프로세스를 멈추고 운영체제의 인터럽트 처리 루틴으로 이동해서 인터럽트 처리를 수행한다.&lt;/p&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;그렇다면 인터럽트 처리중에 또다른 인터럽트가 발생하는 경우는 어떻게 되는가?&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;원직적으로는 인터럽트 처리중에 또 다른 인터럽트의 처리를 허용하지 않는다.
-    &lt;ul&gt;
-      &lt;li&gt;앞서 변경중이던 데이터를 또다른 인터럽트가 발생해 처리하게 되면 의도하지 않은 결과값으로 바뀔 수 있기 때문이다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;예외적인 경우가 존재한다.
-    &lt;ul&gt;
-      &lt;li&gt;인터럽트마다 중요도가 다르다.&lt;/li&gt;
-      &lt;li&gt;상대적으로 낮은 중요도를 가진 인터럽트를 처리하는 도중 높은 중요도의 인터럽트 발생을 허용한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;
-
-&lt;h2 id=&quot;프로세스의-두-가지-실행-상태&quot;&gt;프로세스의 두 가지 실행 상태&lt;/h2&gt;
-&lt;p&gt;mode bit에 따라 user mode, kernel mode를 반복하며 실행된다. 프로그램이 시작되어 종료될 때까지 다양한 함수 호출을 하며 실행되는데, 이를 사용자 모드와 커널모드의 실행 상태로 구분 지을 수 있다&lt;/p&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;사용자 모드(user mode)
-    &lt;ul&gt;
-      &lt;li&gt;프로그램이 사용자 정의함수나 라이브러리 함수를 호출&lt;/li&gt;
-      &lt;li&gt;시스템 콜의 실행이 끝나고 시스템 콜 이후의 명령을 수행하는 경우&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;커널 모드(kernel mode)
-    &lt;ul&gt;
-      &lt;li&gt;시스템 콜을 하는 경우&lt;/li&gt;
-      &lt;li&gt;프로그램의 실행이 끝날 때 커널모드로 진입하여 프로그램을 종료함&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;br /&gt;&lt;/p&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">프로그램의 실행</summary></entry></feed>
+&lt;/div&gt;&lt;/div&gt;</content><author><name>zangzangs</name></author><category term="운영체제" /><category term="os" /><summary type="html">프로세스의 개념</summary></entry></feed>

@@ -4,22 +4,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="google-translate-customization" content="108d9124921d80c3-80e20d618ff053c8-g4f02ec6f3dba68b7-c"></meta><!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>[운영체제] (5) CPU 스케줄링 | Your awesome title</title>
+<title>[운영체제] (7) 데드락 | Your awesome title</title>
 <meta name="generator" content="Jekyll v3.9.0" />
-<meta property="og:title" content="[운영체제] (5) CPU 스케줄링" />
+<meta property="og:title" content="[운영체제] (7) 데드락" />
 <meta name="author" content="zangzangs" />
 <meta property="og:locale" content="en_US" />
-<meta name="description" content="사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다." />
-<meta property="og:description" content="사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다." />
-<link rel="canonical" href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" />
-<meta property="og:url" content="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" />
+<meta name="description" content="Logical VS Physical 주소" />
+<meta property="og:description" content="Logical VS Physical 주소" />
+<link rel="canonical" href="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08.html" />
+<meta property="og:url" content="http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08.html" />
 <meta property="og:site_name" content="Your awesome title" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-04-10T19:18:00+09:00" />
+<meta property="article:published_time" content="2021-06-21T19:18:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="[운영체제] (5) CPU 스케줄링" />
+<meta property="twitter:title" content="[운영체제] (7) 데드락" />
 <script type="application/ld+json">
-{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html","headline":"[운영체제] (5) CPU 스케줄링","dateModified":"2021-04-10T19:18:00+09:00","datePublished":"2021-04-10T19:18:00+09:00","description":"사용자 프로그램이 수행되는 과정은 CPU 작업과 I/O 작업의 반복으로 수행된다.","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
+{"author":{"@type":"Person","name":"zangzangs"},"url":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08.html","headline":"[운영체제] (7) 데드락","dateModified":"2021-06-21T19:18:00+09:00","datePublished":"2021-06-21T19:18:00+09:00","description":"Logical VS Physical 주소","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08.html"},"@type":"BlogPosting","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 <link rel="shortcut icon" href="">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -537,11 +537,11 @@ function googleTranslateElementInit() {
 
 
 <header class="post-header">
-  <h1 class="post-title p-name" itemprop="name headline">[운영체제] (5) CPU 스케줄링</h1>
+  <h1 class="post-title p-name" itemprop="name headline">[운영체제] (7) 데드락</h1>
   <h3 class="post-subtitle"></h3>
 
   <p class="post-meta">
-    <time class="dt-published" datetime="2021-04-10T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-04-10
+    <time class="dt-published" datetime="2021-06-21T19:18:00+09:00" itemprop="datePublished"><i class="fa fa-calendar"></i> 2021-06-21
     </time>
 
     
@@ -578,278 +578,113 @@ function googleTranslateElementInit() {
 
 
 
-    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 5 mins</span>
+    <span class="post-reading-time left-vsplit"><i class="fa fa-clock-o"></i> About 2 mins</span>
   </p><div class="post-tags"><a class="post-tag" href="/tags.html#os">#os</a></div></header>
 <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
     <div class="post-content e-content" itemprop="articleBody">
 
-      <p>사용자 프로그램이 수행되는 과정은 <strong>CPU 작업과 I/O 작업의 반복</strong>으로 수행된다.</p>
-
-<p>사용자 프로그램이 CPU를 직접 가지고 빠른 명령을 수행하는 일련의 단계를 <strong>CPU 버스트</strong>라고 하고,
-사용자 프로그램에 I/O 요청이 발생해 커널에 의해 입출력 작업을 진행하는 비교적 느린 <strong>I/O 버스트</strong>라 한다.
-사용자 프로그램은 사이클처럼 CPU 버스트와 I/O 버스트 작업이 번갈아 수행된다.</p>
-
-<div style="text-align:center;">
-  <img src="/assets/images/operating_system/chap06_burst.png" style="zoom:110%" />
-</div>
-
-<p>모든 작업이 동일하다면 순서대로 처리하면 되겠지만, 실제 프로세스는 매우 다양한 작업이 섞여있다.
-그렇다면 어떤 작업에 어떤 응답을 주어야 가장 효율이 높게 사용할 수 있을까?란 의문이 든다. 그래서 CPU 스케줄링이 필요하다.</p>
+      <h2 id="logical-vs-physical-주소">Logical VS Physical 주소</h2>
 
 <ul>
-  <li>CPU 스케줄링의 필요성
-    <ul>
-      <li>여러 종류의 job(=process)이 섞여 있기 때문에 스케줄링이 필요하다</li>
-      <li>interactive job에게 적절한 response 제공 요망</li>
-      <li>CPU와 I/O 장치 등 시스템 자원을 골고루 효율적으로 사용</li>
-    </ul>
+  <li>
+    <p>프로그램이 실행을 위해 메모리에 적재되면 그 프로세스를 위한 독자적인 주소 공간이 생성된다. 이 주소를 <strong>논리적 주소 (logical address) 혹은 가상 주소(virtual address)</strong> 라고 부른다. 논리적 주소는  각 프로세스마다 독립적으로 할당되며 0번지 부터 시작된다.</p>
+  </li>
+  <li>
+    <p><strong>물리적 주소(physical address)</strong> 는 물리적 메모리에 실제로 올라가는 위치를 말한다. 보통 낮은 주소 영역에는 운영체제가 올라가고, 높은 주소 영역에는 사용자 프로세스들이 올라간다.</p>
   </li>
 </ul>
 
-<p><br /></p>
-
-<hr />
-
-<h2 id="cpu-scheduler--dispatcher">CPU Scheduler &amp; Dispatcher</h2>
-
-<h3 id="cpu-scheduler">CPU Scheduler</h3>
-<p>준비 상태의 프로세스 중에서 이번에 CPU를 할당할 프로세스를 선택하는 코드</p>
+<h2 id="주소-바인딩">주소 바인딩</h2>
 
 <ul>
-  <li>CPU 스케줄링이 필요한 상태 변화가 있는 경우 4가지
-    <ol>
-      <li>Running -&gt; Blocked (ex: I/O 요청하는 시스템 콜 )</li>
-      <li>Running -&gt; Ready (ex: 할당시간만료로 timer interrupt )</li>
-      <li>Blocked -&gt; Ready (ex: I/O 완료후 인터럽트 )</li>
-      <li>Terminate</li>
-    </ol>
-  </li>
-</ul>
-
-<blockquote>
-  <p>1,4  nonpreemptive (= 강제로 빼앗지 않고 자진 반납)
-  이 외에는 preemptive(= 강제로 빼앗음)</p>
-</blockquote>
-
-<p><br /></p>
-
-<h3 id="dispatcher">Dispatcher</h3>
-<p>스케줄러에 의해 선택된 프로세스에게 CPU를 넘겨주고 작업을 수행할 수 있도록 하는 코드</p>
-
-<ol>
-  <li>PCB에 현재 프로세스의 상태를 저장한다.</li>
-  <li>새로 선택된 프로세스의 context의 PCB로부터 복원하고 CPU를 넘긴다</li>
-</ol>
-
-<p>이처럼 디스패처가 하나의 프로세스를 정지 시키고 다른 프로세스에게 CPU를 전달하기 까지 걸리는 시간을 <strong>dispatch latency</strong> 라 한다.</p>
-
-<p><br /></p>
-
-<hr />
-
-<h2 id="스케줄링의-성능-평가scheduling-criteria">스케줄링의 성능 평가(Scheduling Criteria)</h2>
-<p>Performance Index (= Performance Measure, 성능 척도)</p>
-
-<ul>
-  <li>CPU utilization(이용률)
+  <li>논리적 주소를 물리적 메모리 주소로 연결시켜주는 작업을 주소 바인딩이라고 한다.</li>
+  <li>주소 바인딩 방법 3가지
     <ul>
-      <li>keep the CPU as busy as possible</li>
-    </ul>
-  </li>
-  <li>Throughput(처리량)
-    <ul>
-      <li>of processes that complete their execution per time unit</li>
-    </ul>
-  </li>
-  <li>Turnaround time (소요시간, 반환시간)
-    <ul>
-      <li>amount of time to execute a particular process</li>
-    </ul>
-  </li>
-  <li>Waiting time (대기 시간)
-    <ul>
-      <li>amount of time a process has been waiting in the ready queue</li>
-    </ul>
-  </li>
-  <li>Response tiem (응답 시간)
-    <ul>
-      <li>amount of time it takes from when a request was submitted until the first response is produced, not output (for time-sharing environment)</li>
-    </ul>
-  </li>
-</ul>
-
-<p><br /></p>
-
-<hr />
-
-<h2 id="cpu-스케줄링-알고리즘">CPU 스케줄링 알고리즘</h2>
-
-<h3 id="fcfs-first-come-first-served">FCFS (First-Come First-Served)</h3>
-
-<p>프로세스가 준비 큐에 도착한 시간 순서대로 CPU를 할당하는 방식을 말한다.</p>
-
-<ul>
-  <li>CPU를 먼저 요청한 프로세스에게 CPU를 할당</li>
-  <li>프로세스가 자발적으로 CPU를 반납할 때까지 CPU를 빼앗지 않음</li>
-  <li>콘보이 현상(convoy effect)이 발생
-    <ul>
-      <li>먼저 도착한 프로세스의 성격에 따라 평균시간이 크게 달라짐</li>
-      <li>긴 프로세스 짧은 프로세스가 순서대로 오면 뒤 쪽의 짧은 프로세스는 많은 시간 기다려야 함</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="sjfshortest-job_first">SJF(Shortest-Job_First)</h3>
-<p>CPU 버스트가 가장 짧은 프로세스에 CPU를 먼저 할당하는 방식을 말한다.
-평균 시간을 가장 짧게 하는 최적 알고리즘으로 알려져 있다.</p>
-
-<ul>
-  <li>nonpreemptive
-    <ul>
-      <li>일단 CPU를 선점하면 종료까지 사용한다.</li>
-    </ul>
-  </li>
-  <li>preemptive
-    <ul>
-      <li>프로세스의 남은 사용 시간을 기준으로 처리한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="srtfshortest-remaining-time-first">SRTF(Shortest-Remaining-Time-First)</h3>
-
-<p>SJF의 선점형(preemptive) 구현 방식을 말한다.</p>
-
-<h3 id="priority-scheduling">Priority Scheduling</h3>
-<ul>
-  <li>우선순위가 가장 높은 프로세스에게 제일 먼저 CPU를 할당한다.</li>
-  <li>우선순위값이 작을수록 높은 우선 순위를 갖는다.</li>
-  <li>CPU버스트 시간을 우선순위값으로 정의하면 우선순위 스케줄링은 SFJ알고리즘과 동일한 의미를 갖게 된다.</li>
-  <li>우선순위가 높은 프로세스가 계속 도착하여 대기중인 프로세스가 계속 대기하는 기아 현상이 발생 할 수 있다. 대기중인 프로세스의 우선순위를 조금씩 높이는 aging 방법으로 해결 할 수 있다.</li>
-</ul>
-
-<h3 id="round-robin라운드-로빈">Round Robin(라운드 로빈)</h3>
-<ul>
-  <li>각 프로세스는 동일한 크기의 할당 시간을 가진다. (1~100ms)</li>
-  <li>할당 시간이 지나면 프로세스는 선점(preempted)당하고 ready queue의 제일 뒤에 가서 다시 줄을 선다</li>
-  <li>n 개의 프로세스가 ready queue에 있고 할당 시간이 q  time unit인 경우 각 프로세스는 최대 q time unit 단위로 CPU 시간의 1/n을 얻는다.
-=&gt; 어떤 프로세스도 (n-1)q time unit 이상 기다리지 않는다.</li>
-  <li>할당시간이 너무 길면 FCFS와 같은 결과가 나온다.</li>
-  <li>할당시간이 너무 짧으면 오버헤드가 커지는 문제가 발생한다.</li>
-  <li>라운드로빈 스케줄링은 여러종류의 이질적인 프로세스가 실행중일 때 효과적이다.</li>
-</ul>
-
-<h3 id="multilevel-queue">Multilevel Queue</h3>
-
-<ul>
-  <li>Ready queue 를 여러 개로 분할
-    <ul>
-      <li>foreground(interactive)</li>
-      <li>background(batch - no human interactive)</li>
-    </ul>
-  </li>
-</ul>
-
-<h3 id="multilevel-feedback-queue">Multilevel Feedback Queue</h3>
-<ul>
-  <li>프로세스가 다른 큐로 이동 가능</li>
-  <li>에이징을 이와 같은 방식으로 구현할 수 있다.</li>
-</ul>
-
-<h3 id="multiple-processor-scheduling">Multiple-Processor Scheduling</h3>
-<ul>
-  <li>CPU가 여러 개인 경우 스케줄링은 더욱 복잡해짐</li>
-  <li>Homogeneous processor인 경우
-    <ul>
-      <li>Queue에 한줄로 세워서 각 프로세서가 알아서 꺼내가게 할 수 있다.</li>
-      <li>반드시 틍정 프로세서에서 수행되어야 하는 프로세스가 있는 경우에는 문제가 더 복잡해짐</li>
-    </ul>
-  </li>
-  <li>Load sharing
-    <ul>
-      <li>일부 프로세서에 job이 몰리지 않도록 부하를 적절히 공유하는 메커니즘 필요</li>
-      <li>별개의 큐를 두는 방법 vs 공동 큐를 사용하는 방법</li>
-    </ul>
-  </li>
-  <li>Symmetric Multiprocessing(SMP)
-    <ul>
-      <li>각 프로세서가 각자 알아서 스케줄링 결정</li>
-    </ul>
-  </li>
-  <li>Asymmetric multiprocessing
-    <ul>
-      <li>하나의 프로세서가 시스템 데이터의 접근과 공유를 책임지고 나머지 프로세서는 거기에 따름
-        <blockquote>
-          <blockquote>
-            <p>대장 CPU가 스케줄링함</p>
-          </blockquote>
-        </blockquote>
+      <li><strong>1.컴파일 바인딩</strong>
+        <ul>
+          <li>컴파일 하는 시점에서 해당 프로그램이 물리적 메모리의 몇 번지에 위치할 것인지를 결정한다.</li>
+          <li>프로그램이 올라가 있느 물리적 메모리의 위치를 변경하고 싶다면 컴파일을 다시 하는 수고가 필요하다.</li>
+          <li>현대의 시분할 시스템에서 잘 사용하지 않는다.</li>
+        </ul>
+      </li>
+      <li><strong>2.로드 타임 바인딩</strong>
+        <ul>
+          <li>프로그램의 실행이 시작될 때에 물리적 메모리 주소가 결정되는 주소 바인딩 방식을 말한다.</li>
+          <li>로더(loader)의 책임하에 물리적 메모리 주소가 부여되며 프로그램이 종료될 때까지 물리적 메모리상의 위치가 고정된다.</li>
+          <li>로더란 사용자 프로그램을 메모리에 적재시키는 프로그램을 말한다.</li>
+          <li>로드 타임 바인딩은 컴파일러가 재배치 가능 코드를 생성한 경우에 가능한 주소 바인딩 방식.</li>
+        </ul>
+      </li>
+      <li><strong>3.실행시간 바인딩</strong>
+        <ul>
+          <li>프로그램이 실행을 시작한 후에도 그 프로그램이 위치한 물리적 메모리상의 주소가 변경될 수 있는 바인딩 방식이다이다.</li>
+          <li>CPU가 주소를 참조할 때마다 해당 데이터가 물리적 메모리의 어느 위치에 존재하는지, 주소 매핑 테이블을 이용해 바인딩을 점검해야 한다.</li>
+          <li>실행시간 바인딩 방식을 위한 기준 레지스터와 한계 레지스터를 포함하는 MMU(Memory Management Unit)라는 하드웨어가 필요하다.</li>
+          <li></li>
+        </ul>
       </li>
     </ul>
   </li>
 </ul>
 
-<h3 id="real-time-scheduling">Real-TIme Scheduling</h3>
+<h2 id="mmu">MMU</h2>
+
 <ul>
-  <li>Hard real-time systems
-    <ul>
-      <li>정해진 시간 안에 반드시 끝내도록 스케줄링해야 함</li>
-    </ul>
-  </li>
-  <li>Soft real-time computing
-    <ul>
-      <li>일반 프로세스에 비해 높은 우선순위를 갖도록 해야함</li>
-    </ul>
-  </li>
+  <li>MMU는 논리적 주소를 물리적 주소로 매핑해주는 하드웨어 장치이다.</li>
+  <li>기준 레지스터(base register)의 값을 더해 물리적 메모리 주소 값을 알아낸다.</li>
+  <li>물리적 메모리의 시작 위치인 베이스 레지스터로부터 얼마나 떨어져 있는지를 나타내는 일종의 오프셋(offset) 개념으로 생각할 수 있다.</li>
+  <li>MMU 기법에서는 문맥교환으로 CPU에서 수행 중인 프로세스가 바뀔 때마다 재배치 레지스터의 값을 그 프로세스에 해당되는 값으로 재설정함으로써 각 프로세스에 맞는, 물리적 메모리 위치에 접근하는 것을 지원한다.</li>
+  <li>다중 프로그래밍 환경에서 물리적 메모리 안에는 여러 개의 프로세스가 동시에 올라가 있다. MMU 기법을 사용하여 주소 변환을 할 경우 CPU가 요청한 논리적 주소값과 베이스 레지스터 안에 있는 값을 더한 결과가 해당 프로세스의 주소 공간을 벗어나는 경우가 발생하여 <strong>메모리 보안</strong> 이 이루어 지지 않는다. 이처럼 메모리 영역을 침범하여 os에서 치명적 결과를 초래하는 것을 막기 위해 한계 레지스터를 사용한다.</li>
+  <li>한계 레지스터는 프로세스가 자신의 주소 공간을 넘어서는 메모리 참조를 하려고 하는지 체크한다.</li>
+  <li>한계 레지스터는 논리적 주소의 최댓값. 즉 프로세스의 크기를 담고 있다.</li>
+  <li>CPU가 요청한 프로세스의 논리적 주소값이 한계 레지스터 내에 저장된 프로세스의 크기보다 작은지 확인한다. 이를 넘어가면 트랩을 발생시켜 해당 프로세스를 강제 종료시킨다.</li>
 </ul>
 
-<h3 id="thread-scheduling">Thread Scheduling</h3>
-<ul>
-  <li>Local Scheduling
-    <ul>
-      <li>사용자 수준의 Thread 라이브러리에 의해 어떤 Thread를 스케줄할지 결정</li>
-    </ul>
-  </li>
-  <li>Global Scheduling
-    <ul>
-      <li>일반 프로세스와 마찬가지로 커널의 단기 스케줄러가 어떤 thread를 스케줄할지 결정</li>
-    </ul>
-  </li>
-</ul>
+<h2 id="다이나믹-로딩-dynamic-loading">다이나믹 로딩 (Dynamic Loading)</h2>
 
-<p><br /></p>
+<h2 id="오버레이overlays">오버레이(Overlays)</h2>
+
+<h2 id="스와핑-swapping">스와핑 (Swapping)</h2>
+
+<h2 id="다이나믹-링킹-dynamic-linking">다이나믹 링킹 (Dynamic Linking)</h2>
+
+<p>리눅스에서는 .so
+윈도우에서는 .dll 파일</p>
 
 <hr />
+<p>파트 나눠야하나</p>
 
-<h2 id="알고리즘-평가방법">알고리즘 평가방법</h2>
+<h2 id="물리적-메모리-할당">물리적 메모리 할당</h2>
+
 <ul>
-  <li>Queueing models
+  <li>연속할당
     <ul>
-      <li>확률 분포로 주어지는 arrival rate와 sevice rate 등을 통해 각종 performance index 값을 계산</li>
+      <li>고정 분할 방식 (현대에선 안씀)</li>
+      <li>가변 분할 방식</li>
     </ul>
   </li>
-  <li>Implementation(구현) &amp; Measurement (성능 측정)
+  <li>홀(Holl)
     <ul>
-      <li>실제 시스템에 알고리즘을 구현하여 실제 작업에 대해서 성능을 측정 비교</li>
-    </ul>
-  </li>
-  <li>Simulation(모의 실현)
-    <ul>
-      <li>알고리즘을 모의 프로그램으로 작성후 trace를 입력으로 하여 결과 비교</li>
+      <li>가용 메모리 공간</li>
+      <li>다양한 크기의 홀들이 메모리 여러 곳에 흩어져 있음</li>
+      <li>프로세스가 도착하면 수용가능한 홀을 할당</li>
+      <li>운영체제는 다음의 정보를 유지</li>
     </ul>
   </li>
 </ul>
+
+<h2 id="페이징">페이징</h2>
 
 
 
     </div>
 
 </article>
-<div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="[운영체제] (4) 프로세스 관리">[운영체제] (4) 프로세스 관리</a><a class="next" href="/2021/04/27/vue-%EC%9D%B8%EC%8A%A4%ED%84%B4%EC%8A%A4.html" title="뷰 인스턴스">뷰 인스턴스</a></div><div class="post-related">
+<div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os07.html" title="[운영체제] (7) 데드락">[운영체제] (7) 데드락</a><span></span></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="뷰 인스턴스">[운영체제] (3) 프로그램의 구조와 실행</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/02/os04.html" title="뷰 인스턴스">[운영체제] (4) 프로세스 관리</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08.html" title="뷰 인스턴스">[운영체제] (7) 데드락</a></li><li><a class="post-link" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" title="뷰 인스턴스">뷰 엑시오스(Axios) 메서드와 옵션</a></li></ul>
+        <li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/06/21/os08.html" title="">[운영체제] (7) 데드락</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="">[운영체제] (3) 프로그램의 구조와 실행</a></li><li><a class="post-link" href="/2021/05/01/vue-%EC%97%91%EC%8B%9C%EC%98%A4%EC%8A%A4.html" title="">뷰 엑시오스(Axios) 메서드와 옵션</a></li><li><a class="post-link" href="/2021/03/12/interview-java.html" title="">[Interview] JAVA</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 

@@ -647,6 +647,11 @@ function googleTranslateElementInit() {
       </li>
     </ul>
   </li>
+</ul>
+
+<p>이 외에도 다음과 같은 프로세스 상태가 존재한다.</p>
+
+<ul>
   <li>시작 상태
     <ul>
       <li>프로세스가 시작되어 그 프로세스를 위한 각종 자료구조는 생성되었지만 아직 메모리 획득을 승인받지 못한 상태</li>
@@ -681,7 +686,7 @@ function googleTranslateElementInit() {
 <h2 id="-1"><br /></h2>
 
 <h2 id="process-control-block-pcb">Process Control Block (PCB)</h2>
-<p>프로세스 제어블록이란 운영체제가 시스템 내의 프로세스들을 관리하기 위해 프로세스마다 유지하는 정보들을 담는 커널 내의 자료구조를 말한다.</p>
+<p>프로세스 제어블록이란 <strong>운영체제가 시스템 내의 프로세스들을 관리하기 위해 프로세스마다 유지하는 정보들을 담는 커널 내의 자료구조</strong>를 말한다.</p>
 
 <div style="text-align:center;">
   <img src="/assets/images/operating_system/ch05_PCB구성.png" style="zoom:50%" />
@@ -727,7 +732,7 @@ function googleTranslateElementInit() {
   <li>System call이나 interrupt 발생시 반드시 context switch가 일어나는 것은 아니다
     <ol>
       <li><strong>문맥교환 <span style="color:red">X</span></strong>
- 사용자 프로세스 A -&gt; interrupt or system call -&gt; 커널모드) -&gt; <strong><span style="color:red">문맥 교환 없이 user 모드 복귀</span></strong> -&gt; 사용자 프로세스 A</li>
+ 사용자 프로세스 A -&gt; interrupt or system call -&gt; 커널모드 -&gt; <strong><span style="color:red">문맥 교환 없이 user 모드 복귀</span></strong> -&gt; 사용자 프로세스 A</li>
       <li><strong>문맥교환 <span style="color:blue">O</span></strong>
  사용자 프로세스 A -&gt; interrupt or I/O 요청 system call  -&gt; 커널모드(ISR or system call) -&gt; <strong><span style="color:blue">문맥 교환 발생</span></strong> -&gt; 사용자 프로세스 B</li>
     </ol>
@@ -912,8 +917,8 @@ function googleTranslateElementInit() {
   </li>
   <li>주소 공간 (Address space)
     <ul>
-      <li>자식은 부모의 공간을 복사함 (binary and OS data)</li>
-      <li>자식은 부모의 공간을 복사함 (binary and OS data)</li>
+      <li>자식은 부모의 공간을 복사함 (binary and OS data)
+<!-- - 자식은 부모의 공간을 복사함 (binary and OS data) --></li>
     </ul>
   </li>
   <li>유닉스의 예
@@ -968,7 +973,7 @@ function googleTranslateElementInit() {
     </ul>
   </li>
   <li><strong>exit() 시스템 콜</strong>
-프로세스의 종료 종료하는 명령이다. 종료 명령은 자발적 종료와 비자발적 종료로 구분 된다.
+프로세스의 종료하는 명령이다. 종료 명령은 자발적 종료와 비자발적 종료로 구분 된다.
     <ul>
       <li>자발적 종료
         <ul>
@@ -1064,7 +1069,7 @@ function googleTranslateElementInit() {
 <div class="post-nav"><a class="previous" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="[운영체제] (3) 프로그램의 구조와 실행">[운영체제] (3) 프로그램의 구조와 실행</a><a class="next" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (5) CPU 스케줄링</a></div><div class="post-related">
       <div>Related Articles</div>
       <ul>
-        <li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/04/10/os05.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (5) CPU 스케줄링</a></li><li><a class="post-link" href="/2021/03/12/interview-cs.html" title="[운영체제] (5) CPU 스케줄링">[Interview] CS</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/03/28/os03.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (3) 프로그램의 구조와 실행</a></li><li><a class="post-link" href="/2021/03/12/interview-java.html" title="[운영체제] (5) CPU 스케줄링">[Interview] JAVA</a></li></ul>
+        <li><a class="post-link" href="/2021/03/12/interview-cs.html" title="[운영체제] (5) CPU 스케줄링">[Interview] CS</a></li><li><a class="post-link" href="/2021/03/12/dbcp-vs-jndi.html" title="[운영체제] (5) CPU 스케줄링">커넥션 풀을 관리하는 방법, DBCP와 JNDI</a></li><li><a class="post-link" href="/%EC%9A%B4%EC%98%81%EC%B2%B4%EC%A0%9C/2021/05/26/os06.html" title="[운영체제] (5) CPU 스케줄링">[운영체제] (6) 병행제어</a></li><li><a class="post-link" href="/2021/03/12/interview-java.html" title="[운영체제] (5) CPU 스케줄링">[Interview] JAVA</a></li></ul>
     </div><div class="post-comments"></div></section>
 </div>
 
